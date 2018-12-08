@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 int verifyx(int *a,int n){
@@ -7,25 +8,13 @@ int verifyx(int *a,int n){
 	{
 		for(j=0;j<n;j++)
 		{
-			if(*(a+i*n+j)==(*(a+(n-i-1)*n+j)))
-			temp=1;
-			else
-			{
-			temp=0;
-			break;
-			}
+			if((bool(*(a+(i*n+j))==*(a+(n-i-1)*n+j)))==0)
+			return 0;
 		}
-	}
-	if(temp==0)
-	{	
-	return 0;
-	cout<<"return 1";
-	}
-	else
-	{
+	}	
+	if(temp==1)
 	return 1;
-	cout<<"return 1";
-	}
+	
 }
 
 int verifyy(int *a,int n){
@@ -34,19 +23,12 @@ int verifyy(int *a,int n){
 	{
 		for(i=0;i<n;i++)
 		{
-				if((*(a+i*n+j))==*(a+i*n+(n-j-1)))
-				temp=1;
-				else
-				{
-					temp=0;
-					break;
-				}
+				if(bool((*(a+i*n+j))==*(a+i*n+(n-j-1)))==0)
+				return 0;
 		}
 	}
-	if(temp==0)
-		return 0;
-		else
-		return 1;
+	if(temp==1)
+	return 1;
 }
 
 int main(){
@@ -58,16 +40,21 @@ int main(){
 		int arr[n][n];
 		for(i=0;i<n;i++)
 		{
+			string c;
+			cin>>c;
 			for(j=0;j<n;j++)
-			cin>>arr[i][j];
+			arr[i][j]=c[j];
 		}
 		x=verifyx(arr[0],n);
 		y=verifyy(arr[0],n);
-		if(x==1 && y==1)
-		cout<<"YES";
-		else
+		int ans=0;
+		ans=(x==1 && y==1)?1:0;
+		if(ans==0)
 		cout<<"NO";
+		else
+		cout<<"YES";
 		cout<<endl;
+
 		t--;
 	}
 return 0;
