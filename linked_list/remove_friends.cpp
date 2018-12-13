@@ -1,40 +1,80 @@
-#include<iostream>
+#include<bits/stdc++.h>
+
 using namespace std;
 
-struct node{
-    int data;
-    struct node* next;
+class Node {
+    public:
+        int data;
+        Node *left;
+        Node *right;
+        Node(int d) {
+            data = d;
+            left = NULL;
+            right = NULL;
+        }
 };
 
-struct node* newnode(int idata){
-    struct node* temp=(struct node*)malloc(sizeof(struct node));
-    temp->data=idata;
-    temp->next=NULL;
-    return temp->next;
-}
+class Solution {
+    public:
+  		Node* insert(Node* root, int data) {
+            if(root == NULL) {
+                return new Node(data);
+            } else {
+                Node* cur;
+                if(data <= root->data) {
+                    cur = insert(root->left, data);
+                    root->left = cur;
+                } else {
+                    cur = insert(root->right, data);
+                    root->right = cur;
+                }
 
-void print(struct node* head){
-    while(head!=NULL)
-    {
-        cout<<head->data;
-        head=head->next;
-    }
-}
+               return root;
+           }
+        }
 
-int main(){
-    int i;
-    struct node* head;
-    struct node* p=head;
-    int arr[5]={1,2,3,4,5};
-    for(i=0;i<5;i++)
-    {
-        head->data=arr[i];
-        head=head->next;
+/*
+class Node {
+    public:
+        int data;
+        Node *left;
+        Node *right;
+        Node(int d) {
+            data = d;
+            left = NULL;
+            right = NULL;
+        }
+};
+
+*/
+
+    void topView(Node * root) {
+            if(root==NULL)
+            return;
+            cout<<root->data<<" ";
+            topView(root->right);
+
     }
-    while(p!=NULL)
-    {
-        cout<<p->data;
-        p=p->next;
+
+}; //End of Solution
+
+int main() {
+    
+    Solution myTree;
+    Node* root = NULL;
+    
+    int t;
+    int data;
+
+    std::cin >> t;
+
+    while(t-- > 0) {
+        std::cin >> data;
+        root = myTree.insert(root, data);
     }
+  
+    myTree.topView(root);
+
     return 0;
 }
+w
