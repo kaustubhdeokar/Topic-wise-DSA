@@ -3,10 +3,10 @@
 using namespace std;
 
 int main(){
-	//multimap<int,string>mp;
-	//int i,n,no;
+	multimap<int,string>mp;
+	int i,n,no;
 	cout<<cbrt(8)-round(8);
-/*	string name;
+	string name;
 	cin>>n;
 	for(i=0;i<n;i++)
 	{
