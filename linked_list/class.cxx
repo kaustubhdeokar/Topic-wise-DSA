@@ -4,52 +4,63 @@ class node{
 
 	public:
 		int data;
-		node* next=NULL;
-		node* head=NULL;
-		node* tail=NULL;
+		node* next=nullptr;
 		
-	void createnode(int data){
-		node* temp=new node();
-		temp->data=data;
-		temp->next=NULL;
-		if(head==NULL)
-		{
-		head=temp;
-		tail=temp;
-		}
-		else
-		{
-			tail->next=temp;
-			tail=temp;
-		}
+	node(int data){
+		this->data=data;
+		this->next=nullptr;
+	}		
+	node(){
+		this->data=0;
+		this->next=nullptr;
 	}
-	void iterate(node* head){
-		
-		while(head!=NULL)
-		{
-			cout<<head->data;
-			head=head->next;
+};
+
+class nodelist{
+	public:
+		node* head=nullptr;
+		node* tail=nullptr;
+		void createlist(int data){
+			node* temp=new node(data);
+			if(head==nullptr){
+				head=temp;
+				tail=temp;
+			}
+			else
+			{
+				tail->next=temp;
+				tail=tail->next;
+			}
 		}
-	}
 	
-	void print(node* head){
+	void iterate(node* head){
 		while(head!=nullptr)
 		{
 			cout<<head->data;
 			head=head->next;
 		}
 	}
+	
+	void reverse(node* head){
+		node* nextnode=head->next;
+		node* attach=new node();
+		while(head->next!=nullptr)
+		{
+			
+			
+			
+			
 };	
 
 int main(){
-	node* obj1=new node();
-	node* obj2,obj3;
+	nodelist* obj1=new nodelist();
+	
 	int i=0,temp;
 	for(i=0;i<5;i++)
 	{
 		cin>>temp;
-		obj1->createnode(temp);
+		obj1->createlist(temp);
 	}
-	obj1->print(obj1->head);
+	obj1->iterate(obj1->head);
 	return 0;
 }
