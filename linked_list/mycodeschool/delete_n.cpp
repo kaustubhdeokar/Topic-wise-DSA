@@ -9,6 +9,9 @@ class Node{
         this->data=data;
         this->list=nullptr;
     }
+    ~Node(){
+		cout<<"here";
+	}
 };
 
 Node* head=NULL;
@@ -39,19 +42,32 @@ void  insert(Node* x){
     cout<<endl;
 }
 
-    void insertbegin(Node* x){
-
-        if(head==NULL)
-        head=x;
-        else
-        {
-            x->list=head;
-            head=x;
-        }
-        print(head);
-        cout<<endl;
+int length(Node* head){
+    int count=0;
+    while(head!=nullptr){
+        head=head->list;
+        count+=1;
     }
+    return count;
+}
 
+   
+   void deletenode(int n){
+	   int i;
+	   Node* temp=head;
+	   if(n==1){
+		   head=temp->list;
+		   free(temp);
+		   return;
+		}
+	   for(i=0;i<n-2;i++)
+	   temp=temp->list;
+	   
+	   Node* temp2=temp->list;
+	   cout<<"------------------"<<endl;
+	   temp->list=temp2->list;
+	   print(head);
+	  }
 int main(){
     
     int n;
@@ -62,7 +78,9 @@ int main(){
         int temp;
         cin>>temp;
         Node* tempnode=new Node(temp);
-        insertbegin(tempnode);
+        insert(tempnode);
+        //cout<<endl;
     }
+    deletenode(2);
     return 0;
 }
