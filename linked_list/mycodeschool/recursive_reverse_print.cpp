@@ -17,12 +17,8 @@ void print(Node* head){
 
     if(head==NULL)
     return;
-    else
-    {
-    head-head->list; 
-    }
-        cout<<head->data;
-        print(head->list);
+    print(head->list);
+    cout<<head->data;
         
 }
 
