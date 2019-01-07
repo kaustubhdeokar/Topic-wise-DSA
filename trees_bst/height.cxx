@@ -1,4 +1,5 @@
 #include<iostream>
+#include<set>
 #include<cstdint>
 using namespace std;
 #define max(a,b) (a<b?b:a)
@@ -20,7 +21,7 @@ Node* insert(Node* root,int data){
     Node* newnode=new Node(data);
     if(root==NULL)
     root=newnode;
-    else if(data< root->data)
+    else if(data<= root->data)
     root->left=insert(root->left,data);
     else
     root->right=insert(root->right,data);
@@ -30,7 +31,7 @@ Node* insert(Node* root,int data){
 int height(Node* root){
 
     if(root==NULL)
-    return -1;
+    return 0;
     int left=height(root->left)+1;
     int right=height(root->right)+1;
     return max(left,right);

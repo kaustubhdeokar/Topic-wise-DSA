@@ -62,7 +62,7 @@ void print(Tree* root){
 	else
 		{
 			print(root->left);
-			cout<<root->count;
+			cout<<root->data;
 			print(root->right);
 		}
 }
@@ -72,9 +72,10 @@ int main(){
 	Tree* root=NULL;
 	int n,i;
 	cin>>n;
+	int temp;
 	for(i=0;i<n;i++)
 	{
-		int temp;
+		
 		cin>>temp;
 		root=insertnode(root,temp);
 	}
