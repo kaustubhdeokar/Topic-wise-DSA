@@ -36,20 +36,17 @@ void levelorder(Tree* root){
 	Tree* temp;
 	queue<Tree*> q;
 	q.push(root);
-	temp->count=0;
 	while(!q.empty())
 	{
 		temp=q.front();
-		cout<<temp->count<<" ";
+		cout<<temp->data<<" ";
 		if(temp->left!=NULL)
 		{
 			q.push(temp->left);
-			temp->count+=1;
 		}
 		if(temp->right!=NULL)
 		{
 			q.push(temp->right);
-			temp->count+=1;
 		}
 		q.pop();
 	}	
@@ -79,6 +76,6 @@ int main(){
 		cin>>temp;
 		root=insertnode(root,temp);
 	}
-	print(root);
+	levelorder(root);
 return 0;
 }
