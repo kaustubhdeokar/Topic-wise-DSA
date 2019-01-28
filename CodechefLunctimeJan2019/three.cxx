@@ -22,7 +22,7 @@ int main(){
             cin>>aryan[j];
             aryanv[n-j-1].push_back(aryan[j]);
             if(j!=n-1)
-            aryanv[n-1].push_back(aryan[j]);
+            aryanv[n-1].push_back(aryan[j]);	
  
         }
 

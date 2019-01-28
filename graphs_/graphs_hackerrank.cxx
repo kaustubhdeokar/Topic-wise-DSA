@@ -11,10 +11,12 @@ int main()
     {
     cin >> x >> y;
     adj[x].push_back(y);
-    adj[y].push_back(x);
     }
+
+    cout<<"output:"<<endl;
     for(int i = 1;i <= nodes;i++)
     {   
+        cout<<i<<"-->";
         for(j=0;j<adj[i].size();j++){
             cout<<adj[i][j]<<" ";
         }
