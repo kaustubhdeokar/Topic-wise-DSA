@@ -13,8 +13,10 @@ int main(){
     }
     int head=v[1][0];
     bool marked[nodes]={false};
+    int level[nodes]={0};
     queue<int>q;
     q.push(head);
+    level[head]=0;
     while(!q.empty()){
         temp=q.front();
         cout<<"temp is:"<<temp<<endl;
@@ -23,6 +25,7 @@ int main(){
             if(marked[v[temp][j]]==false){
                 q.push(v[temp][j]);
                 marked[v[temp][j]]=true;
+                level[v[temp][j]]=level[temp]+1;
                 cout<<"visiting"<<v[temp][j]<<endl;          
             }
             else{
@@ -30,6 +33,10 @@ int main(){
             }
         }
         q.pop();
+    }
+
+    for(j=0;j<nodes;j++){
+        cout<<level[j]<<" ";
     }
     
     return 0;
