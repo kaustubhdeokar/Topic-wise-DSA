@@ -21,6 +21,7 @@ int main(){
             if(temp==1)
             break;
             if(v[a][i]==b){
+         
                 cout<<"YES"<<endl;
                 temp=1;
             }
