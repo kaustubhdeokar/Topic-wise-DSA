@@ -22,18 +22,10 @@ int main(){
     for(i=0;i<edges;i++){
         cin>>a>>b;
         v[a].push_back(b);
-        v[b].push_back(a);
     }
     bool visited[nodes+1]={false};
     
-    int head,j;
-    cin>>head;
     
-    dfs(head,nodes,visited,v);
-    int c=0;
-    for(j=1;j<=nodes;j++)
-    if(visited[j]==0)
-    c+=1;
-    cout<<c;
+    dfs(1,nodes,visited,v);
     return 0;
 }
