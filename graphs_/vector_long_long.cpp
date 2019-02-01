@@ -1,14 +1,12 @@
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
-long long int lli;
-
-void bfs(int head,int nodes,bool visited[],vector<pair<int,int> >v[],int* min,int* max){
-    visited[head]=true;
+void bfs(int head,int nodes,bool visited[],vector<pair<int,long long int> >v[],int* min,int* max){
     int i;
 	for(i=0;i<v[head].size();i++){
-		if(visited[v[head][i].first]==false)
+        if(visited[v[head][i].first]==false)
 		{
+   		visited[head]=true;
 		visited[v[head][i].first]=true;
         bfs(v[head][i].first,nodes,visited,v,min,max);
         
@@ -25,8 +23,9 @@ void bfs(int head,int nodes,bool visited[],vector<pair<int,int> >v[],int* min,in
 int main(){
     int nodes,edges;
     cin>>nodes>>edges;
-    int a,b,c,i,j,temp;
-    vector<pair<int,int> >v[edges*edges*edges];
+    int a,b,i,j,temp;
+    long long int c;
+    vector<pair<int,long long int> >v[100000];
     for(i=0;i<edges;i++){
         cin>>a>>b>>c;
         v[a].push_back(make_pair(b,c));
