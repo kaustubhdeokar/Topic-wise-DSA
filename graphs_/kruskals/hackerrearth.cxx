@@ -13,26 +13,19 @@ void initialize()
     for(int i = 0;i < MAX;++i)
         id[i] = i;
 }
-
-int root(int x)
-{
-    while(id[x] != x)
-    {
+int root(int x){
+    while(id[x] != x){
         id[x] = id[id[x]];
         x = id[x];
     }
     return x;
 }
-
-void union1(int x, int y)
-{
+void union1(int x, int y){
     int p = root(x);
     int q = root(y);
     id[p] = id[q];
 }
-
-long long kruskal(pair<long long, pair<int, int> > p[])
-{
+long long kruskal(pair<long long, pair<int, int> > p[]){
     int x, y;
     long long cost, minimumCost = 0;
     for(int i = 0;i < edges;++i)
