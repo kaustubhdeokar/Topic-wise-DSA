@@ -9,7 +9,7 @@ def divisors(a):
 
 t=int(input())
 for l in range(t):
-    s=input()
+    s=input().upper()
     l=len(s)
     d={}
     dl=0
@@ -24,8 +24,21 @@ for l in range(t):
         arr=[]
         arr=divisors(l)
         if(arr==[]):#prime all ones
-            ans=min(list(map(lambda x:l-d[x],d)))
-            print(ans)
+            #print('all prime')
+            k=list(d.values())
+            mini=min(k)
+            count_of_sum=0
+            sum_except_min=0
+            for i in k:
+                if(i!=mini):
+                    sum_except_min+=i
+                    count_of_sum+=1
+            n=sum_except_min//count_of_sum
+            ans=[]
+            for i in k:
+                if(i!=mini):
+                    ans.append(n-mini)
+            print(sum(ans))
         else:
             mini=sys.maxsize
             for i in arr:
@@ -34,6 +47,7 @@ for l in range(t):
             to_add=mini-dl
             c=97
             if(to_add>0):
+                #print('to add+')
                 for i in range(to_add):
                     d[chr(c)]=0
                     c+=1
@@ -44,6 +58,7 @@ for l in range(t):
                 ans=sum(list(filter(lambda x:x>0,arr1)))
                 print(ans)
             else:
+                #print('to add+')
                 n=l//mini
                 arr2=[]
                 d1=sorted(d.items(),key=lambda x:x[1])
@@ -55,6 +70,7 @@ for l in range(t):
                 ans=sum(list(filter(lambda x:x>0,arr2)))
                 print(ans+1)
     else:
+        #print('proper div')
         arr=[]
         for i in d:
             arr.append(d[i]-n)
