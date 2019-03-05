@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class Node{
@@ -36,12 +37,35 @@ void traverse(Node* head){
     }
 }    
 
+void levelorder(Node* head,int n){
+    queue<Node*>q;
+    q.push(head);
+    int con=1;
+    while(!q.empty()){
+        Node* temp=q.front();
+        if(temp->left!=NULL)
+        q.push(temp->left);
+        if(temp->right!=NULL)
+        q.push(temp->right);
+        if(con==2)
+        {
+        cout<<temp->data;
+        break;
+        }
+        if(temp->data==n)
+        {
+        con=2;
+        }
+        q.pop();
+    }
+}
+
 int main(){
     
     int t;
     cin>>t;
+    int n,i,temp;
     while(t--){
-        int n,i,temp;
         cin>>n;
         for(i=0;i<n;i++){
             cin>>temp;
@@ -49,7 +73,9 @@ int main(){
         }
     }
 
-    traverse(head);
-
+    //traverse(head);
+    cout<<"enter the node";
+    cin>>n;
+    levelorder(head,n);
 	return 0;
 	}
