@@ -1,0 +1,69 @@
+#include<iostream>
+#include<algorithm>
+#include<iterator>
+using namespace std;
+
+int oppositeseat(int n){
+    int q=n/12;
+    int r=n%12;
+    if(r!=0)
+    return 12*q+(12-r)+1;
+    else{
+    return (q-1)*12+1;
+    
+    }
+}
+int seatpos(int n){
+    int m[4]={2,5,8,11};
+    int w[4]={1,6,7,12};
+    int a[4]={3,7,9,10};
+    int q,r;
+    
+    while(n>12){
+        r=n%12;
+        if(r!=0)
+        n-=2*r-1;
+        else
+        n-=2*r+1;
+    }
+
+    if(n<=12){
+    bool atm=any_of(begin(m),end(m),[&](int i){
+        return i==n;
+    });
+    if(atm)
+    return 2;
+    bool atw=any_of(begin(w),end(w),[&](int i){
+        return i==n;
+    });
+    if(atw)
+    return 1;
+    bool ata=any_of(begin(a),end(a),[&](int i){
+        return i==n;
+    });
+    if(atm)
+    return 0;
+    }
+
+}
+int main(){
+    
+        int t;
+        cin>>t;
+        while(t){
+
+            int min,seatno,q,r,n;
+            cin>>n;
+            int ans1=oppositeseat(n);
+            int ans2=seatpos(n);
+            if(ans2==0)
+            cout<<ans1<<" "<<"MS"<<endl;
+            else if(ans2==1)
+            cout<<ans1<<" "<<"WS"<<endl;
+            else
+            cout<<ans1<<" "<<"AS"<<endl;
+        t--;
+        }
+
+   return 0;
+}
