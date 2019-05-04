@@ -1,1 +1,1 @@
-New things trying today.
+All submissions from the Competitive Coding platforms.
