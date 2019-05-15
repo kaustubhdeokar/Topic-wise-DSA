@@ -32,6 +32,25 @@ int main(){
         cout<<endl;
     }
 
+	/*
+	 * couting the frequency of the words
+	 *     unordered_map<string,int>m;
+    string s;
+    getline(cin,s);
+    stringstream ss(s);
+    string word;
+    while(ss>>word)
+    m[word]++;
+
+    for(auto x:m){
+        cout<<x.first<<x.second<<endl;
+    }
+
+    return 0;
+
+}
+	 * */
+
 
     return 0;
 
