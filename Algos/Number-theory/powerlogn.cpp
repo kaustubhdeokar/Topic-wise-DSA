@@ -1,3 +1,4 @@
+/* this program calculates the power in logn */
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
