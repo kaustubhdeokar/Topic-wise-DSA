@@ -1,49 +1,37 @@
-// A C++ Program to detect cycle in a graph 
-#include<iostream> 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h> 
 using namespace std; 
+int digitSum(int n) { 
+	int ans = 0; 
+	while (n) { 
+		ans=ans+(n % 10); 
+		n=n/10; 
+	} 
+	return ans; 
+} 
 
-/*
-6 6
-1 2
-1 3
-2 5
-2 6
-3 4
-4 5
-*/
-stack<int>s;
-
-void print(vector<int>v[],bool visited[],int head,stack<int>s){
-	
-	if(visited[head]!=1){
-	visited[head]=1;
-	for(int j=0;j<v[head].size();j++)
-		{
-		print(v,visited,v[head][j],s);
-		}
-	cout<<head<<" ";
-	}
-	else
-	return;
-
-}
+int findInt(int n, int m) { 
+	int minDigit = floor(m/ 9); 
+	int start = pow(10, minDigit) - 
+				(int)pow(10, minDigit) % n; 
+	while (start < INT_MAX) { 
+		if (digitSum(start) == m) 
+			return start; 
+		else
+			start += n; 
+	} 
+	return -1; 
+} 
 
 int main() 
 { 
-
-	int x,y,nodes,edges,cost;
-	cin>>nodes>>edges;
-	vector<int>v[10];
-	for(int i=0;i<edges;i++){
-	cin>>x>>y;
-	v[x].push_back(y);
+	int t;
+	cin>>t;
+	while(t){
+	int n;
+	cin>>n;
+	int m = 10; 
+	cout << findInt(n, m); 
+	t--;
 	}
-	bool visited[nodes]={0};
-	print(v,visited,1,s);
-
-	cout<<s.size();
-
-	return 0;
+	return 0; 
 } 
-

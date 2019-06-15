@@ -11,6 +11,8 @@ if __name__=="__main__":
         a=190
         n=int(input())
         units=sod(n)
-        tens=n*10
-        total=tens+10-(units%10)
-        print(total)
+        if(units%10==0):
+            print(n*10)
+        else:
+            req=10-(units%10)
+            print(n*10+req)
