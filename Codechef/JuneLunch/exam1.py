@@ -1,0 +1,25 @@
+for _ in range(int(input())):
+    n=int(input())
+    s=input()
+    u=input()
+    correct=0
+    i=0
+    while(i<=(n-1)):
+        if(u[i]=='N'):
+            pass
+        elif(u[i]==s[i]):
+            correct+=1
+        else:
+            i+=1
+        i+=1
+    print(correct)
+1
+0
+0
+0
+1
+0
+3
+2
+6
+3
