@@ -12,6 +12,7 @@ void merge(int *arr,int s,int e){
 	int j=mid+1;
 	int k=s;
 	int temp[100];
+	
 	while(i<=mid && j<=e){
 	if(arr[i]<arr[j])
 	temp[k++]=arr[i++];
