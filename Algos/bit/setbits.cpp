@@ -1,12 +1,18 @@
 #include <iostream>
 using namespace std;
-int main() {
-    int count=0,t;
-    cin>>t;
-    while(t>0){
-        t=t&(t-1);
+
+int hasevenbits(int n){
+    int count=0;
+    while(n>0){
+        n=n&(n-1);
         count+=1;
     }
-    cout<<count;
+    return (count%2);
+}
+
+int main() {
+	
+	for(int i=1;i<10;i++)
+	cout<<i<<hasevenbits(i)<<endl;
  	return 0;
 }

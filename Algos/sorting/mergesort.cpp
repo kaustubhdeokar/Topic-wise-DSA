@@ -1,54 +1,57 @@
-/*
- * this program consists of insertion in a  binary tree
- * height of a binary tree
-*/
-#include<bits/stdc++.h>
 #include<iostream>
 using namespace std;
 
-void merge(int *arr,int s,int e){
-	int mid=(s+e)/2;
-	int i=s;
-	int j=mid+1;
-	int k=s;
-	int temp[100];
-	
-	while(i<=mid && j<=e){
-	if(arr[i]<arr[j])
-	temp[k++]=arr[i++];
-	else
-	temp[k++]=arr[j++];
-	}
-	while(i<=mid)
-	temp[k++]=arr[i++];
-	while(j<=e)
-	temp[k++]=arr[j++];
+class Node{
+    public:
+    int data;
+    Node* left;
+    Node* right;
+    Node(int idata){
+        data=idata;
+        left=NULL;
+        right=NULL;
+    }
+};
 
-	for(int i=s;i<=e;i++)
-	arr[i]=temp[i];
+
+Node* insert(Node* head,int idata){
+	Node* newnode=new Node(idata);
+	if(head==NULL)
+		head=newnode;
+	else{
+		if(idata<head->data)
+		head->left=insert(head->left,idata);
+		else
+		head->right=insert(head->right,idata);
+	}
+	return head;
 }
 
-void mergesort(int arr[],int s,int e){
-	if(s>=e)
-	return;
-	else{
-		int mid=(s+e)/2;
-		mergesort(arr,0,mid);
-		mergesort(arr,mid+1,e);
+void inorder(Node* root){
+    if(root!=nullptr){
+        inorder(root->left); 
+        cout << root->data <<" "; 
+        inorder(root->right);
+    }
+    return;
+}
 
-		merge(arr,s,e);
+Node* MakeTree(Node* head,int arr[],int i,int n){
+	if(i<n)
+	{
+		head=new Node(arr[i]);
+		head->left=MakeTree(head->left,arr,2*i+1,n);
+		head->right=MakeTree(head->right,arr,2*i+2,n);
 	}
+	return head;
 }
 
 int main(){
-	int n;
-	cin>>n;
-	int arr[n];
-	for(int i=0;i<n;i++)
-	cin>>arr[i];
-	mergesort(arr,0,n-1);
-	for(int i=0;i<n;i++)
-	cout<<arr[i];
-    return 0;
-}
 
+	Node* head=NULL;
+	int arr[] = {1, 2, 3, 4, 5, 6}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+	head=MakeTree(head,arr,0,n);
+    inorder(head);
+	
+}
