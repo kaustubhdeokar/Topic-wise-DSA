@@ -15,7 +15,7 @@ int main(){
 			for(int i=0;i<v;i++){
 				for(int j=0;j<v;j++){
 					if(graph[i][j]>graph[i][k]+graph[k][j])
-					graph[i][j]>graph[i][k]+graph[k][j];
+					graph[i][j]=graph[i][k]+graph[k][j];
 				}
 			}
 		}

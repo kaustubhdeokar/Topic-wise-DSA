@@ -22,11 +22,6 @@ bool isCyclic(vector<int>graph[],int nodes,int head,bool visited[],int parent[])
 		return true;
 }
 
-/*
-1
-4 4
-0 1 1 2 1 3 2 3
-*/
 
 int main() 
 { 

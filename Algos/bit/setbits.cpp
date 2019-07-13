@@ -1,18 +1,30 @@
 #include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-int hasevenbits(int n){
-    int count=0;
-    while(n>0){
-        n=n&(n-1);
-        count+=1;
-    }
-    return (count%2);
+void subsets(string s,string prefix){
+	if(s=="")
+	cout<<prefix<<endl;
+	else if(prefix!="")
+	cout<<prefix<<endl;
+	else
+	{
+		for(int i=0;i<s.length();i++){
+			string rem=s.substr(0,i)+s.substr(i+1);
+			subsets(rem,prefix+s.at(i));
+		}
+	}
 }
 
 int main() {
 	
-	for(int i=1;i<10;i++)
-	cout<<i<<hasevenbits(i)<<endl;
+	vector<int>arr;
+	arr.push_back(1);
+	arr.push_back(2);
+	arr.push_back(3);
+	string s;
+	for(int i=0;i<arr.size();i++)
+	s+=to_string(arr[i]);
+	subsets(s,"");	
  	return 0;
 }

@@ -78,4 +78,4 @@ int main(){
   h.insert(5);
   h.extractmin();
   h.print();
-}
+}	
