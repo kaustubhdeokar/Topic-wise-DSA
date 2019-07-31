@@ -6,6 +6,7 @@ int main(){
 
     int n;
     cin>>n;
+    n-=1;
     double a=pow((1+sqrt(5)),n);
     double b=pow((1-sqrt(5)),n);
     double c=pow(2,n)*sqrt(5); 
