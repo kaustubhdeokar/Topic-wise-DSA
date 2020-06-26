@@ -1,0 +1,94 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Heaps{
+  int *harr;
+  int size;
+  int capacity;
+  public:
+     int parent(int i){return (i-1)/2;}
+     int left (int i) {return (i*2)+1;}
+     int right(int i){return (i*2)+2;}
+     Heaps(int cap);
+     void insert(int ele);
+     int extractmin();
+     void remove(int i);//position i;
+     void heapify(int i);
+     void print();
+     void swap(int *x,int*y);
+};
+Heaps::Heaps(int cap){
+  harr=new int[cap];
+  size=0;
+  capacity=cap;
+}
+void Heaps::insert(int ele){
+
+  size++;
+  int i=size-1;
+  harr[i]=ele;
+  while(i!=0 && harr[parent(i)]<harr[i]){
+    swap(&harr[parent(i)],&harr[i]);
+    i=parent(i);
+  }
+  
+}
+void Heaps::swap(int *x,int *y){
+  int temp=*x;
+  *x=*y;
+  *y=temp;
+}
+int Heaps::extractmin(){
+  if (size <= 0) 
+    return INT_MAX; 
+  if (size == 1) 
+  { 
+    size--; 
+    return harr[0]; 
+  } 
+  int root=harr[0];
+  harr[0]=harr[size-1];
+  size--;
+  heapify(0);
+  return root;
+}
+
+void Heaps::heapify(int i){
+  int smallest=i;
+  int temp;
+  int l=left(i);
+  int r=right(i);
+  if(l<size && harr[smallest]<harr[l])
+  smallest=l;
+  if(r<size && harr[smallest]<harr[r])
+  smallest=r;
+  if(smallest!=i){
+      temp=harr[i];
+      harr[i]=harr[smallest];
+      harr[smallest]=temp;
+      heapify(smallest);
+  }
+}
+
+void Heaps::print(){
+  for(int i=0;i<size;i++){
+    cout<<i<<harr[i]<<endl;
+  }
+}
+int main(){
+  Heaps h(10);
+  h.insert(1);
+  h.insert(2);
+  h.insert(11);
+  h.insert(12);
+  h.insert(13);
+  h.insert(22);
+  h.insert(113);  
+  int k,r;
+  cout<<"enter the k";
+  cin>>k;
+  for(int i=0;i<k;i++)
+  r=h.extractmin();
+  cout<<r;
+ 
+}
