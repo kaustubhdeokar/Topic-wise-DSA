@@ -1,4 +1,4 @@
-### Repo contains all submissions to Competitive Coding platforms and competitions.
+### Submissions made for some competitive coding platforms and their competitions.
 
 #### Links to various such platforms
 
