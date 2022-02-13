@@ -73,19 +73,13 @@ public class LL {
 
     }
 
-    public void reversePrint() {
 
-        List<Integer> list = new ArrayList<>();
-        Node llist = head;
-        while (llist != null) {
-            list.add(llist.data);
-            llist = llist.next;
+    private void reversePrint(Node head) {
+        if (head == null) {
+            return;
         }
-
-        Collections.reverse(list);
-
-        list.forEach(System.out::println);
-
+        reversePrint(head.next);
+        System.out.println(head.data);
     }
 
 
@@ -96,6 +90,8 @@ public class LL {
         Node onePosAhead = head.next;
         Node twoPosAhead = head.next.next;
 
+        curr.next = null;
+
         while (onePosAhead != null) {
             onePosAhead.next = curr; //reversed curr element.
             curr = onePosAhead;
@@ -104,11 +100,7 @@ public class LL {
             twoPosAhead = twoPosAhead.next;
         }
 
-        Node temp = curr;
-        while (temp != null) {
-            System.out.println(temp.data);
-        }
-
+        head = curr;
 
     }
 
@@ -150,19 +142,63 @@ public class LL {
         return;
     }
 
+    public Node mergeList(LL ll, LL ll2) {
+        Node head1 = ll.head;
+        Node head2 = ll2.head;
+
+        LL newList = new LL();
+        if (head1 == null) {
+            return head2;
+        }
+        if (head2 == null) {
+            return head1;
+        }
+        while (head1 != null && head2 != null) {
+            if (head1.data < head2.data) {
+                newList.append(head1.data);
+                head1 = head1.next;
+            } else {
+                newList.append(head2.data);
+                head2 = head2.next;
+            }
+        }
+        while (head1 != null) {
+            newList.append(head1.data);
+            head1 = head1.next;
+        }
+        while (head2 != null) {
+            newList.append(head2.data);
+            head2 = head2.next;
+        }
+        return newList.head;
+
+
+    }
+
 
     public static void main(String[] args) {
 
         LL ll = new LL();
+        ll.append(1);
         ll.append(3);
-        ll.append(3);
-        ll.append(3);
-        ll.append(4);
         ll.append(5);
-        ll.append(5);
-        ll.removeDuplicates();
-        ll.printList();
+        LL ll2 = new LL();
+        ll2.append(2);
+        ll2.append(4);
 
+
+        ll.inPlaceReverse();
+        mergeLists(ll, ll2);
+
+
+    }
+
+    private static void mergeLists(LL ll, LL ll2) {
+        Node node = ll.mergeList(ll, ll2);
+        while (node != null) {
+            System.out.println(node.data);
+            node = node.next;
+        }
     }
 
 }
