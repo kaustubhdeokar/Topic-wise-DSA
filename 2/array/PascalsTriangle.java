@@ -7,7 +7,7 @@ public class PascalsTriangle {
 
         List<List<Integer>> answer = new ArrayList<>();
 
-        answer.add(new ArrayList<Integer>() {{
+        answer.add(new ArrayList<>() {{
             add(1);
         }});
 
@@ -26,12 +26,34 @@ public class PascalsTriangle {
             answer.add(newArr);
             arr = newArr;
         }
-
         return answer;
+    }
+
+    /**
+     * leetcode user: rheaxu
+     */
+    public List<List<Integer>> printPascalsTriangleLeetCode(int n) {
+
+        List<List<Integer>> allrows = new ArrayList<>();
+        ArrayList<Integer> row = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            row.add(0, 1);//will introduce a time issue. -> shifting all elements on each iteration.
+            for (int j = 1; j < row.size() - 1; j++)
+                row.set(j, row.get(j) + row.get(j + 1));
+            allrows.add(new ArrayList<>(row));
+        }
+        return allrows;
+    }
+
+    public List<Integer> printPascalsTriangleNthRow(int n) {
+
+        List<List<Integer>> answer = printPascalsTriangle(n);
+        return answer.get(n - 1);
 
     }
 
-    public void print(ArrayList<Integer> arr) {
+
+    public void print(List<Integer> arr) {
         for (int elem : arr)
             System.out.print(elem + " ");
         System.out.println();
@@ -44,12 +66,13 @@ public class PascalsTriangle {
         List<List<Integer>> list = pascalsTriangle.printPascalsTriangle(5);
 
         for (List<Integer> list1 : list) {
-            for (Integer i : list1) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
+            pascalsTriangle.print(list1);
         }
 
+        List<Integer> lists = pascalsTriangle.printPascalsTriangleNthRow(5);
+        for (Integer i : lists) {
+            System.out.print(i + " ");
+        }
     }
 
 }
