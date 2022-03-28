@@ -1,0 +1,51 @@
+Google
+Microsoft
+Linkedin
+Atlassian
+Uber
+Twitter
+2 Sigma
+Meta (Facebook)
+Netflix
+
+
+Apple
+Adobe
+Salesforce
+Walmart Labs
+Paypal
+Intuit
+Tower Research Capital
+Amazon
+Razorpay
+Palo Alto Netwokrs
+Slack
+Dropbox
+Lyft
+ByteDance
+Rippling
+Rubrik
+
+VMWare
+NVIDIA
+ServiceNOW
+GitHub
+Confluent
+Indeed
+Directi
+Airbnb
+Nutanix
+Mediatek
+Qualcomm
+Twilio
+Juniper Networks
+WorldQuant
+Goldman Sachs
+DE Shaw
+Compass
+Mathworks
+Quora
+Grab
+Coinbase
+eBay
+Shopify
