@@ -71,27 +71,25 @@ public class LinkedList{
         return head;
     }
 
-    // public void mergeTwoLL(Node head1, Node head){
+    public void mergeTwoLL(LinkedList list1, Node head){
+    
         
-    // }
+
+    }
 
 
     public static void main(String[] main){
         LinkedList list = new LinkedList();
         list.insert(1);
-        list.insert(2);
         list.insert(3);
-        Node head = list.insert(4);
-        list.traverse(head);
+        list.insert(5);
 
-        Node reversedHead = list.reverseLL(head);
-        list.traverse(reversedHead);
-
-        Node middleNode = list.middleLL(head);
-        list.traverse(middleNode);
+        LinkedList list2 = new LinkedList();
+        list2.insert(0);
+        list2.insert(2);
+        list2.insert(4);
 
         
-
     }
 
 }
