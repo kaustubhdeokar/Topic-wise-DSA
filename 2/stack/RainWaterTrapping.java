@@ -2,8 +2,11 @@ package stack;
 
 public class RainWaterTrapping {
 
-    public int trap(int[] height) {
+    public int trap() {
 
+	
+		int[] height = {1,8,6,2,5,4,8,3,7};
+		
         int[] leftLargest = new int[height.length];
         int largest = -1;
 
