@@ -1,4 +1,4 @@
-public class FirstMissingNum-CyclicSort{
+public class FirstMissingNumCyclicSort{
 
  public int missingNumber(int[] nums) {
         
