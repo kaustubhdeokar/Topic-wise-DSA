@@ -1,53 +1,35 @@
 public class MergeSort {
 
-    public static void main(String[] args) {
+    public int[] mergeSort(int[] arr) {
 
+        if (arr.length == 1)
+            return arr;
+        int mid = arr.length / 2;
+        int[] left = mergeSort(Arrays.copyOfRange(arr, 0, mid));
+        int[] right = mergeSort(Arrays.copyOfRange(arr, mid, arr.length));
 
-        int[] arr = {9, 7, 1, 5};
-        mergesort(arr);
-        for(int i:arr)
-            System.out.print(i+" ");
+        return merge(left, right);
+
     }
 
-    private static void mergesort(int[] inputArray) {
-        int len = inputArray.length;
-        if (len < 2)
-            return;
+    public int[] merge(int[] left, int[] right) {
 
-        int midIndex = len / 2;
-        int[] leftArr = new int[midIndex];
-        int[] rightArr = new int[len - midIndex];
+        int[] newArr = new int[left.length + right.length];
+        int k=0,i=0,j=0;
 
-        for (int i = 0; i < len / 2; i++)
-            leftArr[i] = inputArray[i];
-        for (int i = midIndex; i < len; i++)
-            rightArr[i - midIndex] = inputArray[i];
-
-        mergesort(leftArr);
-        mergesort(rightArr);
-
-        merge(inputArray, leftArr, rightArr);
-    }
-
-    private static void merge(int[] inputArray, int[] leftArr, int[] rightArr) {
-        int leftArrLen = leftArr.length;
-        int rightArrLen = rightArr.length;
-
-        int leftPointer = 0, rightPointer = 0, inputArrPointer = 0;
-
-        while (leftPointer < leftArrLen && rightPointer < rightArrLen) {
-            if (leftArr[leftPointer] <= rightArr[rightPointer])
-                inputArray[inputArrPointer++] = leftArr[leftPointer++];
+        while(i<left.length && j< right.length){
+            if(left[i]<right[j])
+                newArr[k++] = left[i++];
             else
-                inputArray[inputArrPointer++] = rightArr[rightPointer++];
+                newArr[k++] = right[j++];
         }
+        while(i<left.length)
+            newArr[k++] = left[i++];
+        while(j<right.length)
+            newArr[k++] = right[j++];
 
-        while (leftPointer < leftArrLen)
-            inputArray[inputArrPointer++] = leftArr[leftPointer++];
-        while (rightPointer < rightArrLen)
-            inputArray[inputArrPointer++] = rightArr[rightPointer++];
-
-
+        return newArr;
     }
+
 }
 
