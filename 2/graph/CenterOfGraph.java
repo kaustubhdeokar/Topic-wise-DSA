@@ -1,3 +1,7 @@
+package graph;
+
+import java.util.LinkedList;
+
 class Solution {
     
     class Graph{
