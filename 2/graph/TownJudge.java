@@ -11,7 +11,9 @@ AND DECREMENT FOR OUTGOING -> trust[source]--
 AND INCREMENT FOR INCOMING -> trust[destination]++
 */
 
-class Solution {
+import java.util.LinkedList;
+
+class TownJudge {
     
      class Graph{
          
