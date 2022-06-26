@@ -1,25 +1,26 @@
 package linkedlist;
+import ListNode;
 
 public class SortLL {
 
 
-    public Node mergeSort(Node head) {
+    public ListNode mergeSort(ListNode head) {
 
         if (head ==null || head.next == null)
             return head;
 
-        Node mid = middleNode(head);
-        Node left = createList(head, mid);
-        Node right = createList(mid);
+        ListNode mid = middleNode(head);
+        ListNode left = createList(head, mid);
+        ListNode right = createList(mid);
         left = mergeSort(left);
         right = mergeSort(right);
 
         return mergeWithNewList(left, right);
     }
 
-    private Node createList(Node head, Node middleNode) {
-        Node newNode = new Node(0);
-        Node tail = newNode;
+    private ListNode createList(ListNode head, ListNode middleNode) {
+        ListNode newNode = new ListNode(0);
+        ListNode tail = newNode;
         while (head != middleNode) {
             tail.next = head;
             head = head.next;
@@ -29,9 +30,9 @@ public class SortLL {
         return newNode.next;
     }
 
-    private Node createList(Node mid) {
-        Node newNode = new Node(0);
-        Node tail = newNode;
+    private ListNode createList(ListNode mid) {
+        ListNode newNode = new ListNode(0);
+        ListNode tail = newNode;
         while (mid != null) {
             tail.next = mid;
             mid = mid.next;
@@ -41,9 +42,9 @@ public class SortLL {
     }
 
 
-    public Node middleNode(Node head) {
-        Node fast = head;
-        Node slow = head;
+    public ListNode middleNode(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
@@ -51,10 +52,10 @@ public class SortLL {
         return slow;
     }
 
-    public Node mergeWithNewList(Node head1, Node head2) {
+    public ListNode mergeWithNewList(ListNode head1, ListNode head2) {
 
-        Node newHead = new Node(0);
-        Node tail = newHead;
+        ListNode newHead = new ListNode(0);
+        ListNode tail = newHead;
 
         while (head1 != null && head2 != null) {
             if (head1.data <= head2.data) {
@@ -85,7 +86,7 @@ public class SortLL {
         l1.insert(3);
 
         SortLL sortLL = new SortLL();
-        Node newHead = sortLL.mergeSort(l1.head);
+        ListNode newHead = sortLL.mergeSort(l1.head);
 
         while (newHead != null) {
             System.out.println(newHead.data);

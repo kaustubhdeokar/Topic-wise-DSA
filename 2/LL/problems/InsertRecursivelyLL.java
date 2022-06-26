@@ -1,40 +1,18 @@
-package linkedlist;
+import org.w3c.dom.Node;
+
+import java.util.LinkedList;
 
 public class InsertRecursivelyLL {
 
     Node head;
 
-    
+
     public void insertRecursively(int data){
         Node temp = head;
         head = insertRecursively(data,temp);
     }
 
-    public Node insertRecursively(int data, Node head){
-        if(head == null)
-        {
-            head = new Node(data);
-            return head;
-        }
-        head.next = insertRecursively(data,head.next);
-        return head;
-    }
 
-    public void insertRecursivelyAtPos(int data,int pos){
-        Node temp = head;
-        head = insertRecursivelyAtPos(data,temp,pos);
-    }
-
-    public Node insertRecursivelyAtPos(int data, Node head,int pos){
-        if(pos == 0)
-        {
-            Node newNode = new Node(data);
-            newNode.next = head;
-            return newNode;
-        }
-        head.next = insertRecursivelyAtPos(data,head.next,pos-1);
-        return head;
-    }
 
 
 
