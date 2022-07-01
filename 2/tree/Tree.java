@@ -1,7 +1,6 @@
 package tree;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Tree {
 
@@ -79,19 +78,64 @@ public class Tree {
                8
         * */
         LeftView leftView = new LeftView();
-//        int[] leftViewArr = leftView.leftView(treeNode);
-//        for (Integer i : leftViewArr) {
-//            System.out.print(i + " ");
-//        }
-
-        ArrayList<Integer> list = new ArrayList<>(3);
-        for(int i=0;i<=3;i++)
-            list.add(-1);
-        System.out.println(list);
-        list.set(1,1);
-        list.set(2,1);
-        System.out.println(list);
+        int[] leftViewArr = leftView.leftView(treeNode);
+        for (Integer i : leftViewArr) {
+            System.out.print(i + " ");
+        }
     }
+
+    public void pathToNode() {
+        TreeNode treeNode = getTreeDataSet1();
+
+        PathToNode path = new PathToNode();
+        ArrayList<Integer> pathList = path.printPathToNode(treeNode, 30);
+        for (Integer i : pathList) {
+            System.out.print(i + " ");
+        }
+    }
+
+    public void pathToNodePlusDistances(){
+        TreeNode treeNode = getTreeDataSet1();
+        BurnATree burnATree = new BurnATree();
+        burnATree.burnTree(treeNode,90);
+    }
+
+    private TreeNode getTreeDataSet1() {
+        TreeNode treeNode = new TreeNode(10);
+        treeNode.left = new TreeNode(50);
+        treeNode.right = new TreeNode(60);
+        treeNode.left.left = new TreeNode(70);
+        treeNode.left.left.left = new TreeNode(40);
+        treeNode.left.right = new TreeNode(20);
+        treeNode.left.right.left = new TreeNode(90);
+        treeNode.left.right.right = new TreeNode(80);
+        treeNode.left.right.left.left = new TreeNode(30);
+
+        /*
+
+              10
+              / \
+             50  60
+            /  \
+           70  20
+          /    / \
+         40   90  80
+             /
+            30
+
+        * */
+
+        return treeNode;
+    }
+
+    public void lca() {
+        TreeNode treeNode = getTreeDataSet1();
+        LCA lca = new LCA();
+        System.out.println("lca by path sum:" + lca.findLCAPathSum(treeNode, 30, 80));
+
+        System.out.println("lca recursively:" + lca.findLCA(treeNode, 70, 60));
+    }
+
 
     public void maximumElement(TreeNode treeNode) {
         MaximumInABinaryTree maximumInABinaryTree = new MaximumInABinaryTree();
@@ -101,8 +145,7 @@ public class Tree {
     public static void main(String[] args) {
 
         Tree tree = new Tree();
-        TreeNode root = createTree(tree);
-        tree.findLeftView();
+        tree.pathToNodePlusDistances();
     }
 
     private static TreeNode createTree(Tree tree) {
