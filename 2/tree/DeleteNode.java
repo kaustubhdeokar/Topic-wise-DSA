@@ -18,6 +18,10 @@ public class DeleteNode {
         {
             root = deleteLeafNode(root, node.val);
             return root;
+        } else if (node.left == null) {
+            node.val = node.right.val;
+            node.right = node.right.right;
+            return root;
         } else {
             deleteNodeWithKey(root, node, key);
             return root;
