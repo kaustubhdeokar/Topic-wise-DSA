@@ -27,7 +27,7 @@ public class Tree {
 
     public void deleteNodeHelper(TreeNode root, Tree tree) {
         DeleteNode deleteNode = new DeleteNode();
-        TreeNode newRoot = deleteNode.deleteNode(root, 60);
+        TreeNode newRoot = deleteNode.deleteNode(root, 9);
         tree.printInorder(newRoot);
 
     }
@@ -138,23 +138,42 @@ public class Tree {
         System.out.println();
     }
 
+    private void balanceBST() {
+        BalanceBST balanceBST = new BalanceBST();
+        balanceBST.balanceBST(getTreeDataSet2());
+    }
+
     public static void main(String[] args) {
 
         Tree tree = new Tree();
-        tree.deleteNodeHelper(getTreeDataSet1(), tree);
-
+        tree.balanceBST();
     }
+
 
     private static TreeNode createTree(Tree tree) {
         TreeNode root = new TreeNode(6);
         tree.insertIntoBST(root, 5);
-        tree.insertIntoBST(root, 8);
+        tree.insertIntoBST(root, 9);
         tree.insertIntoBST(root, 11);
         tree.insertIntoBST(root, 7);
+        tree.insertIntoBST(root, 8);
         tree.insertIntoBST(root, 4);
         tree.insertIntoBST(root, 3);
         tree.insertIntoBST(root, 13);
         tree.insertIntoBST(root, 2);
+        /*
+
+                6
+               / \
+              5   9
+             /   / \
+            4   7   11
+           /     \    \
+          3       8   13
+         /
+        2
+
+        */
         return root;
     }
 
@@ -188,17 +207,18 @@ public class Tree {
     }
 
     public static TreeNode getTreeDataSet2() {
-        TreeNode root = new TreeNode(10);
-        root.left = new TreeNode(20);
+        TreeNode root = new TreeNode(20);
+        root.left = new TreeNode(10);
         root.right = new TreeNode(30);
-        root.right.left = new TreeNode(40);
+        root.right.right = new TreeNode(40);
+        root.right.right.right = new TreeNode(50);
 
         /*
-         10
+         20
         /  \
-       20  30
-           /
-          40
+       10  30
+             \
+             40
         */
         return root;
     }
