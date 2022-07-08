@@ -1,7 +1,6 @@
 package graph.directed;
 
 import graph.Graph;
-
 import java.util.ArrayList;
 
 public class Cycle {
