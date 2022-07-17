@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -7,25 +6,29 @@ public class JobSequencing {
     public int maxProfitByJobSequencing(Job arr[], int n) {
 
         Comparator<Job> compareByDeadlineAndProfit = (Job j1, Job j2) ->
-                j1.deadline == j2.deadline ?
-                        Integer.compare(j2.profit, j1.profit) :
-                        Integer.compare(j2.deadline, j1.deadline);
+                Integer.compare(j2.profit, j1.profit);
+        //arrange the jobs in decreasing order of profit.
 
         PriorityQueue<Job> heap = new PriorityQueue<>(compareByDeadlineAndProfit);
-        heap.addAll(Arrays.asList(arr));
+        int maxDeadline = Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            maxDeadline = Integer.max(maxDeadline, arr[i].deadline);
+            heap.add(arr[i]);
+        }
 
-        int jobsDone = 0;
-        int profit = 0;
 
-        for (int day = n; day >= 0; day--) {
-            Job top = heap.peek();
-            if (top.deadline >= day) {
-                top = heap.poll();
-                profit += top.profit;
-                jobsDone += 1;
-            } else {
-                continue;
+        int[] slots = new int[arr.length];
+
+        while (!heap.isEmpty()) {
+            Job job = heap.poll();
+
+            for (int i = job.deadline; i >= 0; i--) {
+                if (slots[i] == 0) {
+                    slots[i] = job.profit;
+                    break;
+                }
             }
+
         }
 
         return -1;
