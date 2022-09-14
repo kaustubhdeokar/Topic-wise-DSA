@@ -7,13 +7,31 @@ public class DFS{
 
         ArrayList<Integer> finalResult = new ArrayList<>();
         int[] visited = new int[vertices];
+        
         for(int i=0;i<vertices;i++){
-            if(visited[i]==0){
-                finalResult.addAll(dfs(adjList, i, visited));
+             if(visited[i]==0){
+                dfsRecursive(adjList, i, visited);
             }
         }   
+        
         return finalResult;
     }
+
+    public void dfsRecursive(ArrayList<ArrayList<Integer>> graph, 
+                            int currVertex, 
+                            int[] visited)
+    {
+        visited[currVertex] = 1;
+        System.out.println(currVertex);
+
+        for(int i=0;i<graph.get(currVertex).size();i++){
+            if(visited[graph.get(currVertex).get(i)]==0){
+                
+                dfsRecursive(graph, graph.get(currVertex).get(i), visited);
+            }
+        }
+    }
+
 
     public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> list, int vertex, int[] visited){
         visited[vertex] = 1;
