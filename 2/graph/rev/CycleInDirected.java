@@ -28,6 +28,7 @@ public class CycleInDirected{
                 return true;
             }
         }
+        
         currVisited[graph.get(curr)] = 0;
         return false;
 
