@@ -3,6 +3,7 @@ package tree;
 import java.util.Stack;
 
 public class PreorderIterative {
+
     public void preorder(TreeNode node) {
         Stack<TreeNode> stack = new Stack<>();
         while (!stack.isEmpty() || node != null) {

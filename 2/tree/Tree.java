@@ -2,6 +2,7 @@ package tree;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.PriorityQueue;
 
 public class Tree {
 
@@ -33,18 +34,13 @@ public class Tree {
     }
 
     public void printInorderIterative(TreeNode treeNode) {
-        InorderIterative inorderIterative = new InorderIterative();
-        inorderIterative.inorder(treeNode);
-    }
-
-    public void printPreOrderIterative(TreeNode treeNode) {
-        PreorderIterative preorderIterative = new PreorderIterative();
-        preorderIterative.preorder(treeNode);
+        InOrder inOrderIterative = new InOrder();
+        inOrderIterative.iterative(treeNode);
     }
 
     public void printPostorderIterative(TreeNode treeNode) {
-        PostorderIterative postorderIterative = new PostorderIterative();
-        postorderIterative.postorder(treeNode);
+        PostOrder postOrder = new PostOrder();
+        postOrder.iterative(treeNode);
     }
 
     public void pathSum(TreeNode treeNode) {
@@ -140,13 +136,26 @@ public class Tree {
 
     private void balanceBST() {
         BalanceBST balanceBST = new BalanceBST();
-        balanceBST.balanceBST(getTreeDataSet2());
+        balanceBST.balanceBST(new TreeNode().buildTree());
     }
 
     public static void main(String[] args) {
 
-        Tree tree = new Tree();
-        tree.balanceBST();
+//        Tree tree = new Tree();
+//        tree.balanceBST();
+//
+        ArrayList<PriorityQueue<Integer>> set =new ArrayList<>();
+        set.add(new PriorityQueue<>());
+        set.get(0).add(3);
+        set.get(0).add(2);
+        set.get(0).add(2);
+
+        System.out.println(set.get(0));
+
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        list.add(new ArrayList<>());
+        list.get(0).addAll(set.get(0));
+
     }
 
 
@@ -204,23 +213,6 @@ public class Tree {
         * */
 
         return treeNode;
-    }
-
-    public static TreeNode getTreeDataSet2() {
-        TreeNode root = new TreeNode(20);
-        root.left = new TreeNode(10);
-        root.right = new TreeNode(30);
-        root.right.right = new TreeNode(40);
-        root.right.right.right = new TreeNode(50);
-
-        /*
-         20
-        /  \
-       10  30
-             \
-             40
-        */
-        return root;
     }
 
     public static TreeNode getTreeDataSet3() {

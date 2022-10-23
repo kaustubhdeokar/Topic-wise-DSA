@@ -16,6 +16,7 @@ public class DeleteNode {
                 return root.left;
             else {
                 TreeNode inorderSuccessor = findInorderSuccessor(root.right);
+                //replace by inorder successor's value.
                 root.val = inorderSuccessor.val;
                 root.right = deleteNode(root.right, root.val);
             }
