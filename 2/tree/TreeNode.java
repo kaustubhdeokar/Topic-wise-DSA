@@ -58,6 +58,12 @@ public class TreeNode {
         return root;
     }
 
-    
+    public void traverse(TreeNode root) {
+        if (root == null)
+            return;
+        traverse(root.left);
+        System.out.println(root.val);
+        traverse(root.right);
+    }
 
 }

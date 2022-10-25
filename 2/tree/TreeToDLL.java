@@ -30,18 +30,18 @@ public class TreeToDLL {
         convertTreeToDoublyLinkedList(rootNode.left, newRoot, curr);
         
         if(curr[0]==null){
-        //    System.out.println("curr is null");
+        //System.out.println("curr is null");
             curr[0] = rootNode;
             newRoot[0] = rootNode;
-          //  System.out.println("curr:"+curr[0].data);
+        //System.out.println("curr:"+curr[0].data);
         }
         else{
             rootNode.left = curr[0];
-//            System.out.println("rootNode:"+ rootNode.data);
-  //          System.out.println("rootNode-prev:"+ rootNode.left.data);
+        //System.out.println("rootNode:"+ rootNode.data);
+        //System.out.println("rootNode-prev:"+ rootNode.left.data);
             curr[0].right = rootNode;
-    //        System.out.println("curr:"+ curr[0].data);
-      //      System.out.println("curr next:"+ curr[0].right.data);
+        //System.out.println("curr:"+ curr[0].data);
+        //System.out.println("curr next:"+ curr[0].right.data);
             curr[0] = rootNode; 
         }
 
