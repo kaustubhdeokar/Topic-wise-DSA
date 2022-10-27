@@ -39,6 +39,30 @@ public class TreeNode {
         return root;
     }
 
+    public TreeNode buildTree2() {
+        TreeNode root = new TreeNode(20);
+        root.left = new TreeNode(10);
+        root.left.left = new TreeNode(5);
+        root.left.right = new TreeNode(15);
+        
+        root.right = new TreeNode(30);
+        root.right.left = new TreeNode(25);
+        root.right.right = new TreeNode(35);
+        root.right.left.left = new TreeNode(45);
+        root.right.left.right = new TreeNode(55);
+
+        /*
+          20
+        /    \
+       10     30
+      / \     /  \
+     5  15   25   35
+            /  \
+           45   55
+        */
+        return root;
+    }
+
     public TreeNode buildTree(){
         TreeNode root = new TreeNode(20);
         root.left = new TreeNode(10);
