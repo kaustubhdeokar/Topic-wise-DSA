@@ -3,11 +3,14 @@ package tree;
 public class CountNodesInCompleteBinTree {
 
     public int countNodes(TreeNode root) {
+        
         if(root==null)
             return 0;
 
         int leftHeight = 0;
+        
         TreeNode left = root;
+        
         while(left!=null){
             left = left.left;
             leftHeight += 1;
