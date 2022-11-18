@@ -1,5 +1,3 @@
-package dp;
-
 import java.util.Arrays;
 
 public class LCS {
@@ -22,27 +20,39 @@ public class LCS {
 
         int m = s1.length();
         int n = s2.length();
+        int[][] dp = new int[m+1][n+1];
 
-        int[][] dp = new int[m + 1][n + 1];
-        for (int i = 0; i < m; i++) {
-            dp[i][0] = 0;
-        }
-        for (int j = 0; j < n; j++) {
-            dp[0][j] = 0;
+        for (int i = 0; i < dp.length; i++) {
+            Arrays.fill(dp[i], -1);
         }
 
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
-                } else {
-                    dp[i][j] = Integer.max(dp[i - 1][j], dp[i][j - 1]);
-                }
-            }
+        bottomUpLCS(s1, s2, dp, 0, 0);
+        
+        return dp[0][0];
+    }
+
+    private int bottomUpLCS(String s1, String s2, int[][] dp, int m, int n) {
+
+        if(m>=s1.length() || n>=s2.length()){
+            return 0;
         }
+
+        if(dp[m][n]!=-1){
+            return dp[m][n];
+        }
+
+        if(s1.charAt(m)==s2.charAt(n)){
+            dp[m][n] = 1 + bottomUpLCS(s1, s2, dp, m+1, n+1);
+        }
+        else{
+            dp[m][n] = Integer.max(bottomUpLCS(s1, s2, dp, m+1, n),
+                            bottomUpLCS(s1, s2, dp, m, n+1));
+        }
+        
         return dp[m][n];
 
     }
+
 
     public int spaceOptimisedLCS(String s1, String s2) {
 
@@ -70,23 +80,30 @@ public class LCS {
     }
 
     private int lcs(String s1, String s2, int[][] dp, int m, int n) {
-        if (m < 0 || n < 0)
+        if(m<0 || n<0){
             return 0;
-        if (dp[m][n] != -1)
-            return dp[m][n];
-        if (s1.charAt(m) == s2.charAt(n)) {
-            dp[m][n] = 1 + lcs(s1, s2, dp, m - 1, n - 1);
-        } else {
-            dp[m][n] = Integer.max(lcs(s1, s2, dp, m - 1, n), lcs(s1, s2, dp, m, n - 1));
         }
+
+        if(dp[m][n]!=-1){
+            return dp[m][n];
+        }
+
+        if(s1.charAt(m) == s2.charAt(n)){
+            dp[m][n] = 1 + lcs(s1, s2, dp, m-1, n-1);
+        }
+        else{
+            dp[m][n] = Integer.max(lcs(s1 ,s2, dp, m, n-1), lcs(s1, s2, dp, m-1, n));
+        }
+
         return dp[m][n];
+
     }
 
     public static void main(String[] args) {
         LCS lcs = new LCS();
-        System.out.println(lcs.lcs("abcde", "ace"));
         System.out.println(lcs.bottomUpLCS("abcde", "ace"));
-        System.out.println(lcs.spaceOptimisedLCS("abcde", "ace"));
+        //System.out.println(lcs.bottomUpLCS("abcde", "ace"));
+        //System.out.println(lcs.spaceOptimisedLCS("abcde", "ace"));
 
     }
 
