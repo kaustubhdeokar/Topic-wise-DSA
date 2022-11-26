@@ -1,5 +1,5 @@
 import java.util.*;
-
+//https://leetcode.com/problems/partition-equal-subset-sum/submissions/
 public class PartitionSumEqualSubsetBottomUp {
     
     public static void main(String[] args) {
@@ -22,45 +22,34 @@ public class PartitionSumEqualSubsetBottomUp {
             return false;
         
         else{
-            int[][] dp = new int[nums.length+1][sum/2+1];
+            boolean[][] dp = new boolean[nums.length+1][sum/2+1];
 
             for(int i=0;i<=sum/2;i++)
-                dp[0][i] = 0;
+                dp[0][i] = false;
             
             for(int i=0;i<=nums.length;i++)
-                dp[i][0] = 1;
+                dp[i][0] = true;
             
             knapsack(dp, nums, sum/2, nums.length);
 
-            return dp[nums.length][sum/2]==1;
+            return dp[nums.length][sum/2];
         }
     }
     
-    public static int knapsack(int[][] dp, int[] nums, int sum, int n){
+    public static boolean knapsack(boolean[][] dp, int[] nums, int sum, int n){
         
         for(int i=1;i<=n;i++){
             for(int j=1;j<=sum;j++){
 
-                if(j>=nums[i-1]){
-                    if(dp[i-1][j-nums[i-1]] == 1 || dp[i-1][j] ==1)
-                        dp[i][j] = 1;
-                    else 
-                        dp[i][j] = 0;
-                }
-        
+                if(j>=nums[i-1])
+                    dp[i][j] = dp[i-1][j-nums[i-1]] || dp[i-1][j];
+                
                 else
                     dp[i][j] = dp[i-1][j];
         
             }
         }
 
-        for(int i=0;i<dp.length;i++){
-            for(int j=0;j<dp[i].length;j++){
-                System.out.print(dp[i][j]+" ");
-            }
-            System.out.println();
-        }
-        
         return dp[n][sum];
     }
 
