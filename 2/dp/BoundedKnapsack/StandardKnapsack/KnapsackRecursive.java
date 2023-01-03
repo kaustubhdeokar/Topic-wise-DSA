@@ -13,16 +13,16 @@ public class KnapsackRecursive{
 
     public static int knapsack(int W, int[] wt, int[] val, int N){
                  
-        if(N==0 || W==0){
+        if(N==0 || W ==0)
             return 0;
-        }
 
-        if(wt[N-1]<=W){
-            return Integer.max(val[N-1]+knapsack(W-wt[N-1], wt, val, N-1),
-                                knapsack(W, wt, val, N-1));
+        if(W >= wt[N-1]){
+            return Integer.max(val[N-1]+knapsack(W-wt[N-1], wt, val, N-1) , 
+                        knapsack(W, wt, val, N-1));
         }
-        else 
+        else{
             return knapsack(W, wt, val, N-1);
+        }
 
     }
 
