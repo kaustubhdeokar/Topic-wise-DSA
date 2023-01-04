@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class SubsetSumRecursion{
 
     static Boolean isSubsetSum(int N, int arr[], int sum){
@@ -28,6 +26,7 @@ public class SubsetSumRecursion{
         
         sum = 30;
         System.out.println("expected false, got:"+isSubsetSum(n, arr, sum));
+
     }
 
 }

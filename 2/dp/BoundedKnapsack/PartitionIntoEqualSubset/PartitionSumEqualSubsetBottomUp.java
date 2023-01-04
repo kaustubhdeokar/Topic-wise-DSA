@@ -1,4 +1,3 @@
-import java.util.*;
 //https://leetcode.com/problems/partition-equal-subset-sum/submissions/
 public class PartitionSumEqualSubsetBottomUp {
     
@@ -36,16 +35,17 @@ public class PartitionSumEqualSubsetBottomUp {
         }
     }
     
-    public static boolean knapsack(boolean[][] dp, int[] nums, int sum, int n){
+    public static boolean knapsack(boolean[][] dp, int[] arr, int sum, int n){
         
         for(int i=1;i<=n;i++){
             for(int j=1;j<=sum;j++){
-
-                if(j>=nums[i-1])
-                    dp[i][j] = dp[i-1][j-nums[i-1]] || dp[i-1][j];
                 
-                else
+                if(arr[i-1]<=j){
+                    dp[i][j] = dp[i-1][j-arr[i-1]] || dp[i-1][j];
+                }
+                else{
                     dp[i][j] = dp[i-1][j];
+                }
         
             }
         }

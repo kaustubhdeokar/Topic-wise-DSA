@@ -3,8 +3,6 @@ public class BottomUpDP {
         
         int[] arr ={1, 1, 2, 3};
         int n =arr.length;
-        int diff = 1;
-        int currSum = 0;
         
         int arrSum = 0;
         for(int a:arr){
