@@ -1,30 +1,37 @@
  private static void nearestSmallerToLeft(int[] arr) {
 
+    static List<Integer> leftSmaller(int n, int a[])
+    {
+        List<Integer> result = new ArrayList<>();
         Stack<Integer> stack = new Stack<>();
-        int[] leftHighest = new int[arr.length];
-
-        leftHighest[0] = -1;
-        stack.push(arr[0]);
-
-        for (int i = 1; i < arr.length; i++) {
-            boolean leftHighestFound = false;
-            while (!stack.empty()) {
-                if (stack.peek() < arr[i]) {
-                    leftHighest[i] = stack.peek();
-                    stack.push(arr[i]);
-                    leftHighestFound = true;
-                    break;
-                } else {
+        
+        for(int num:a){
+            
+            if(stack.isEmpty()){
+                result.add(-1);
+            }    
+            
+            else if(stack.peek()<num){
+                result.add(stack.peek());
+            }
+            
+            else if(stack.peek()>=num){
+            
+                while(!stack.isEmpty() && stack.peek()>=num){
                     stack.pop();
                 }
+            
+                if(stack.isEmpty()){
+                    result.add(-1);
+                }
+                else{
+                    result.add(stack.peek());
+                }
             }
-            if (!leftHighestFound) {
-                stack.push(arr[i]);
-                leftHighest[i] = -1;
-            }
+            
+            stack.add(num);
         }
-
-        for (Integer i : leftHighest) {
-            System.out.print(i + " ");
-        }
+        
+        return result;
     }
+ }
