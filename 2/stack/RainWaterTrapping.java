@@ -5,41 +5,31 @@ public class RainWaterTrapping {
     public int trap() {
 
 	
-		int[] height = {1,8,6,2,5,4,8,3,7};
-		
-        int[] leftLargest = new int[height.length];
-        int largest = -1;
+	int[] leftMaxArr = new int[height.length]; 
+        int[] rightMaxArr = new int[height.length];
 
-        for (int i = 0; i < height.length; i++) {
+        //for every building calculate the maximum left & maximum right value,
+        //minimum of that will be the sealing of the water for every building.
 
-            if (height[i] > largest)
-                leftLargest[i] = -1;
-            else
-                leftLargest[i] = largest;
-
-            largest = Integer.max(largest, height[i]);
+        int len = height.length;
+        
+        int leftMax = height[0];
+        for(int i=0;i<height.length;i++){
+            leftMax = Integer.max(leftMax, height[i]);
+            leftMaxArr[i] = leftMax;
         }
 
-        int[] rightLargest = new int[height.length];
-        largest = -1;
-
-        for (int i = height.length - 1; i > -1; i--) {
-
-            if (height[i] > largest)
-                rightLargest[i] = -1;
-            else
-                rightLargest[i] = largest;
-            largest = Integer.max(largest, height[i]);
-
+        int rightMax = height[len-1];
+        for(int i=len-1;i>=0;i--){
+            rightMax = Integer.max(rightMax, height[i]);
+            rightMaxArr[i] = rightMax;
         }
 
-        int trapping = 0;
-        for (int i = 0; i < height.length; i++) {
-            if (leftLargest[i] != -1 && rightLargest[i] != -1) {
-                trapping += Math.min(leftLargest[i], rightLargest[i]) - height[i];
-            }
+        int total = 0;
+        for(int i=0;i<len;i++){
+            total += Integer.min(leftMaxArr[i], rightMaxArr[i]) - height[i];
         }
-        return trapping;
+        return total;
 
     }
 
