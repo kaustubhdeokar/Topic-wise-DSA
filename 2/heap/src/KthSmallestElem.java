@@ -11,8 +11,9 @@ public class KthSmallestElem {
         int arr[] = {7, 10, 4, 3, 20, 15};
         for (int i : arr) {
             priorityQueue.add(i);
-            if(priorityQueue.size()>k)
-                priorityQueue.poll();
+            if (priorityQueue.size() > k) {
+                System.out.println("removed:" + priorityQueue.poll());
+            }
         }
         System.out.println(priorityQueue.poll());
     }
