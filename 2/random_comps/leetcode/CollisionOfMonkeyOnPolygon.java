@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+
 class CollisionOfMonkeyOnPolygon {
     public int monkeyMove(int n) {
 
@@ -11,3 +12,12 @@ class CollisionOfMonkeyOnPolygon {
     }
     
 }
+
+
+/*
+
+python has a damn easy solution for calculating modulo of larger nums.
+
+pow(2, 500000003, mod) + mod - 2
+
+*/
