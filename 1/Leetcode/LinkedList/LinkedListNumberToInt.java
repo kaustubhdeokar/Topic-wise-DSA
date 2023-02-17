@@ -1,18 +1,10 @@
 //code for Convert Binary Number in a Linked List to Integer
 //https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
 
-public class Node {
 
-    Node next;
-    int data;
+import java.util.LinkedList;
 
-    Node(int data) {
-        this.data = data;
-    }
-
-}
-
-class LinkedList {
+class LinkedListNumberToInt {
 
     Node head;
 
@@ -36,23 +28,23 @@ class LinkedList {
         }
     }
 
-    int binaryToInt(Node list){
+    int binaryToInt(Node list) {
         StringBuilder ints = new StringBuilder();
-        while(list!=null){
+        while (list != null) {
             ints.append(list.data);
-            list=list.next;
+            list = list.next;
         }
         ints.reverse();
         String number = ints.toString();
         long value = 0;
-        for(int i=0;i<number.length();i++){
-            value+=Math.pow(2,i)*Character.getNumericValue(number.charAt(i));
+        for (int i = 0; i < number.length(); i++) {
+            value += Math.pow(2, i) * Character.getNumericValue(number.charAt(i));
         }
-        return (int)value;
+        return (int) value;
     }
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        LinkedListNumberToInt list = new LinkedListNumberToInt();
         list.appendNode(1);
         list.appendNode(0);
         list.appendNode(1);

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class MinimumCostToMakeArraysEqual extends Utility {
+public class MinimumCostToMakeArraysEqual{
 
 
     public static void main(String[] args) {

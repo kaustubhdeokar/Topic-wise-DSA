@@ -1,3 +1,4 @@
+public class LengthOfCycle {
 
     public int lengthOfCycle(Node head) {
 
@@ -14,11 +15,10 @@
                 //hence increment slow by 1 till it doesn't reach fast. 
                 int length = 0;
                 do {
-                
+
                     slow = slow.next;
                     length += 1;
-                }
-                while (slow != fast);
+                } while (slow != fast);
                 return length;
             }
 
@@ -26,3 +26,4 @@
         return 0; //loop not present. 
 
     }
+}

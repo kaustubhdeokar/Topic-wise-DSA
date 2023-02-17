@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution{
+public class ThreeDPrinting{
        public static void main(String[] args) {
         Scanner in = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
         int testcases = in.nextInt();

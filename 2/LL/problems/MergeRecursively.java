@@ -1,4 +1,3 @@
-package linkedlist;
 
 //https://leetcode.com/problems/merge-two-sorted-lists/discuss/1978528/Java-faster-than-100.00-o(n)-time-and-o(1)-space-Recursively-Merging-into-the-first-Linked-list
 

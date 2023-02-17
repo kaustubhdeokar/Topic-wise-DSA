@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/find-the-duplicate-number/
+package sort;//https://leetcode.com/problems/find-the-duplicate-number/
 
 
 public class DuplicateNumCyclicSort{

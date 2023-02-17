@@ -1,4 +1,6 @@
-class Solution {
+import java.util.Arrays;
+
+class ProductExceptSelfWithoutDivision {
     public int[] productExceptSelf(int[] nums) {
         
         int countZeroes = 0;

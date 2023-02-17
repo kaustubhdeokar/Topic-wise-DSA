@@ -1,5 +1,4 @@
-
-
+public class ReverseRecursively {
 
     public Node reverseRecursively(Node head) {
         return reverseRecursively(head, null);
@@ -15,16 +14,23 @@
         return reverseRecursively(nextNode, head);
 
     }
-    
-    
-    public static void main(String[] args) {
-        MergeRecursively l1 = new MergeRecursively();
-        l1.insert(1);
-        l1.insert(3);
-        l1.insert(5);
 
-        l1.head = l1.reverseRecursively(l1.head);
-        l1.print();
-
+    public void print(Node head) {
+        while (head != null) {
+            System.out.println(head.data);
+            head = head.next;
+        }
     }
 
+    public static void main(String[] args) {
+        ReverseRecursively l1 = new ReverseRecursively();
+        Node one = new Node(1);
+        one.next = new Node(3);
+        one.next.next = new Node(5);
+
+        ReverseRecursively reverseRecursively = new ReverseRecursively();
+        Node node = l1.reverseRecursively(one);
+        reverseRecursively.print(node);
+
+    }
+}

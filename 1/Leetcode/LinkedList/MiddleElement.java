@@ -1,17 +1,8 @@
 //code for Linked List
 
-public class Node {
+import java.util.LinkedList;
 
-    Node next;
-    int data;
-
-    Node(int data) {
-        this.data = data;
-    }
-
-}
-
-class LinkedList {
+class MiddleElement {
 
     Node head;
 
@@ -52,7 +43,7 @@ class LinkedList {
 
     public Node middleNode(Node head) {
         Node current = head;
-        while(head!=null && head.next!=null){
+        while (head != null && head.next != null) {
             current = current.next;
             head = head.next.next;
         }
@@ -60,7 +51,7 @@ class LinkedList {
     }
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        MiddleElement list = new MiddleElement();
         list.appendNode(1);
         list.appendNode(0);
         list.appendNode(1);

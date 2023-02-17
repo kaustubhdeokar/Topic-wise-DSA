@@ -8,7 +8,7 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+class PallindromeLL {
     public boolean isPalindrome(ListNode head) {
         
         if(head.next == null)

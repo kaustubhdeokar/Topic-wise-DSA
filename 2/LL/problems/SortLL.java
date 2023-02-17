@@ -1,5 +1,4 @@
-package linkedlist;
-import ListNode;
+import java.util.LinkedList;
 
 public class SortLL {
 
@@ -58,7 +57,7 @@ public class SortLL {
         ListNode tail = newHead;
 
         while (head1 != null && head2 != null) {
-            if (head1.data <= head2.data) {
+            if (head1.val <= head2.val) {
                 tail.next = head1;
                 head1 = head1.next;
             } else {
@@ -77,19 +76,17 @@ public class SortLL {
 
     public static void main(String[] args) {
 
-        LinkedList l1 = new LinkedList();
-        l1.insert(6);
-        l1.insert(5);
+        ListNode l1 = new ListNode(5);
         l1.insert(4);
         l1.insert(1);
         l1.insert(2);
         l1.insert(3);
 
         SortLL sortLL = new SortLL();
-        ListNode newHead = sortLL.mergeSort(l1.head);
+        ListNode newHead = sortLL.mergeSort(l1);
 
         while (newHead != null) {
-            System.out.println(newHead.data);
+            System.out.println(newHead.val);
             newHead = newHead.next;
         }
 
