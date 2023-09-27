@@ -1,5 +1,3 @@
-package MinStack;
-
 import java.util.Stack;
 
 public class MinStack extends Stack<Integer> {

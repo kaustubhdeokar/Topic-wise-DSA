@@ -23,6 +23,12 @@
         comparing with j->(0,i) -> to find the correct spot and placing in the correct index ranging(0,i].
     ```
 
-### 
+### Merge sort
+    ```
+    O(nlogn)
+    --------------------------
+    divide the array into half each time. create copies of those arrays & merge them.
+    while merging manipulate the original array, as anyways copies have the info.
+    
 
     
