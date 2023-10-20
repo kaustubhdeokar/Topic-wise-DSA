@@ -1,4 +1,6 @@
-class Solution {
+package array;
+
+class MaximumProductSubarray {
     public int maxProduct(int[] nums) {
           
         int maxEndingHere = nums[0];

@@ -1,4 +1,4 @@
-//Bezout's Identity - 
+package array;//Bezout's Identity -
 //if gcd(a,b) = d, then there exist integers x and y, s.t a * x + b * y = d;
 //https://leetcode.com/problems/check-if-it-is-a-good-array/
 

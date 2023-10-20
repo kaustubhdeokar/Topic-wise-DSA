@@ -2,6 +2,7 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.util.Pair;
 
 public class Graph {
 
@@ -47,7 +48,7 @@ public class Graph {
         return graph;
     }
 
-    private void addToGraph(int key, int value) {
+    public void addToGraph(int key, int value) {
         if (graph.get(key) != null) {
             graph.get(key).add(value);
         } else {
