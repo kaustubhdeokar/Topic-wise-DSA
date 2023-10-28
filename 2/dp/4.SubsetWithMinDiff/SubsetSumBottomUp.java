@@ -2,13 +2,13 @@ public class SubsetSumBottomUp {
     
     public static void main(String[] args) {
 
-        int[] arr = { 1, 6, 11 , 3 };
+        int[] arr = { 1, 9, 7, 1 };
         int sum = 0;
         for (int a : arr) {
             sum += a;
         }
 
-        //  21 -> 11 -> subset sums closest or equal to 11.
+        System.out.println("sum:"+sum);
 
         int N = arr.length;
         int halfSum = 0;
@@ -19,6 +19,8 @@ public class SubsetSumBottomUp {
             halfSum = sum/2+1;
         }
         
+        System.out.println("halfSum:"+halfSum);
+
         int[][] dp = new int[N+1][halfSum+1];
 
         for(int i=0;i<=halfSum;i++){
@@ -37,13 +39,14 @@ public class SubsetSumBottomUp {
               4  1  
          */
 
-        knapsack(dp, arr, N, 11);
+        knapsack(dp, arr, N, halfSum);
 
         int minDiff = Integer.MAX_VALUE;
 
+        System.out.println();
         for(int i=0;i<=halfSum;i++){
             
-            if(dp[N][i]==1){
+            if(dp[N][i]>0){
                 System.out.println(i+":"+dp[N][i]+":"+Math.abs(sum -  2*i));
                 minDiff = Integer.min(minDiff, Math.abs(sum -  2*i));
             }
@@ -52,8 +55,27 @@ public class SubsetSumBottomUp {
         System.out.println("final answer:"+minDiff);
     }
 
+
+/*
+
+   public static int knapsack(int[] arr, int N, int sumCalculated, int sumTotal) {
+
+        // base case.
+        if (N == 0) {
+            return Math.abs((sumTotal - sumCalculated) - sumCalculated);
+        }
+
+        return Integer.min(knapsack(arr, N - 1, sumCalculated + arr[N - 1], sumTotal),
+                knapsack(arr, N - 1, sumCalculated, sumTotal));
+
+    }
+ 
+*/
+
     public static void knapsack(int[][] dp, int[] arr, int N, int sum){
         
+        System.out.println("sum passed is:"+sum);
+
         for(int i=1;i<=N;i++){
             for(int j=1;j<=sum;j++){
                 
@@ -67,6 +89,22 @@ public class SubsetSumBottomUp {
             }
         }
 
+
+        for(int j=0;j<=sum;j++){
+            System.out.print(j+" ");
+        }
+        System.out.println();
+
+        for(int i=0;i<=N;i++){
+            for(int j=0;j<=sum;j++){
+                
+                System.out.print(dp[i][j]+" ");
+
+            }
+            System.out.println();
+        }
+
+        
       
 
     }

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrintLCS {
         public static void main(String[] args) {
             
@@ -5,8 +8,8 @@ public class PrintLCS {
             String s2 = "asdc";
             // System.out.println(longestCommonSubsequence(s1, s2));
             
-            s1 = "aggtab";
-            s2 = "gxtxayb";
+            s1 = "dbfef";
+            s2 = "ididffab";
 
             PrintLCS printLCS = new PrintLCS();
             System.out.println(printLCS.longestCommonSubsequence(s1, s2));
@@ -42,7 +45,15 @@ public class PrintLCS {
     
     
             int max = Integer.MIN_VALUE;
-    
+            
+            List<Character> list = new ArrayList<>();
+            int len = Integer.min(s1.length(), s2.length());
+            for(int i=0;i<len;i++){
+                list.add('-');
+            }
+            
+
+
             for(int i=1;i<=m;i++){
                 for(int j=1;j<=n;j++){
                     if(s1.charAt(i-1) == s2.charAt(j-1)){
