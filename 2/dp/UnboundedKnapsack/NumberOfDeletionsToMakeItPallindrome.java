@@ -73,12 +73,12 @@ public class NumberOfDeletionsToMakeItPallindrome {
                 j-=1;
             }
         }
-        return str.toString();
+        return str.reverse().toString();
     }
 
     public static void main(String[] args) {
         NumberOfDeletionsToMakeItPallindrome sub = new NumberOfDeletionsToMakeItPallindrome();
-        System.out.println(sub.longestPalinSubseq("agbcba"));
+        System.out.println(sub.longestPalinSubseq("geeks"));
     }
 
 
