@@ -1,6 +1,14 @@
 import java.util.ArrayDeque;
 
 public class RottingOranges {
+
+    public static void main(String[] args) {
+        
+        RottingOranges rottingOranges = new RottingOranges();
+        int[][] grid = {{2,1,1},{0,1,1},{1,0,1}};
+        rottingOranges.orangesRotting(grid);
+
+    }
     
     class Node{
         
@@ -18,46 +26,27 @@ public class RottingOranges {
 
     public int orangesRotting(int[][] grid) {
         
+        int[][] visited = new int[grid.length][grid[0].length];
+        ArrayDeque<Node> q = new ArrayDeque<>();
         
         for(int i=0;i<grid.length;i++){
             for(int j=0;j<grid[i].length;j++){
-                
-                ArrayDeque<Node> q = new ArrayDeque<>();
-
                 if(grid[i][j]==2){
-                    boolean[][] visited = new boolean[grid.length][grid[0].length];
-                    q.add(new Node(i, j, 2));
-                    traverse(grid, q, visited);
+                    q.add(new Node(i, j, 0));            
+                }
+                if(grid[i][j]==0){
+                    visited[i][j] = 0;
                 }
             }
         }
 
-        int[] minMax = {Integer.MIN_VALUE};
-
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[i].length;j++){
-
-                
-                if(grid[i][j]==1){
-                    return -1;
-                }
-                if(grid[i][j]>2){
-                    minMax[0] = Integer.max(minMax[0], grid[i][j]);
-                }
-
-            }
-        }
-        
-        
-        if(minMax[0] == Integer.MIN_VALUE){
-            return 0;
-        }
-        
-        return minMax[0] - 3 + 1;
+        return traverse(grid, q, visited);
 
     }
 
-    public void traverse(int[][] grid, ArrayDeque<Node> q, boolean[][] visited){
+    public int traverse(int[][] grid, ArrayDeque<Node> q, int[][] visited){
+
+        int maxRottenTimeRecorded = Integer.MIN_VALUE;
 
         while(!q.isEmpty()){
 
@@ -65,35 +54,27 @@ public class RottingOranges {
             int i = top.i;
             int j = top.j;
             int curr = top.curr;
-            visited[i][j] = true;
 
-            if(grid[i][j]==1){
-                grid[i][j] = curr;
-            }
-            else if(grid[i][j]>2){
-                grid[i][j] = Integer.min(grid[i][j], curr);
-            }
+            if(isValid(grid, i, j, visited)){
+                
+                maxRottenTimeRecorded = Integer.min(maxRottenTimeRecorded, curr);
+                visited[i][j] = 2;
+                System.out.println("marking as rotten, i:"+i+" j:"+j);
 
-            if(isValid(grid, i+1, j, visited)){
                 q.add(new Node(i+1, j, curr+1));
-            }
-            if(isValid(grid, i-1, j, visited)){
                 q.add(new Node(i-1, j, curr+1));
-            }
-            if(isValid(grid, i, j-1, visited)){
                 q.add(new Node(i, j-1, curr+1));
-            }
-            if(isValid(grid, i, j+1, visited)){
                 q.add(new Node(i, j+1, curr+1));
             }
+        
+        }
 
-        }        
-
+        return maxRottenTimeRecorded;
+    
     }
 
-    public boolean isValid(int[][] grid, int i, int j, boolean[][] visited){
-        return i>=0 && i<grid.length && j>=0 && j<grid[0].length && visited[i][j]==false
-         && grid[i][j]!=0;
+    public boolean isValid(int[][] grid, int i, int j, int[][] visited){
+        return i>=0 && i<visited.length && j>=0 && j<visited[0].length && (visited[i][j]!=2 || visited[i][j]!=0);
     }
     
 }
