@@ -2,7 +2,7 @@ package recursion;
 
 import java.util.*;
 
-public class StringRecursion {
+public class CombinationSumLeetcode {
 
     public static void main(String[] args) {
 

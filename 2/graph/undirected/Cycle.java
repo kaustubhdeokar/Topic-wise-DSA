@@ -1,42 +1,60 @@
-package graph.undirected;
-
-import graph.Graph;
-
 import java.util.ArrayList;
 
 public class Cycle {
 
-    public static void main(String[] args) {
 
-        int[][] arr = {{1}, {0, 2, 4}, {1, 3}, {2, 4}, {1, 3}};
-        Graph g = new Graph();
-        ArrayList<ArrayList<Integer>> graph = g.createGraph(arr);
-        System.out.println("Has cycle :" + detectCycle(graph));
+    /*
+      
+        1  ->  2
+        ^      ^ 
+        |      |
+        3  <-  4 
+        
+    */
+    public static void main(String[] args) {
+        int[][] arr = {{}, {2}, {4}, {1}, {3}};
+        System.out.println("Has cycle :" + detectCycle(arr));
     }
 
-    private static boolean detectCycle(ArrayList<ArrayList<Integer>> graph) {
-        int[] visited = new int[graph.size()];
-        for (int i = 0; i < visited.length; i++) {
+    private static boolean detectCycle(int[][] graph) {
+        
+        int[] visited = new int[graph.length];
+        for (int i = 1; i < visited.length; i++) {
             if (visited[i] == 0) {
-                if (traverse(graph, visited, i, -1))
+                visited[i] = 1;
+                if (traverse(graph, visited, i, -1)){
                     return true;
+                }
+                visited[i] = 0;//change made for working with directed graph.
             }
         }
         return false;
     }
 
-    private static boolean traverse(ArrayList<ArrayList<Integer>> graph, int[] visited, int vertex, int parent) {
+    private static boolean traverse(int[][] graph, int[] visited, int vertex, int parent) {
+        
+        System.out.println("v:"+vertex+" parent:"+parent);
 
-        ArrayList<Integer> adjacent = graph.get(vertex);
-        visited[vertex] = 1;
-        for (int i : adjacent) {
-            if (visited[i] == 0)
-                if (traverse(graph, visited, i, vertex))
+        for(int adjacent: graph[vertex]){
+
+            System.out.println("adj:"+adjacent);
+
+            if(visited[adjacent] == 0){
+                visited[adjacent] = 1;
+                boolean ans = traverse(graph, visited, adjacent, vertex);
+                visited[adjacent] = 0; //change made for working with directed graph.
+                return ans;
+            }
+            else{
+                if(parent!=adjacent){
+                    System.out.println("returning true:");
                     return true;
-            if (i != parent)
-                return true;
+                }
+            }
         }
+    
         return false;
+        
     }
 
 }

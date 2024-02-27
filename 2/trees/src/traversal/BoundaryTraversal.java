@@ -28,6 +28,8 @@ public class BoundaryTraversal {
         if (tree.left == null && tree.right == null)
             return list;
 
+        int level = 1;        
+
         if (tree.left != null) {
             traversePreOrderWithLevel(tree.left, list);
         }
@@ -58,6 +60,7 @@ public class BoundaryTraversal {
             return;
 
         System.out.println(root.val);
+        list.add(root.val);
 
         if (root.left != null)
             traversePreOrderWithLevel(root.left, list);

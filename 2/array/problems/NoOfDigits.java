@@ -8,7 +8,7 @@ public class NoOfDigits {
         int count = 0;
         for (int j : arr) {
             int noOfDigits = calculateDigitsIn(j);
-            if ((noOfDigits & 1) == 0) count += 1;
+            System.out.println(noOfDigits);
         }
         System.out.println(count);
     }

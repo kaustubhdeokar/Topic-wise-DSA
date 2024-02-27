@@ -10,6 +10,15 @@ public class UnionFind {
             return;
             
         par[x] = y;
+
+        /*
+         
+            2
+           /  
+          1   
+
+         */
+
     }
 
     //Function to check whether 2 nodes are connected or not.
