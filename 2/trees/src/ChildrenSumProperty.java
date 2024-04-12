@@ -1,6 +1,8 @@
-package tree;
+
 
 import java.util.*;
+
+import tree.TreeNode;
 
 public class ChildrenSumProperty {
 

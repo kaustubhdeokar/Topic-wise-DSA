@@ -1,4 +1,6 @@
-package tree;
+
+
+import tree.TreeNode;
 
 public class DeleteNode {
 

@@ -1,6 +1,4 @@
-package tree;
-
-public class InorderSuccessor {
+public class InorderSuccessorInBST {
 
     public TreeNode inorderSuccessor(TreeNode root, TreeNode target) {
         TreeNode successor = null;

@@ -1,8 +1,5 @@
 package trees;
 
-
-import trees.traversal.InorderTraversal;
-
 public class ConstructTreeFromInorderPreorder {
 
     public TreeNode constructFromPreOrderInorder(int[] preorderArr, int[] inorderArr, int start, int end, int[] preIndex) {

@@ -1,5 +1,7 @@
 import java.util.Stack;
 
+import traversal.Node;
+
 //https://leetcode.com/problems/binary-search-tree-iterator/
 //173. Binary Search base.Tree Iterator
 

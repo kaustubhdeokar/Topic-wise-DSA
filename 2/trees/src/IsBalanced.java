@@ -1,5 +1,3 @@
-import src.TreeNode;
-
 class IsBalanced {
     public boolean isBalanced(TreeNode root) {
         if (root == null || (root.left == null && root.right == null))

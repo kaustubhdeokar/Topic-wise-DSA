@@ -1,38 +1,21 @@
-package src.traversal;
 
-import src.TreeNode;
-
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- * int val;
- * TreeNode left;
- * TreeNode right;
- * TreeNode() {}
- * TreeNode(int val) { this.val = val; }
- * TreeNode(int val, TreeNode left, TreeNode right) {
- * this.val = val;
- * this.left = left;
- * this.right = right;
- * }
- * }
- */
 public class ZigZagTraversal {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> traversal = new ArrayList<>();
 
-        //logn
+        // logn
         int height = findHeight(root);
         for (int i = 0; i < height; i++) {
             traversal.add(new ArrayList<Integer>());
         }
         //
 
-        //n (n nodes)
+        // n (n nodes)
         zigzagOrder(root, 0, traversal);
         //
 
@@ -53,11 +36,12 @@ public class ZigZagTraversal {
         zigzagOrder(root.right, currLevel + 1, traversal);
     }
 
-
     public int findHeight(TreeNode root) {
         if (root == null)
             return 0;
         else
             return 1 + Integer.max(findHeight(root.left), findHeight(root.right));
     }
+
+  
 }

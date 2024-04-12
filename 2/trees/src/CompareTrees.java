@@ -1,6 +1,9 @@
-package tree;
+
+
+import tree.TreeNode;
 
 public class CompareTrees {
+    
     public boolean compare(TreeNode root, TreeNode deserializedRoot) {
         if(root==null && deserializedRoot==null)
             return true;

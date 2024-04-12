@@ -1,7 +1,6 @@
-package tree;
+
 
 import java.util.ArrayList;
-
 public class LCA {
     public Integer findLCAPathSum(TreeNode treeNode, int one, int two) {
 

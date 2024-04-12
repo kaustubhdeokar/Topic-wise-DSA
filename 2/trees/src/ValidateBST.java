@@ -1,5 +1,17 @@
-class ValidateBST {
+public class ValidateBST {
     
+    
+	class TreeNode{
+		
+		int val;
+		TreeNode left;
+		TreeNode right;
+		
+		TreeNode(int data){
+			this.val = data;
+		}
+	}
+
     public boolean isValidBST(TreeNode root) {
         if(root.left==null && root.right==null)
             return true;

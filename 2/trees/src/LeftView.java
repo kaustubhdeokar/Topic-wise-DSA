@@ -1,6 +1,8 @@
-package tree;
+
 
 import java.util.Arrays;
+
+import tree.TreeNode;
 
 public class LeftView {
 
