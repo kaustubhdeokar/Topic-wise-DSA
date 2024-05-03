@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/distinct_pair_sums" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/parity_matrix" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/problems" isTestSource="false" packagePrefix="array" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

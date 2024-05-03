@@ -40,38 +40,3 @@ public class ZeroSetMatrix {
         }
 
     }
-
-//    public void setZeroesWithoutAdditionalSpace(int[][] arr) {
-//
-//        int rows = arr.length;
-//        int cols = arr[0].length;
-//
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = 0; j < cols; j++) {
-//                if (arr[i][j] == 0){
-//                    arr[i][0] = 0;
-//                    arr[0][j] = 0;
-//                }
-//            }
-//        }
-//
-//        for(int i=0;i<rows;i++){
-//            if(arr[i][0]==0){
-//                for(int j=1;j<cols;j++){
-//                    arr[i][j]=0;
-//                }
-//            }
-//        }
-//
-//        for(int j=0;j<cols;j++){
-//            if(arr[0][j]==0){
-//                for(int i=1;i<rows;i++){
-//                    arr[i][j]=0;
-//                }
-//            }
-//        }
-//
-//    }
-
-
-}
