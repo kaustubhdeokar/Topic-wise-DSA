@@ -1,4 +1,4 @@
-package partitiontoequalsubset;
+package problems;
 
 public class PartitionSumEqualSubsetRecursion {
 

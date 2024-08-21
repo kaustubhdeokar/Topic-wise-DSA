@@ -1,4 +1,4 @@
-//again the core concept of lcs.
+package problems;//again the core concept of lcs.
 //pallindromes are nothing but same string written front and back.
 
 public class LongestPallindromicSubsequence {

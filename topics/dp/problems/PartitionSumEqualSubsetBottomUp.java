@@ -1,4 +1,4 @@
-package partitiontoequalsubset;
+package problems;
 
 //https://leetcode.com/problems/partition-equal-subset-sum/submissions/
 public class PartitionSumEqualSubsetBottomUp {

@@ -1,3 +1,5 @@
+package problems;
+
 public class MCMRecursive{
     
     public int mcm(int[] arr, int i, int j){

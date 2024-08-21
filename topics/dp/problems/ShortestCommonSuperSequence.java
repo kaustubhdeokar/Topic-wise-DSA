@@ -1,3 +1,5 @@
+package problems;
+
 public class ShortestCommonSuperSequence {
 
     public static void main(String[] args) {
