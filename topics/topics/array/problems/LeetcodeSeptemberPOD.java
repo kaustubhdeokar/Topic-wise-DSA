@@ -1,13 +1,15 @@
 package array.problems;
 
-public class LeetcodePOD {
+////3 september.
+public class LeetcodeSeptemberPOD {
 
     public static void main(String[] args) {
 
-        LeetcodePOD pod = new LeetcodePOD();
+        LeetcodeSeptemberPOD pod = new LeetcodeSeptemberPOD();
         System.out.println(pod.getLucky("leetcode", 2));
 
     }
+
 
     public int getLucky(String s, int k) {
         StringBuilder sumStr = new StringBuilder();

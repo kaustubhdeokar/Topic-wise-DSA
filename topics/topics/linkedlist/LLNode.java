@@ -1,9 +1,8 @@
-package linkedlist.problems;
+package linkedlist;
 
 public class LLNode {
-    int data;
-    LLNode left;
-    LLNode right;
+    public int data;
+    public LLNode next;
 
     public LLNode(int data) {
         this.data = data;
