@@ -1,7 +1,6 @@
 package trees.tree;
 
 import linkedlist.LLNode;
-import trees.Traversal;
 import trees.TreeNode;
 
 //leetcode POD 7 sep.
@@ -12,7 +11,7 @@ public class LinkedListInBinaryTree {
         if (tree == null) {
             return false;
         }
-        if (tree.data == ll.data) {
+        if (tree.data == ll.val) {
             return doesMatch(ll.next, tree.left) || doesMatch(ll.next, tree.right) || isSubPath(ll, tree.left) || isSubPath(ll, tree.right);
         } else {
             return isSubPath(ll, tree.left) || isSubPath(ll, tree.right);
@@ -29,7 +28,7 @@ public class LinkedListInBinaryTree {
             return false;
         }
 
-        if (ll.data != tree.data) {
+        if (ll.val != tree.data) {
             return false;
         }
 
