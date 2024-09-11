@@ -3,6 +3,6 @@
 *.class
 /out/
 *.iml
-./out/** 
-./.idea/**
-/.vscode/**
+out/ 
+.vscode/
+.idea/
