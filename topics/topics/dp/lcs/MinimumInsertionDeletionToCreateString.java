@@ -6,7 +6,7 @@ public class MinimumInsertionDeletionToCreateString {
 
     public static void main(String[] args) {
 
-        String from = "abcde";
+        String from = "abcdasdade";
         String to = "acdef";
         MinimumInsertionDeletionToCreateString min = new MinimumInsertionDeletionToCreateString();
         String lcs = min.convertString(from, to);
