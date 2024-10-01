@@ -23,12 +23,10 @@ public class MCMRecursive {
 
     public static void main(String[] args) {
 
-        int[] arr = { 1, 2, 3, 4, 3 };
+        int[] arr = { 10, 20, 30, 40, 50 };
 
         int i = arr.length;
         int j = arr.length;
-
-        int[][] dp = new int[i + 1][j + 1];
 
         MCMRecursive mcm = new MCMRecursive();
         System.out.println(mcm.mcm(arr, 1, arr.length - 1));

@@ -3,6 +3,7 @@ package dp.lcs;
 import java.util.Arrays;
 
 public class LongestRepeatingSubsequence {
+    //longest subsequence - where no characters in the str1 should have same index as characters in string2.
     public static void main(String[] args) {
         String s = "AABEBCDD";
         LongestRepeatingSubsequence lrs = new LongestRepeatingSubsequence();
