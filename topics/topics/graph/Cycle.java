@@ -40,7 +40,8 @@ public class Cycle {
     public static void main(String[] args) {
 
         Graph g = new Graph();
-        ArrayList<ArrayList<Integer>> graph = g.sampleGraph();
-
+        ArrayList<ArrayList<Integer>> graph = g.sampleCycleGraph();
+        Cycle cycle = new Cycle();
+        cycle.traverseBfs(graph, 5);
     }
 }
