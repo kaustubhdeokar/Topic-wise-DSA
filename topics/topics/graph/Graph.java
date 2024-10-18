@@ -21,6 +21,11 @@ public class Graph {
         return createGraph(graph, 4, false);
     }
 
+    public ArrayList<ArrayList<Integer>> sampleDirectedGraph() {
+        int[][] graph = new int[][]{{0, 1}, {0, 2}, {1, 2}, {2, 3}, {2, 0}};
+        return createGraph(graph, 4, false);
+    }
+
 
     private ArrayList<ArrayList<Integer>> createGraph(int[][] graph, int nodes, boolean bidirectional) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
