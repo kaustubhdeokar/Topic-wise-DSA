@@ -1,47 +1,49 @@
 package graph;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public class Cycle {
 
-    public void traverseBfs(ArrayList<ArrayList<Integer>> list, int nodes){
+    public void dfs(ArrayList<ArrayList<Integer>> list, int nodes) {
         boolean[] visited = new boolean[nodes];
-        for(int i=0;i<nodes;i++){
-            if(!visited[i]){
-                traverseBfs(list, i, visited);
+        for (int i = 0; i < nodes; i++) {
+            boolean[] recStack = new boolean[nodes];
+            if (!visited[i]) {
+                System.out.println("cycle exists:" + dfs(list, i, visited, recStack));
             }
         }
     }
 
-    private void traverseBfs(ArrayList<ArrayList<Integer>> list, int curr, boolean[] visited) {
+    private boolean dfs(ArrayList<ArrayList<Integer>> list, int curr, boolean[] visited, boolean[] recstack) {
 
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-        queue.add(curr);
+
         visited[curr] = true;
+        recstack[curr] = true;
+        System.out.println(curr);
 
-        while(!queue.isEmpty())
-        {
-            curr = queue.remove();
-            System.out.println(curr);
-            for(int neigh: list.get(curr))
-            {
-                if(!visited[neigh]){
-                    visited[neigh] = true;
-                    queue.add(neigh);
-                }
-                else{
-                    System.out.println("cycle.");
+        for (int neigh : list.get(curr)) {
+            System.out.println("neigh: " + neigh + " curr:" + curr);
+
+            if (!visited[neigh]) {
+                visited[neigh] = true;
+                if (dfs(list, neigh, visited, recstack)) {
+                    return true;
                 }
             }
+            if (recstack[neigh]) {
+                return true;
+            }
         }
+
+        recstack[curr] = false;
+        return false;
     }
 
     public static void main(String[] args) {
 
         Graph g = new Graph();
-        ArrayList<ArrayList<Integer>> graph = g.sampleCycleGraph();
+        ArrayList<ArrayList<Integer>> directedGraph = g.sampleDirectedGraph();
         Cycle cycle = new Cycle();
-        cycle.traverseBfs(graph, 5);
+        cycle.dfs(directedGraph, 4);
     }
 }
