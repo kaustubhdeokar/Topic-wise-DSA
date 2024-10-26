@@ -12,8 +12,8 @@ public class PathSum {
 
         if (treeNode == null) return;
 
-        currSum[0] += treeNode.data;
-        list.add(treeNode.data);
+        currSum[0] += treeNode.val;
+        list.add(treeNode.val);
 
         if (treeNode.left == null && treeNode.right == null) {
             System.out.println(list);
@@ -23,7 +23,7 @@ public class PathSum {
         fromRootToLeaf(treeNode.left, list, currSum);
         fromRootToLeaf(treeNode.right, list, currSum);
 
-        currSum[0] -= treeNode.data;
+        currSum[0] -= treeNode.val;
         list.remove(list.size() - 1);
 
     }
@@ -33,8 +33,8 @@ public class PathSum {
 
         if (treeNode == null) return;
 
-        currSum[0] += treeNode.data;
-        list.add(treeNode.data);
+        currSum[0] += treeNode.val;
+        list.add(treeNode.val);
 
         if (currSum[0] == sumRequired) {
             System.out.println("found:" + list);
@@ -53,7 +53,7 @@ public class PathSum {
         topDownBetweenAnyNode(treeNode.left, list, currSum, sumRequired);
         topDownBetweenAnyNode(treeNode.right, list, currSum, sumRequired);
 
-        currSum[0] -= treeNode.data;
+        currSum[0] -= treeNode.val;
         list.remove(list.size() - 1);
 
     }

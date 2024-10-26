@@ -81,13 +81,13 @@ public class LRUCache {
 
     class DLLNode {
         int key;
-        int data;
+        int val;
         DLLNode left;
         DLLNode right;
 
         public DLLNode(int key, int data) {
             this.key = key;
-            this.data = data;
+            this.val = data;
         }
     }
 
@@ -95,6 +95,7 @@ public class LRUCache {
     DLLNode tail;
     int size = 0;
     HashMap<Integer, DLLNode> mapKeyToNode = new HashMap<>();
+
     public void LRUCacheDLL(int capacity) {
         this.capacity = capacity;
         head.right = tail;
@@ -103,15 +104,14 @@ public class LRUCache {
 
     // h -> 2 > 3 > t
     public void putDLL(int key, int value) {
-        if(size == capacity && !mapKeyToNode.containsKey(key)) {
+        if (size == capacity && !mapKeyToNode.containsKey(key)) {
             //delete the last entry.
             DLLNode lastNode = tail.left;
             DLLNode secondLastNode = lastNode.left;
             secondLastNode.right = tail;
             tail.left = secondLastNode;
             mapKeyToNode.remove(lastNode.key);
-        }
-        else if(mapKeyToNode.containsKey(key)){
+        } else if (mapKeyToNode.containsKey(key)) {
             //deletion.
             DLLNode dllNode = mapKeyToNode.get(key);
             DLLNode left = dllNode.left;
@@ -133,11 +133,10 @@ public class LRUCache {
     public int getDLL(int key) {
         int answer = -1;
         DLLNode node;
-        if(mapKeyToNode.containsKey(key)){
+        if (mapKeyToNode.containsKey(key)) {
             node = mapKeyToNode.get(key);
-            answer = node.data;
-        }
-        else{
+            answer = node.val;
+        } else {
             return answer;
         }
 

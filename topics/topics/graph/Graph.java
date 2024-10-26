@@ -10,6 +10,24 @@ public class Graph {
         return createGraph(graph, 5, true);
     }
 
+    public int[][] sampleEulerianCircuitList() {
+        return new int[][]{{5, 1}, {4, 5}, {11, 9}, {9, 4}};
+    }
+
+    public ArrayList<ArrayList<Integer>> createGraph(int[][] nodes) {
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+        for (int[] node : nodes) {
+            int to = node[0];
+            int from = node[1];
+            while (list.size() < to) {
+                list.add(new ArrayList<>());
+            }
+            list.get(to).add(from);
+        }
+        return list;
+    }
+
     public ArrayList<ArrayList<Integer>> transitiveClosureGraph() {
 
         int[][] graph = new int[][]{{0, 1}, {0, 2}, {2, 0}, {1, 2}, {2, 3}};

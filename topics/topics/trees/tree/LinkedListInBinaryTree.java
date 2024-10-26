@@ -11,7 +11,7 @@ public class LinkedListInBinaryTree {
         if (tree == null) {
             return false;
         }
-        if (tree.data == ll.val) {
+        if (tree.val == ll.val) {
             return doesMatch(ll.next, tree.left) || doesMatch(ll.next, tree.right) || isSubPath(ll, tree.left) || isSubPath(ll, tree.right);
         } else {
             return isSubPath(ll, tree.left) || isSubPath(ll, tree.right);
@@ -28,7 +28,7 @@ public class LinkedListInBinaryTree {
             return false;
         }
 
-        if (ll.val != tree.data) {
+        if (ll.val != tree.val) {
             return false;
         }
 

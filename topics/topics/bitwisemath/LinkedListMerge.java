@@ -4,11 +4,11 @@ public class LinkedListMerge {
 
 
     class LinkedList {
-        int data;
+        int val;
         LinkedList next;
 
         LinkedList(int data) {
-            this.data = data;
+            this.val = data;
         }
 
         public LinkedList createLinkedList(Integer... args) {
@@ -38,13 +38,13 @@ public class LinkedListMerge {
 
                 for (int i = 0; i < lists.length; i++) {
 
-                    if (lists[i] != null && lists[i].data < smallest) {
-                        smallest = lists[i].data;
+                    if (lists[i] != null && lists[i].val < smallest) {
+                        smallest = lists[i].val;
                         index = i;
                     }
                 }
 
-                temp.next = new LinkedList(lists[index].data);
+                temp.next = new LinkedList(lists[index].val);
                 temp = temp.next;
                 lists[index] = lists[index].next;
                 if (lists[index] == null) {
@@ -60,7 +60,7 @@ public class LinkedListMerge {
 
         public void printLinkedList(LinkedList list){
             while(list!=null){
-                System.out.print(list.data+" ");
+                System.out.print(list.val+" ");
                 list = list.next;
             }
             System.out.println();

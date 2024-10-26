@@ -1,5 +1,6 @@
-package trees;
+package trees.tree;
 
+import trees.TreeNode;
 import trees.bst.BinarySearchTree;
 
 import java.util.ArrayDeque;
@@ -9,7 +10,7 @@ public class Traversal {
     public void inorderRecursive(TreeNode treeNode) {
         if (treeNode == null) return;
         inorderRecursive(treeNode.left);
-        System.out.println(treeNode.data + " ");
+        System.out.println(treeNode.val + " ");
         inorderRecursive(treeNode.right);
     }
 
@@ -21,7 +22,7 @@ public class Traversal {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode curr = queue.remove();
-                System.out.print(curr.data + " ");
+                System.out.print(curr.val + " ");
                 if (curr.left != null) queue.add(curr.left);
                 if (curr.right != null) queue.add(curr.right);
             }
@@ -31,7 +32,7 @@ public class Traversal {
 
     public static void main(String[] args) {
         BinarySearchTree binarySearchTree = new BinarySearchTree();
-        TreeNode sampleBst = binarySearchTree.createSampleBst();
+        TreeNode sampleBst = binarySearchTree.createSampleTree();
         Traversal traversal = new Traversal();
         traversal.levelOrder(sampleBst);
     }

@@ -6,7 +6,7 @@ public class BinarySearchTree {
     public TreeNode insert(TreeNode root, int val) {
         if (root == null) {
             root = new TreeNode(val);
-        } else if (root.data >= val) {
+        } else if (root.val >= val) {
             root.left = insert(root.left, val);
         } else {
             root.right = insert(root.right, val);
@@ -26,19 +26,22 @@ public class BinarySearchTree {
 
        */
 
-    public TreeNode createSampleBst() {
-        BinarySearchTree bst = new BinarySearchTree();
-        TreeNode root = null;
-        root = bst.insert(root, 6);
-        root = bst.insert(root, 5);
-        root = bst.insert(root, 9);
-        root = bst.insert(root, 11);
-        root = bst.insert(root, 7);
-        root = bst.insert(root, 8);
-        root = bst.insert(root, 4);
-        root = bst.insert(root, 3);
-        root = bst.insert(root, 13);
-        root = bst.insert(root, 2);
+    public TreeNode createSampleTree() {
+
+        TreeNode root = new TreeNode(6);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(9);
+
+        root.left.left = new TreeNode(4);
+        root.left.left.left = new TreeNode(3);
+        root.left.left.left.left = new TreeNode(2);
+
+        root.right.left = new TreeNode(7);
+        root.right.right = new TreeNode(11);
+
+        root.right.left.right = new TreeNode(8);
+        root.right.right.right = new TreeNode(13);
+
         return root;
     }
 
