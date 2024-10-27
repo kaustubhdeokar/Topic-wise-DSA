@@ -3,11 +3,14 @@ package trees.tree;
 import trees.TreeNode;
 import trees.bst.BinarySearchTree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MaximumPathSum {
 
     public static void main(String[] args) {
 
-        TreeNode sampleTree = new BinarySearchTree().createSampleTree();
+        TreeNode sampleTree = new BinarySearchTree().createCompleteBinaryTree();
         MaximumPathSum mps = new MaximumPathSum();
         int maxPathSum = mps.maxPathSum(sampleTree);
         System.out.println(maxPathSum);
@@ -21,10 +24,9 @@ public class MaximumPathSum {
     }
 
 
-    public int maxPathSum(TreeNode root, int[] maxSum)
-    {
+    public int maxPathSum(TreeNode root, int[] maxSum) {
         //base cond.
-        if(root==null) return 0;
+        if (root == null) return 0;
 
         int leftSum = maxPathSum(root.left, maxSum);
         int rightSum = maxPathSum(root.right, maxSum);
@@ -36,7 +38,7 @@ public class MaximumPathSum {
 
         maxSum[0] = Integer.max(maxSum[0], maxSumTillHere);
 
-        return Integer.max(root.val, Integer.max(root.val+leftSum, root.val+rightSum));
+        return Integer.max(root.val, Integer.max(root.val + leftSum, root.val + rightSum));
     }
 
 }
