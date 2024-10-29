@@ -2,14 +2,14 @@ package stack.problems;
 
 import java.util.Stack;
 
-public class NextGreaterToRight {
+public class NextGreater {
 
     public static void main(String[] args) {
 
-        NextGreaterToRight nextGreaterToRight = new NextGreaterToRight();
+        NextGreater nextGreater = new NextGreater();
         int[] arr = new int[]{1, 3, 2, 4};
-        nextGreaterToRight.nextGreaterToRight(arr);
-        nextGreaterToRight.nextGreaterToLeft(arr);
+        nextGreater.nextGreaterToRight(arr);
+        nextGreater.nextGreaterToLeft(arr);
     }
 
     public int[] nextGreaterToRight(int[] arr) {
