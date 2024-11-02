@@ -44,6 +44,41 @@ public class Graph {
         return createGraph(graph, 4, false);
     }
 
+    public ArrayList<ArrayList<Integer>> eventualStatesGraph() {
+        int[][] graph = new int[][]{
+                {0, 1}, {0, 2},
+                {1, 2}, {1, 3},
+                {2, 5},
+                {3, 0},
+                {4, 5},
+                {},
+                {}
+        };
+        return createGraph(graph, 7, false);
+    }
+
+    public ArrayList<ArrayList<Integer>> eventualStatesGraph2() {
+        int[][] graph = new int[][]{
+                {0, 1},
+                {1, 2},
+                {2, 0},
+                {3, 4},
+                {4, 5},
+                {5, 3},
+                {}
+        };
+        return createGraph(graph, 7, false);
+    }
+
+    public ArrayList<ArrayList<Integer>> sampleDirectedGraphPathFinding() {
+        int[][] graph = new int[][]{
+                {0, 1},
+                {1, 2},
+                {2, 3},
+                {0, 3}
+        };
+        return createGraph(graph, 4, false);
+    }
 
     private ArrayList<ArrayList<Integer>> createGraph(int[][] graph, int nodes, boolean bidirectional) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
@@ -51,12 +86,38 @@ public class Graph {
             list.add(new ArrayList<>());
         }
         for (int[] vertex : graph) {
-            list.get(vertex[0]).add(vertex[1]);
+            if (vertex.length == 2) {
+                list.get(vertex[0]).add(vertex[1]);
+            }
             if (bidirectional) {
                 list.get(vertex[1]).add(vertex[0]);
             }
         }
         return list;
     }
+
+    //[[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]]
+    //src,dest,weight
+    private ArrayList<ArrayList<NeighbourToDist>> createWeightedGraph(int[][] graph, int nodes) {
+        ArrayList<ArrayList<NeighbourToDist>> list = new ArrayList<>();
+        for (int i = 0; i < nodes; i++) {
+            list.add(new ArrayList<>());
+        }
+        for (int[] vertex : graph) {
+            list.get(vertex[0]).add(new NeighbourToDist(vertex[1], vertex[2]));
+        }
+        return list;
+    }
+
+    class NeighbourToDist {
+        int neighbour;
+        int dist;
+
+        public NeighbourToDist(int neighbour, int dist) {
+            this.neighbour = neighbour;
+            this.dist = dist;
+        }
+    }
+
 
 }

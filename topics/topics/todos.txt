@@ -1,3 +1,7 @@
 https://github.com/krishnadey30/LeetCode-Questions-CompanyWise
 
 https://leetcode.com/discuss/interview-question/5092478/Recent-Google-Interview-Questions-L3L4
+
+Disjoin set
+
+Backtracking.

@@ -7,8 +7,9 @@ public class Cycle {
     public void dfs(ArrayList<ArrayList<Integer>> list, int nodes) {
         boolean[] visited = new boolean[nodes];
         for (int i = 0; i < nodes; i++) {
-            boolean[] recStack = new boolean[nodes];
             if (!visited[i]) {
+                System.out.println("traversing:" + i);
+                boolean[] recStack = new boolean[nodes];
                 System.out.println("cycle exists:" + dfs(list, i, visited, recStack));
             }
         }

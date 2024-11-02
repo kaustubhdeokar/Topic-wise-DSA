@@ -1,15 +1,13 @@
 package graph;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
 public class Traversal {
 
-    public void traverseBfs(ArrayList<ArrayList<Integer>> list, int nodes){
+    public void traverseBfs(ArrayList<ArrayList<Integer>> list, int nodes) {
         boolean[] visited = new boolean[nodes];
-        for(int i=0;i<nodes;i++){
-            if(!visited[i]){
+        for (int i = 0; i < nodes; i++) {
+            if (!visited[i]) {
                 traverseBfs(list, i, visited);
             }
         }
@@ -17,17 +15,15 @@ public class Traversal {
 
     private void traverseBfs(ArrayList<ArrayList<Integer>> list, int curr, boolean[] visited) {
 
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(curr);
         visited[curr] = true;
 
-        while(!queue.isEmpty())
-        {
+        while (!queue.isEmpty()) {
             curr = queue.remove();
             System.out.println(curr);
-            for(int neigh: list.get(curr))
-            {
-                if(!visited[neigh]){
+            for (int neigh : list.get(curr)) {
+                if (!visited[neigh]) {
                     visited[neigh] = true;
                     queue.add(neigh);
                 }
@@ -35,10 +31,31 @@ public class Traversal {
         }
     }
 
-    private void traverseDfs(ArrayList<ArrayList<Integer>> list, int nodes){
+    private void traverseBfsWithGraphListType(ArrayList<ArrayList<Integer>> list, int curr, boolean[] visited) {
+
+        Queue<Integer> q = new LinkedList<>();
+        q.add(curr); // 0
+
+        while (!q.isEmpty()) {
+            int top = q.remove(); // 0
+
+            for (int j = 0; j < list.get(top).size(); j++) {
+                if (top == j) continue;
+
+                if (list.get(top).get(j) == 1 && !visited[j]) {
+                    visited[j] = true;
+                    q.add(j);
+                }
+            }
+        }
+
+
+    }
+
+    private void traverseDfs(ArrayList<ArrayList<Integer>> list, int nodes) {
         boolean[] visited = new boolean[nodes];
-        for(int i=0;i<nodes;i++){
-            if(!visited[i]){
+        for (int i = 0; i < nodes; i++) {
+            if (!visited[i]) {
                 traverseDfs(list, i, visited);
             }
         }
@@ -49,19 +66,17 @@ public class Traversal {
         stack.add(curr);
         visited[curr] = true;
 
-        while(!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             curr = stack.pop();
             System.out.println(curr);
-            for(int neigh: list.get(curr)){
-                if(!visited[neigh]){
+            for (int neigh : list.get(curr)) {
+                if (!visited[neigh]) {
                     visited[neigh] = true;
                     stack.add(neigh);
                 }
             }
         }
     }
-
-
 
 
     public static void main(String[] args) {
