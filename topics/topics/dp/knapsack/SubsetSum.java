@@ -8,42 +8,49 @@ public class SubsetSum {
         int sum = 9;
 
         SubsetSum subsetSum = new SubsetSum();
-        System.out.println(subsetSum.find(arr, sum, arr.length - 1));
-
-        boolean[][] dp = new boolean[sum + 1][arr.length];
-        System.out.println(subsetSum.find(dp, arr, sum, arr.length - 1));
+        System.out.println(subsetSum.find(arr, sum, arr.length));
+        System.out.println(subsetSum.findDp(arr, sum));
     }
 
-    private boolean find(boolean[][] dp, int[] arr, int sum, int i) {
+    private boolean findDp(int[] arr, int sum) {
+        int n = arr.length;
+        boolean[][] dp = new boolean[n + 1][sum + 1];
 
-        if (i < 0 || sum < 0) return false;
-
-        if (sum == 0) return true;
-
-        if (dp[sum][i]) return dp[sum][i];
-
-        if (arr[i] <= sum) {
-            dp[sum][i] = find(dp, arr, sum - arr[i], i - 1) || find(dp, arr, sum, i - 1);
-        } else {
-            dp[sum][i] = find(dp, arr, sum, i - 1);
+        for (int j = 0; j <= sum; j++) {
+            dp[0][j] = false;
+        }
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = true;
         }
 
-        return dp[sum][i];
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= sum; j++) {
+                if (j >= arr[i - 1]) {
+                    dp[i][j] = dp[i - 1][j - arr[i - 1]] || dp[i - 1][j];
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
+                System.out.print(dp[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        return dp[n][sum];
+
     }
 
-    private boolean find(int[] arr, int sum, int i) {
-
-        if (i < 0 || sum < 0) {
+    private boolean find(int[] arr, int sum, int n) {
+        if (n == 0 || sum < 0) {
             return false;
         }
-        if (sum == 0) {
-            return true;
-        }
-        if (sum >= arr[i]) {
-            return find(arr, sum - arr[i], i - 1) || find(arr, sum, i - 1);
+        if (sum == 0) return true;
+
+        if (sum >= arr[n - 1]) {
+            return find(arr, sum - arr[n - 1], n - 1) || find(arr, sum, n - 1);
         } else {
-            return find(arr, sum, i - 1);
+            return find(arr, sum, n - 1);
         }
     }
+
 
 }
