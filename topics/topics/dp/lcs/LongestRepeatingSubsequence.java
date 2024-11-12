@@ -53,7 +53,8 @@ public class LongestRepeatingSubsequence {
             return dp[i][j];
         }
 
-        if (x.charAt(i - 1) == y.charAt(j - 1) && (i - 1) != j - 1) {
+        if (x.charAt(i - 1) == y.charAt(j - 1) && (i - 1) != j - 1)
+        {
             dp[i][j] = 1 + topDown(dp, x, i - 1, y, j - 1);
         } else {
             dp[i][j] = Integer.max(topDown(dp, x, i - 1, y, j), topDown(dp, x, i, y, j - 1));

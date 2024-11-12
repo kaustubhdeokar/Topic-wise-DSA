@@ -23,7 +23,6 @@ public class WordLadder {
         }
         WordLadder wordLadder = new WordLadder();
         System.out.println("dist:" + wordLadder.bfs(wordSet, startWord, targetWord));
-        System.out.println(wordLadder.dfs(wordSet, startWord, targetWord));
     }
 
     private List<List<String>> dfs(Set<String> wordSet, String startWord, String targetWord) {
@@ -80,12 +79,11 @@ public class WordLadder {
             }
 
             for (int i = 0; i < curr.length(); i++) {
-                StringBuilder currPrefix = new StringBuilder(curr.substring(0, i));
-                StringBuilder currSuffix = new StringBuilder(curr.substring(i + 1));
-
+                char[] word = curr.toCharArray();
                 for (int j = 0; j < 26; j++) {
                     char currChar = (char) ('a' + j);
-                    String str = currPrefix.toString() + currChar + currSuffix.toString();
+                    word[i] = currChar;
+                    String str = String.valueOf(word);
                     if (wordSet.contains(str)) {
                         wordSet.remove(str);
                         System.out.println("adding:" + str);

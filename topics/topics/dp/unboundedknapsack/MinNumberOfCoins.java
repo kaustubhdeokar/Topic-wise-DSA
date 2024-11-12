@@ -9,7 +9,7 @@ public class MinNumberOfCoins {
         int[] coins = new int[]{1, 2, 3};
         int sum = 5;
         MinNumberOfCoins minCoins = new MinNumberOfCoins();
-        System.out.println(minCoins.recursiveKnapsack(coins, coins.length - 1, sum));
+        System.out.println(minCoins.recursiveKnapsack(coins, coins.length, sum));
 
         long[][] dp = new long[coins.length + 1][sum + 1];
         for (long[] a : dp) {
@@ -22,13 +22,13 @@ public class MinNumberOfCoins {
 
     public long recursiveKnapsack(int[] coins, int N, int sum) {
         if (sum == 0) {
-            return 1;
+            return 0;
         }
-        if (N < 0 || sum < 0) {
+        if (N <= 0 || sum < 0) {
             return Integer.MAX_VALUE;
         }
-        if (sum >= coins[N]) {
-            return Long.min(recursiveKnapsack(coins, N, sum - coins[N]), recursiveKnapsack(coins, N - 1, sum));
+        if (sum >= coins[N-1]) {
+            return Long.min(1 + recursiveKnapsack(coins, N, sum - coins[N-1]), recursiveKnapsack(coins, N - 1, sum));
         } else {
             return recursiveKnapsack(coins, N - 1, sum);
         }
@@ -46,7 +46,7 @@ public class MinNumberOfCoins {
         }
 
         if (sum >= coins[N]) {
-            dp[N][sum] = Long.min(topDownDp(dp, coins, N, sum - coins[N]) , topDownDp(dp, coins, N - 1, sum));
+            dp[N][sum] = Long.min(topDownDp(dp, coins, N, sum - coins[N]), topDownDp(dp, coins, N - 1, sum));
         } else {
             dp[N][sum] = topDownDp(dp, coins, N - 1, sum);
         }
@@ -67,7 +67,7 @@ public class MinNumberOfCoins {
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= sum; j++) {
                 if (j >= coins[i - 1]) {
-                    dp[i][j] = Long.min(dp[i][j - coins[i - 1]] , dp[i - 1][j]);
+                    dp[i][j] = Long.min(dp[i][j - coins[i - 1]], dp[i - 1][j]);
                 } else {
                     dp[i][j] = dp[i - 1][j];
                 }

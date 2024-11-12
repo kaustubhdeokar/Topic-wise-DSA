@@ -2,12 +2,23 @@ package stack.problems;
 
 import java.util.Stack;
 
+/*
+area of histogram.
+7, 1, 7, 2, 2, 4
+0                         6
+next smaller left    -> -1, -1, 1, 1, 1, 4
+next smaller right -> 1   6   3   6  6  6
+
+(right-left-1) * nums[i]
+
+*/
+
 public class AreaOfHistogram {
 
     public static void main(String[] args) {
 
-        int[] arr = {6, 2, 5, 4, 5, 1, 6};
-        //           0  1  2  3  4  5  6
+        int[] arr = {7, 1, 7, 2, 2, 4};
+        //           0  1  2  3  4  5
         AreaOfHistogram a = new AreaOfHistogram();
         System.out.println("Area of histogram: " + a.findMaxAreaOfHistogram(arr));
     }

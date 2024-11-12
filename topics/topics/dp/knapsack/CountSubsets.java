@@ -4,8 +4,8 @@ public class CountSubsets {
 
     public static void main(String[] args) {
 
-        int[] arr = {2, 3, 5, 6, 8, 10};
-        int sum = 10;
+        int[] arr = {1,1,1,1,1};
+        int sum = 4;
         CountSubsets countSubsets = new CountSubsets();
         int count = countSubsets.subsetSum(arr, sum);
         System.out.println(count);
@@ -27,8 +27,8 @@ public class CountSubsets {
 
     }
 
-    private int subsetSumDp(int[] arr, int sum) {
-        int n = arr.length;
+    private int subsetSumDp(int[] nums, int sum) {
+        int n = nums.length;
         int[][] dp = new int[n + 1][sum + 1];
 
         for (int j = 0; j <= sum; j++) {
@@ -40,8 +40,8 @@ public class CountSubsets {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= sum; j++) {
-                if (j >= arr[i - 1]) {
-                    dp[i][j] = dp[i - 1][j - arr[i - 1]] + dp[i - 1][j];
+                if (j >= nums[i - 1]) {
+                    dp[i][j] = dp[i - 1][j - nums[i - 1]] + dp[i - 1][j];
                 } else {
                     dp[i][j] = dp[i - 1][j];
                 }

@@ -2,6 +2,11 @@ package dp.lcs;
 
 public class ShortestCommonSuperSequence {
 
+    //shortest string encompassing both s1 and s2.
+    //calculate scs.  scs = s1.length() + s2.length() - lcs
+
+
+
     public static void main(String[] args) {
 
         String s1 = "bcacaaab";

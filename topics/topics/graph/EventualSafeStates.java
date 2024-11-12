@@ -10,10 +10,14 @@ public class EventualSafeStates {
     public static void main(String[] args) {
 
         Graph g = new Graph();
-        ArrayList<ArrayList<Integer>> directedGraph = g.eventualStatesGraph();
+        ArrayList<ArrayList<Integer>> directedGraph;
         EventualSafeStates eventualSafeStates = new EventualSafeStates();
-        List<Integer> result = eventualSafeStates.eventualSafeNodes(directedGraph);
-        System.out.println(result);
+        List<Integer> result = new ArrayList<>();
+
+//        ArrayList<ArrayList<Integer>> directedGraph = g.eventualStatesGraph();
+//        EventualSafeStates eventualSafeStates = new EventualSafeStates();
+//        List<Integer> result = eventualSafeStates.eventualSafeNodes(directedGraph);
+//        System.out.println(result);
 
         directedGraph = g.eventualStatesGraph2();
         result = eventualSafeStates.eventualSafeNodes(directedGraph);
@@ -36,11 +40,11 @@ public class EventualSafeStates {
                 answer.add(i);
             }
         }
-
         return answer;
     }
 
-    private boolean[] calculate(ArrayList<ArrayList<Integer>> graph, int nodes) {
+    private boolean[] calculate(ArrayList<ArrayList<Integer>> graph, int nodes)
+    {
         boolean[] visited = new boolean[nodes];
         boolean[] recStack = new boolean[nodes];
         for (int i = 0; i < nodes; i++) {

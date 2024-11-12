@@ -20,8 +20,8 @@ public class AllKPathSums {
         allKSumPaths(treeNode, list, k);
     }
 
-    private void allKSumPaths(TreeNode root, ArrayList<Integer> list, int k) {
-
+    private void allKSumPaths(TreeNode root, ArrayList<Integer> list, int k)
+    {
         if (root == null) return;
 
         list.add(root.val);
@@ -29,17 +29,19 @@ public class AllKPathSums {
 
         ListIterator<Integer> listIterator = list.listIterator(list.size());
         int sum = 0;
-        while(listIterator.hasPrevious()){
+        while(listIterator.hasPrevious())
+        {
             sum += listIterator.previous();
-            if(sum==k){
+            if(sum==k)
+            {
                 System.out.println("Found");
             }
         }
         System.out.println("---------");
+
         allKSumPaths(root.left, list, k);
         allKSumPaths(root.right, list, k);
         list.remove(list.size() - 1);
-
 
     }
 

@@ -3,7 +3,7 @@ package dp.lcs;
 public class LongestPallindromicSubsequence {
 
     public static void main(String[] args) {
-        String s1 = "agbcba";
+        String s1 = "aebcbda";
         LongestPallindromicSubsequence pallindromicSubsequence = new LongestPallindromicSubsequence();
         System.out.println(pallindromicSubsequence.calculate(s1));
     }

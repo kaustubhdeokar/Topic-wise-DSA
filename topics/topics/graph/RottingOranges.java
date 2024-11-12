@@ -14,57 +14,52 @@ public class RottingOranges {
 
         int rows = grid.length;
         int cols = grid[0].length;
-        int[][] visited = new int[rows][cols];
+        //there can be multiple rotten oranges.
+        //add all into a queue, so that bfs is used to find the shortest path to the fresh oranges.
+        Queue<int[]> q = new LinkedList<>();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (grid[i][j] == 2) {
-                    Queue<int[]> q = new LinkedList<>();
-                    q.add(new int[]{i, j + 1, 1});
-                    q.add(new int[]{i, j - 1, 1});
-                    q.add(new int[]{i + 1, j, 1});
-                    q.add(new int[]{i - 1, j, 1});
-
-                    traverse(grid, i, j, visited, q);
+                    q.add(new int[]{i, j});
                 }
             }
         }
-        int maxTime = 0;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (grid[i][j] == 1) {
-                    if (visited[i][j] == 0) {
-                        return -1;
-                    }
-                    maxTime = Integer.max(maxTime, visited[i][j]);
-                }
-            }
-        }
-        return maxTime;
+        return traverse(grid, q);
 
     }
 
-    public void traverse(int[][] arr, int i, int j, int[][] visited, Queue<int[]> q) {
+    public int traverse(int[][] arr, Queue<int[]> q) {
         int rows = arr.length;
         int cols = arr[0].length;
-
+        int time = -1;
         while (!q.isEmpty()) {
-            int[] top = q.remove();
-            int topi = top[0];
-            int topj = top[1];
-            int time = top[2];
+            int size = q.size();
+            while (size > 0) {
+                int[] top = q.remove();
+                int i = top[0];
+                int j = top[1];
 
-            if (isValid(topi, topj, rows, cols) && arr[topi][topj] == 1) {
-
-                if (visited[topi][topj] == 0 || time < visited[topi][topj]) {
-                    visited[topi][topj] = time;
-                    q.add(new int[]{topi, topj + 1, time + 1});
-                    q.add(new int[]{topi, topj - 1, time + 1});
-                    q.add(new int[]{topi + 1, topj, time + 1});
-                    q.add(new int[]{topi - 1, topj, time + 1});
+                if (isValid(i + 1, j, rows, cols) && arr[i + 1][j] == 1) {
+                    arr[i + 1][j] = 2;
+                    q.add(new int[]{i + 1, j});
                 }
+                if (isValid(i, j + 1, rows, cols) && arr[i][j + 1] == 1) {
+                    arr[i][j + 1] = 2;
+                    q.add(new int[]{i, j + 1});
+                }
+                if (isValid(i - 1, j, rows, cols) && arr[i - 1][j] == 1) {
+                    arr[i - 1][j] = 2;
+                    q.add(new int[]{i - 1, j});
+                }
+                if (isValid(i, j - 1, rows, cols) && arr[i][j - 1] == 1) {
+                    arr[i][j - 1] = 2;
+                    q.add(new int[]{i, j - 1});
+                }
+                size -= 1;
             }
+            time += 1;
         }
-
+        return time;
     }
 
     public boolean isValid(int i, int j, int rows, int cols) {

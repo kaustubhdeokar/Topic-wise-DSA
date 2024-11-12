@@ -5,12 +5,6 @@ import java.util.Arrays;
 public class SubsetPartition {
     public boolean canPartition(int[] nums) {
 
-//        int sum = 0;
-//        for (int n : nums) sum += n;
-//
-//        if (sum % 2 != 0) return false;
-//
-//        sum /= 2;
         int sum = 5;
         int[][] dp = new int[sum + 1][nums.length];
         for (int[] arr : dp) {

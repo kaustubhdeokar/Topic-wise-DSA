@@ -1,7 +1,5 @@
 package sorting;
 
-import java.util.Random;
-
 public class Quick {
 
     public static void main(String[] args) {
@@ -23,7 +21,6 @@ public class Quick {
         }
     }
 
-    //return index of the pivot element.
     int partition(int[] arr, int start, int end) {
         int pivot = arr[end];
         int s = start;
@@ -47,7 +44,6 @@ public class Quick {
         int temp = arr[start];
         arr[start] = arr[end];
         arr[end] = temp;
-//        System.out.println("swaps");
     }
 
 }

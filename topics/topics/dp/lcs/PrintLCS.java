@@ -5,11 +5,12 @@ public class PrintLCS {
         String s1 = "agbcba";
         String s2 = "abcbga";
         PrintLCS printLCS = new PrintLCS();
-        System.out.println(printLCS.topDown(s1, s2));
+//        System.out.println(printLCS.topDown(s1, s2));
+        System.out.println(printLCS.bottomUp(s1,s2));
     }
 
     public String topDown(String x, String y) {
-        LongestCommonSubsequence lcs = new LongestCommonSubsequence();
+        A_LongestCommonSubsequence lcs = new A_LongestCommonSubsequence();
         int[][] dp = lcs.topDownReturnsArr(x, y);
         return calculateLcsString(dp, x, x.length(), y, y.length());
     }
@@ -26,8 +27,8 @@ public class PrintLCS {
 
         while (x1 > 0 && y1 > 0) {
 
-            if (x.charAt(x1-1) == y.charAt(y1-1)) {
-                res.append(x.charAt(x1-1));
+            if (x.charAt(x1 - 1) == y.charAt(y1 - 1)) {
+                res.append(x.charAt(x1 - 1));
                 x1 -= 1;
                 y1 -= 1;
             } else if (dp[x1 - 1][y1] > dp[x1][y1 - 1]) {
@@ -54,6 +55,33 @@ public class PrintLCS {
         }
         return dp[xitr][yitr];
     }
+
+    private int bottomUp(String s1, String s2) {
+        int[][] dp = new int[s1.length()][s2.length()];
+        for (int i = 0; i < s1.length(); i++) {
+            dp[i][0] = 0;
+        }
+        for (int j = 0; j < s2.length(); j++) {
+            dp[0][j] = 0;
+        }
+        for (int i = 1; i < s1.length(); i++) {
+            for (int j = 1; j < s2.length(); j++) {
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        for(int i=0;i<s1.length();i++){
+            for(int j=0;j<s2.length();j++){
+                System.out.print(dp[i][j]+" ");
+            }
+            System.out.println();
+        }
+        return dp[s1.length()-1][s2.length()-1];
+    }
+
 
 }
     

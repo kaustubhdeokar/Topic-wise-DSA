@@ -52,5 +52,10 @@ public class SubsetSum {
         }
     }
 
+    /*
+            dp[i][j] = dp[i-1][j-arr[i-1]] || dp[i-1][j]
+
+
+    * */
 
 }

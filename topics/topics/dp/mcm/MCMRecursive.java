@@ -1,4 +1,4 @@
-package dp.problems;
+package dp.mcm;
 
 public class MCMRecursive {
 
@@ -23,13 +23,10 @@ public class MCMRecursive {
 
     public static void main(String[] args) {
 
-        int[] arr = { 10, 20, 30, 40, 50 };
-
-        int i = arr.length;
-        int j = arr.length;
+        int[] arr = { 3, 2, 4, 2, 5 };
 
         MCMRecursive mcm = new MCMRecursive();
-        System.out.println(mcm.mcm(arr, 1, arr.length - 1));
+        System.out.println(mcm.mcm(arr, 1, arr.length-1));
 
     }
 }

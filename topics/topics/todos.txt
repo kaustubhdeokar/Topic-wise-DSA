@@ -1,7 +1,28 @@
+graphs - mst - disjoint set problems.
+    https://www.youtube.com/watch?v=DgXR2OWQnLc&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P
+dp - go through patterns.
+    - mcm revisit.
+    - https://www.youtube.com/watch?v=y4vN0WNdrlg
+    - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+    - edit distance.
+    - https://neetcode.io/problems/count-subsequences
+    - distinct subsequences https://www.youtube.com/watch?v=nVG7eTiD2bY
+    - pallindrome substrings : https://www.geeksforgeeks.org/count-palindrome-sub-strings-string/#better-approach1-using-memoization-on2-time-and-on2-space
+    - prasad robots question - potd
+    - https://neetcode.io/problems/palindromic-substrings
+trees - https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/description/
+
+
 https://github.com/krishnadey30/LeetCode-Questions-CompanyWise
-
 https://leetcode.com/discuss/interview-question/5092478/Recent-Google-Interview-Questions-L3L4
-
-Disjoin set
-
+Disjoint set
 Backtracking.
+https://leetcode.com/problems/count-the-number-of-beautiful-subarrays/
+https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/
+https://leetcode.com/problems/network-delay-time/description/
+https://leetcode.com/problems/distinct-subsequences-ii/
+
+https://leetcode.com/problems/replace-non-coprime-numbers-in-array/description/
+
+redundant connection - graph - can be done with mst and disjoint set also.
+    https://leetcode.com/problems/redundant-connection/description/

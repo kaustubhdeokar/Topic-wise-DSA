@@ -57,14 +57,21 @@ public class Graph {
         return createGraph(graph, 7, false);
     }
 
+    public ArrayList<ArrayList<Integer>> createKahnsAlgoGraph(){
+        int[][] graph = new int[][]{{2,3}, {3,1}, {4,0}, {4,1}, {5,0}, {5,2}};
+        return createGraph(graph, 6, false);
+    }
+
     public ArrayList<ArrayList<Integer>> eventualStatesGraph2() {
         int[][] graph = new int[][]{
                 {0, 1},
                 {1, 2},
                 {2, 0},
+                {2, 3},
                 {3, 4},
                 {4, 5},
                 {5, 3},
+                {5, 6},
                 {}
         };
         return createGraph(graph, 7, false);
