@@ -6,8 +6,8 @@ public class MinimumInsertionDeletionToCreateString {
 
     public static void main(String[] args) {
 
-        String from = "abcdasdade";
-        String to = "acdef";
+        String from = "abcd";
+        String to = "anc";
         MinimumInsertionDeletionToCreateString min = new MinimumInsertionDeletionToCreateString();
         String lcs = min.convertString(from, to);
 
@@ -43,7 +43,7 @@ public class MinimumInsertionDeletionToCreateString {
         }
         StringBuilder answer = new StringBuilder();
         findCommonSubsequence(from, from.length() - 1, to, to.length() - 1, dp, answer);
-        return answer.toString();
+        return answer.reverse().toString();
     }
 
     private int findCommonSubsequence(String from, int fromLen, String to, int toLen, int[][] dp, StringBuilder answer) {

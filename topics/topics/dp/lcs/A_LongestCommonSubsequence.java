@@ -5,11 +5,11 @@ import java.util.Arrays;
 public class A_LongestCommonSubsequence {
     public static void main(String[] args) {
 
-        String s1 = "abaaa";
-        String s2 = "baabaca";
+        String s1 = "rabbbit";
+        String s2 = "rabbit";
 
         A_LongestCommonSubsequence lcs = new A_LongestCommonSubsequence();
-        System.out.println(lcs.recursive(s1, s2));
+//        System.out.println(lcs.recursive(s1, s2));
 //        System.out.println(lcs.topDown(s1, s2));
 
         System.out.println(lcs.bottomUpLcs(s1, s2));

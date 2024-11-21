@@ -1,6 +1,6 @@
 package dp.knapsack;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class NinjaTraining {
 
@@ -21,45 +21,48 @@ public class NinjaTraining {
 
     private void calculateMaximumPointsTaskDp(int[][] arr) {
 
-        int nDays = arr.length;
-        int nTasks = arr[0].length;
-
-        int[][] dp = new int[nDays][nTasks + 1];
-        for (int[] d : dp) {
-            Arrays.fill(d, -1);
+        int days = arr.length;
+        int tasks = arr[0].length;
+        int prevTask = tasks;
+        int[][] memo = new int[days + 1][tasks + 1];
+        for (int[] m : memo) {
+            Arrays.fill(m, -1);
         }
-        int result = calculateMaxPoints(arr, dp, nDays - 1, nTasks, nTasks);
-        System.out.println("result:"+result);
-        for (int[] d : dp) {
-            for (int d1 : d) {
-                System.out.print(d1 + " ");
+        int result = calculateMaxPoints(memo, arr, days - 1, tasks, prevTask);
+        for (int[] m : memo) {
+            for (int m1 : m) {
+                System.out.print(m1+" ");
             }
             System.out.println();
         }
+        System.out.println(memo[days-1][prevTask]);
     }
 
-    public int calculateMaxPoints(int[][] arr, int[][] dp, int nDays, int nTasks, int prevTask) {
+    private int calculateMaxPoints(int[][] memo, int[][] arr, int days, int tasks, int prevTask) {
 
-        if (prevTask < nTasks && prevTask >= 0 && dp[nDays][prevTask] != -1) return dp[nDays][prevTask];
+        if (memo[days][tasks] != -1) return memo[days][tasks];
 
-        int maxVal = 0;
-
-        if (nDays == 0) {
-
-            for (int t = 0; t < nTasks; t++) {
-                if (arr[0][t] > maxVal) maxVal = arr[0][t];
+        if (days == 0) {
+            int max = -1;
+            for (int t = 0; t < arr[0].length; t++) {
+                max = Integer.max(max, arr[0][t]);
             }
-            for (int t = 0; t < nTasks; t++) dp[0][t] = maxVal;
+            for (int t = 0; t < arr[0].length; t++) {
+                memo[0][t] = max;
+            }
+            return max;
         } else {
-            for (int t = 0; t < nTasks; t++) {
-                if (prevTask != t) {
-                    int midRes = dp[nDays - 1][t] != -1 ?
-                            dp[nDays - 1][t] : calculateMaxPoints(arr, dp, nDays - 1, nTasks, t);
-                    maxVal = Integer.max(arr[nDays][t] + midRes, maxVal);
+            int res = -1;
+            for (int t = 0; t < tasks; t++) {
+                if (t != prevTask) {
+                    int midRes = memo[days - 1][tasks] != -1 ?
+                            memo[days - 1][tasks] : calculateMaxPoints(memo, arr, days - 1, tasks, t);
+                    res = Integer.max(res, arr[days][t] + midRes);
                 }
             }
+            memo[days][prevTask] = res;
         }
-        return dp[nDays][prevTask] = maxVal;
-
+        return memo[days][prevTask];
     }
+
 }
