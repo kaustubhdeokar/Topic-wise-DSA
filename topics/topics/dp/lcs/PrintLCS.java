@@ -2,8 +2,8 @@ package dp.lcs;
 
 public class PrintLCS {
     public static void main(String[] args) {
-        String s1 = "agbcba";
-        String s2 = "abcbga";
+        String s1 = "hfofxe";
+        String s2 = "hfxeof";
         PrintLCS printLCS = new PrintLCS();
 //        System.out.println(printLCS.topDown(s1, s2));
         System.out.println(printLCS.bottomUp(s1,s2));

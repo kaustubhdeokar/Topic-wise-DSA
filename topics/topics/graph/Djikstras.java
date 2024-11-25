@@ -1,8 +1,7 @@
 package graph;
 
 
-import java.util.ArrayList;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Djikstras {
     public static void main(String[] args) {

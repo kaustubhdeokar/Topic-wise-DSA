@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Subsequence {
     public static void main(String[] args) {
-        String s1 = "rabbbit";
-        String s2 = "rabbit";
+        String s1 = "hfofxe";
+        String s2 = "hfxeof";
 
         int[][] memo = new int[s1.length()+1][s2.length()+1];
         for(int[] m: memo){

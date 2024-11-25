@@ -88,7 +88,7 @@ public class D_PrintAllLcs {
 
     public static void main(String[] args) {
         D_PrintAllLcs printAllLcs = new D_PrintAllLcs();
-        List<String> strings = printAllLcs.all_longest_common_subsequences("caaat", "cat");
+        List<String> strings = printAllLcs.all_longest_common_subsequences("hfofxe", "hfxeof");
         for(String s: strings){
             System.out.println(s.trim());
         }
