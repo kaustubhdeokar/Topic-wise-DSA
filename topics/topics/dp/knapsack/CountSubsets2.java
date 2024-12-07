@@ -1,12 +1,12 @@
 package dp.knapsack;
 
-public class CountSubsets {
+public class CountSubsets2 {
 
     public static void main(String[] args) {
 
-        int[] arr = {1,1,1,1,1};
+        int[] arr = {1, 1, 1, 1, 1};
         int sum = 4;
-        CountSubsets countSubsets = new CountSubsets();
+        CountSubsets2 countSubsets = new CountSubsets2();
         int count = countSubsets.subsetSum(arr, sum);
         System.out.println(count);
 
@@ -48,15 +48,19 @@ public class CountSubsets {
             }
         }
 
+        printArr(sum, n, dp);
+
+        return dp[n][sum];
+
+    }
+
+    private static void printArr(int sum, int n, int[][] dp) {
         for (int i = 0; i <= n; i++) {
             for (int j = 0; j <= sum; j++) {
                 System.out.print(dp[i][j] + " ");
             }
             System.out.println();
         }
-
-        return dp[n][sum];
-
     }
 
 

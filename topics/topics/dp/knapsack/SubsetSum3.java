@@ -1,13 +1,13 @@
 package dp.knapsack;
 
-public class SubsetSum {
+public class SubsetSum3 {
 
     public static void main(String[] args) {
 
         int[] arr = {1,1,2,3,4};
         int sum = 4; //4 , (112) (13) (13)
 
-        SubsetSum subsetSum = new SubsetSum();
+        SubsetSum3 subsetSum = new SubsetSum3();
         System.out.println(subsetSum.find(arr, sum, arr.length));
         System.out.println(subsetSum.findDp(arr, sum));
     }

@@ -2,7 +2,7 @@ package dp.knapsack;
 
 import java.util.Arrays;
 
-public class Knapsack {
+public class Knapsack1 {
 
     public static void main(String[] args) {
 
@@ -11,7 +11,7 @@ public class Knapsack {
 
         int N = 3;
         int W = 4;
-        Knapsack knapsack = new Knapsack();
+        Knapsack1 knapsack = new Knapsack1();
         System.out.println(knapsack.findOptimalWeight(values, weight, N - 1, W));
 
         int[][] dp = new int[N+1][W + 1];
@@ -42,17 +42,9 @@ public class Knapsack {
                 }
             }
         }
-
-        for (int i = 1; i <= N; i++) {
-            for (int j = 1; j <= W; j++) {
-                System.out.print(dp[i][j] + " ");
-            }
-            System.out.println();
-        }
+        printArr(N, W, dp);
         return dp[N][W];
     }
-
-
     //top-down approach.
     private int findOptimalWeight(int[][] dp, int[] values, int[] weight, int n, int w) {
 
@@ -67,6 +59,15 @@ public class Knapsack {
             dp[n][w] = findOptimalWeight(dp, values, weight, n - 1, w);
         }
         return dp[n][w];
+    }
+
+    private static void printArr(int N, int W, int[][] dp) {
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= W; j++) {
+                System.out.print(dp[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     //recursive approach.

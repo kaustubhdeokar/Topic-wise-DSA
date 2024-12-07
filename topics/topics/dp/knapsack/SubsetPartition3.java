@@ -1,8 +1,6 @@
 package dp.knapsack;
 
-import java.util.Arrays;
-
-public class SubsetPartition {
+public class SubsetPartition3 {
     public boolean canPartitionMemoization(int[] nums) {
 
         int sum = 0;
@@ -61,7 +59,7 @@ public class SubsetPartition {
 
     public static void main(String[] args) {
         int[] arr;
-        SubsetPartition partition = new SubsetPartition();
+        SubsetPartition3 partition = new SubsetPartition3();
 
         arr = new int[]{1, 2, 3, 6};
         System.out.println(partition.canPartitionRecursive(arr));
