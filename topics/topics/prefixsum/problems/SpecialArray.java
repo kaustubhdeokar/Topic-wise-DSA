@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//todo: this should be done with prefix array 
+//todo: this should be done with prefix array
 public class SpecialArray {
     public static void main(String[] args) {
         SpecialArray array = new SpecialArray();
