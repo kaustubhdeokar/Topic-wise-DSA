@@ -2,6 +2,7 @@ package graph;
 
 public class FloydWarshall {
     private static final int INF = Integer.MAX_VALUE;
+
     private void calculate(int[][] graph) {
 
         int n = graph.length;
