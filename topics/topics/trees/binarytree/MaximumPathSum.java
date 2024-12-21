@@ -1,10 +1,7 @@
-package trees.tree;
+package trees.binarytree;
 
 import trees.TreeNode;
 import trees.bst.BinarySearchTree;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MaximumPathSum {
 

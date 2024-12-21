@@ -1,4 +1,4 @@
-package trees.tree;
+package trees.binarytree;
 
 import linkedlist.LLNode;
 import trees.TreeNode;

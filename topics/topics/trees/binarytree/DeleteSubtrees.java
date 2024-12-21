@@ -1,9 +1,6 @@
-package trees.tree;
+package trees.binarytree;
 
 import trees.TreeNode;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class DeleteSubtrees {
     public static void main(String[] args) {

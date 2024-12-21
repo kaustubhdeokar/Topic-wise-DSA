@@ -1,8 +1,6 @@
-package trees.tree;
+package trees.binarytree;
 
-import linkedlist.LLNode;
 import trees.TreeNode;
-import trees.bst.BinarySearchTree;
 
 public class SortedArrToBst {
 

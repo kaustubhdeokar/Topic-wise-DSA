@@ -1,7 +1,6 @@
-package trees.tree;
+package trees.binarytree;
 
 import trees.TreeNode;
-import trees.bst.BinarySearchTree;
 
 public class KthLargest {
     public static void main(String[] args) {
