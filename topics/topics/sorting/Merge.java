@@ -2,15 +2,17 @@ package sorting;
 
 public class Merge {
 
-    public static void main(String[] args) {
+    private int swapCount;
 
+    public static void main(String[] args) {
         Merge merge = new Merge();
-        int[] arr = {10, 9, 8 , 7, 6, 5, 4, 3, 2, 1};
+        int[] arr = {7, 6, 5, 4};
         merge.sort(arr, 0, arr.length - 1);
 
-        for(int i: arr){
-            System.out.print(i+" ");
+        for (int i : arr) {
+            System.out.print(i + " ");
         }
+        System.out.println("\nTotal swaps: " + merge.getSwapCount());
     }
 
     public void sort(int[] arr, int start, int end) {
@@ -18,9 +20,7 @@ public class Merge {
 
         int mid = start + (end - start) / 2;
         sort(arr, start, mid);
-        //(0)
         sort(arr, mid + 1, end);
-        //(1)
         merge(arr, start, mid, end);
     }
 
@@ -30,10 +30,11 @@ public class Merge {
         int ptr2 = mid + 1;
         int ptr3 = 0;
         while (ptr1 <= mid && ptr2 <= end) {
-            if (arr[ptr1] < arr[ptr2]) {
+            if (arr[ptr1] <= arr[ptr2]) {
                 result[ptr3++] = arr[ptr1++];
             } else {
                 result[ptr3++] = arr[ptr2++];
+                swapCount += (mid - ptr1 + 1); // Count swaps
             }
         }
         while (ptr1 <= mid) {
@@ -48,5 +49,7 @@ public class Merge {
         }
     }
 
-
+    public int getSwapCount() {
+        return swapCount;
+    }
 }
