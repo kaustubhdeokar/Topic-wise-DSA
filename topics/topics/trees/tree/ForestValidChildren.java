@@ -37,6 +37,9 @@ public class ForestValidChildren {
 
     public static void main(String[] args) {
 
+        // 1,2 0,3,4  0,5,6
+        //  0    1      2
+
         int[][] edges = {{0,1},{0,2},{1,3},{1,4},{2,5},{2,6}};
         int[] values = {1000000000,1000000000,1000000000,1000000000,1000000000,1000000000,1000000000};
         int k = 7;
