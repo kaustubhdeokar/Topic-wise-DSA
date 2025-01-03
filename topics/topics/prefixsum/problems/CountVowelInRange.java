@@ -1,7 +1,7 @@
 package prefixsum.problems;
 
 import java.util.Set;
-
+//2559. https://leetcode.com/problems/count-vowel-strings-in-ranges
 public class CountVowelInRange {
     public int[] vowelStrings(String[] words, int[][] queries) {
 
@@ -30,5 +30,5 @@ public class CountVowelInRange {
         return result;
 
     }
-    
+
 }
