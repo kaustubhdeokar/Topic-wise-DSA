@@ -18,5 +18,5 @@ public class ValidSplits {
         }
         return splits;
     }
-    
+
 }

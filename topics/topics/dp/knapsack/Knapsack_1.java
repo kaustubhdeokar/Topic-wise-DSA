@@ -2,7 +2,7 @@ package dp.knapsack;
 
 import java.util.Arrays;
 
-public class Knapsack1 {
+public class Knapsack_1 {
 
     public static void main(String[] args) {
 
@@ -12,7 +12,7 @@ public class Knapsack1 {
         int N = 3;
         int W = 4;
 
-        Knapsack1 knapsack = new Knapsack1();
+        Knapsack_1 knapsack = new Knapsack_1();
 
         System.out.println(knapsack.withRecursion(N, W, values, weight));
 
