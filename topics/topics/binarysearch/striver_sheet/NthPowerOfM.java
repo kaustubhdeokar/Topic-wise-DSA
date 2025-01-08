@@ -1,4 +1,4 @@
-package binarysearch;
+package binarysearch.striver_sheet;
 
 public class NthPowerOfM {
     public static void main(String[] args) {
