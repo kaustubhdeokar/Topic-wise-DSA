@@ -1,5 +1,7 @@
 
-package graph;
+package graph.traversals;
+
+import graph.Graph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

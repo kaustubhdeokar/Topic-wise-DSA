@@ -1,4 +1,4 @@
-package graph.problems;
+package graph.traversals;
 
 import java.util.ArrayDeque;
 

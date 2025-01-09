@@ -1,4 +1,4 @@
-package graph;
+package graph.matrix;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class NumberOfDistinctIslands {
     {
 
         // bfs on r,c=1 (store the cells subtracted from the base row and base col)
-        // put them in a set and 
+        // store them in a set and return the count
 
         int rows = graph.length;
         int cols = graph[0].length;

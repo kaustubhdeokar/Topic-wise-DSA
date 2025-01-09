@@ -1,6 +1,4 @@
-package graph.problems;
-
-import graph.Graph;
+package graph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

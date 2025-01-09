@@ -1,4 +1,6 @@
-package graph;
+package graph.traversals;
+
+import graph.Graph;
 
 import java.util.ArrayList;
 import java.util.List;

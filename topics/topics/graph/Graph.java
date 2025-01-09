@@ -14,7 +14,7 @@ public class Graph {
         return new int[][]{{5, 1}, {4, 5}, {11, 9}, {9, 4}};
     }
 
-    public ArrayList<ArrayList<Integer>> createGraph(int[][] nodes) {
+    public ArrayList<ArrayList<Integer>>  createGraph(int[][] nodes) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
 
         for (int[] node : nodes) {
@@ -42,6 +42,11 @@ public class Graph {
     public ArrayList<ArrayList<Integer>> sampleDirectedGraph() {
         int[][] graph = new int[][]{{0, 1}, {0, 2}, {1, 2}, {2, 3}, {2, 0}};
         return createGraph(graph, 4, false);
+    }
+
+    public ArrayList<ArrayList<Integer>> sampleUndirectedGraph() {
+        int[][] graph = new int[][]{{0, 1}, {1, 2}, {2, 3}, {1, 3}, {3, 4}};
+        return createGraph(graph, 5, true);
     }
 
     public ArrayList<ArrayList<Integer>> eventualStatesGraph() {
@@ -87,7 +92,7 @@ public class Graph {
         return createGraph(graph, 4, false);
     }
 
-    private ArrayList<ArrayList<Integer>> createGraph(int[][] graph, int nodes, boolean bidirectional) {
+    public ArrayList<ArrayList<Integer>> createGraph(int[][] graph, int nodes, boolean bidirectional) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
         for (int i = 0; i < nodes; i++) {
             list.add(new ArrayList<>());

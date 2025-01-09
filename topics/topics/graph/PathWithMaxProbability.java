@@ -1,4 +1,4 @@
-package graph.problems;
+package graph;
 
 import java.util.ArrayList;
 import java.util.Comparator;

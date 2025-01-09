@@ -1,8 +1,8 @@
-package graph;
+package graph.shortestpath;
 
 import java.util.*;
 
-public class ShortestPathDag {
+public class ShortestPathInDAG {
     public static void main(String[] args) {
         /*
 
@@ -22,12 +22,8 @@ public class ShortestPathDag {
 
     public int[] shortestPath(int V, int E, int[][] edges) {
 
-        List<Integer> l = new ArrayList<>();
-        l.add(1);
-        l.add(2);
-
         List<List<List<Integer>>> graph = createGraph(V, edges);
-        System.out.println(graph);
+//        System.out.println(graph);
 
         int[] visited = new int[V];
         Arrays.fill(visited, -1);
@@ -56,7 +52,6 @@ public class ShortestPathDag {
 
         return visited;
 
-
     }
 
     public List<List<List<Integer>>> createGraph(int V, int[][] edges) {
@@ -68,9 +63,12 @@ public class ShortestPathDag {
 
         for (int[] edge : edges) {
             List<Integer> neighbour = new ArrayList<>();
-            neighbour.add(edge[1]);
-            neighbour.add(edge[2]);
-            graph.get(edge[0]).add(neighbour);
+            int from = edge[0];
+            int to = edge[1];
+            int dist = edge[2];
+            neighbour.add(to);
+            neighbour.add(dist);
+            graph.get(from).add(neighbour);
         }
 
         return graph;

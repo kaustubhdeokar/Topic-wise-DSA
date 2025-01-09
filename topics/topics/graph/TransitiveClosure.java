@@ -1,4 +1,4 @@
-package graph.problems;
+package graph;
 
 import graph.Graph;
 

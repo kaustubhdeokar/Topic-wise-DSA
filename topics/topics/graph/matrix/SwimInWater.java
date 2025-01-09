@@ -1,4 +1,4 @@
-package graph;
+package graph.matrix;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
