@@ -22,7 +22,7 @@ public class ShortestPathInDAG {
 
     public int[] shortestPath(int V, int E, int[][] edges) {
 
-        List<List<List<Integer>>> graph = createGraph(V, edges);
+        List<List<List<Integer>>> graph = createDirectedGraph(V, edges);
 //        System.out.println(graph);
 
         int[] visited = new int[V];
@@ -54,7 +54,7 @@ public class ShortestPathInDAG {
 
     }
 
-    public List<List<List<Integer>>> createGraph(int V, int[][] edges) {
+    public List<List<List<Integer>>> createDirectedGraph(int V, int[][] edges) {
 
         List<List<List<Integer>>> graph = new ArrayList<>();
         for (int i = 0; i < V; i++) {

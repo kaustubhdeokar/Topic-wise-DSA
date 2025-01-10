@@ -1,4 +1,4 @@
-package graph;
+package graph.matrix;
 
 
 import java.util.ArrayDeque;
@@ -17,7 +17,7 @@ public class LC_01Matrix {
 
     public int[][] updateMatrix(int[][] mat) {
 
-        // start with all 0's and put them in a priority queue.
+        // start with all 0's and put them in a queue.
         // bfs to all 0's possible ->
 
         Comparator<int[]> distRowCol = (c1, c2) -> Integer.compare(c1[0], c1[0]);

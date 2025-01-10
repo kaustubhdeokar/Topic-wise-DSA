@@ -1,4 +1,4 @@
-package graph;
+package graph.shortestpath;
 
 import java.util.ArrayList;
 import java.util.Arrays;

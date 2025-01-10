@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Graph {
 
@@ -14,7 +15,7 @@ public class Graph {
         return new int[][]{{5, 1}, {4, 5}, {11, 9}, {9, 4}};
     }
 
-    public ArrayList<ArrayList<Integer>>  createGraph(int[][] nodes) {
+    public ArrayList<ArrayList<Integer>> createGraph(int[][] nodes) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
 
         for (int[] node : nodes) {
@@ -62,8 +63,8 @@ public class Graph {
         return createGraph(graph, 7, false);
     }
 
-    public ArrayList<ArrayList<Integer>> createKahnsAlgoGraph(){
-        int[][] graph = new int[][]{{2,3}, {3,1}, {4,0}, {4,1}, {5,0}, {5,2}};
+    public ArrayList<ArrayList<Integer>> createKahnsAlgoGraph() {
+        int[][] graph = new int[][]{{2, 3}, {3, 1}, {4, 0}, {4, 1}, {5, 0}, {5, 2}};
         return createGraph(graph, 6, false);
     }
 
@@ -108,28 +109,35 @@ public class Graph {
         return list;
     }
 
-    //[[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]]
-    //src,dest,weight
-    private ArrayList<ArrayList<NeighbourToDist>> createWeightedGraph(int[][] graph, int nodes) {
-        ArrayList<ArrayList<NeighbourToDist>> list = new ArrayList<>();
+    public void createWeightedGraph(ArrayList<ArrayList<int[]>> graph,
+                                    int[][] edges, int nodes) {
+
         for (int i = 0; i < nodes; i++) {
-            list.add(new ArrayList<>());
+            graph.add(new ArrayList<>());
         }
-        for (int[] vertex : graph) {
-            list.get(vertex[0]).add(new NeighbourToDist(vertex[1], vertex[2]));
-        }
-        return list;
-    }
 
-    class NeighbourToDist {
-        int neighbour;
-        int dist;
-
-        public NeighbourToDist(int neighbour, int dist) {
-            this.neighbour = neighbour;
-            this.dist = dist;
+        for (int[] flight : edges) {
+            int from = flight[0];
+            int to = flight[1];
+            int price = flight[2];
+            graph.get(from).add(new int[]{to, price});
         }
     }
 
+    public List<List<int[]>> createWeightedGraph(int[][] edges, int nodes) {
+
+        List<List<int[]>> graph = new ArrayList<>();
+        for (int i = 0; i < nodes; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int[] flight : edges) {
+            int from = flight[0];
+            int to = flight[1];
+            int price = flight[2];
+            graph.get(from).add(new int[]{to, price});
+        }
+        return graph;
+    }
 
 }
