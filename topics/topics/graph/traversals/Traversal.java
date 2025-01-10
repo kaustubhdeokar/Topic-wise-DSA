@@ -21,7 +21,7 @@ public class Traversal {
 
         while (!queue.isEmpty()) {
             curr = queue.remove();
-            System.out.println(curr);
+            System.out.print(curr + " ");
             for (int neigh : list.get(curr)) {
                 if (!visited[neigh]) {
                     visited[neigh] = true;
@@ -57,6 +57,7 @@ public class Traversal {
         for (int i = 0; i < nodes; i++) {
             if (!visited[i]) {
                 traverseDfs(list, i, visited);
+                //traversedfs(list, i, visited);
             }
         }
     }
@@ -68,13 +69,23 @@ public class Traversal {
 
         while (!stack.isEmpty()) {
             curr = stack.pop();
-            System.out.println(curr);
+            System.out.print(curr + " ");
             for (int neigh : list.get(curr)) {
                 if (!visited[neigh]) {
                     visited[neigh] = true;
                     stack.add(neigh);
                 }
             }
+        }
+    }
+
+    private void traversedfs(ArrayList<ArrayList<Integer>> list, int curr, boolean[] visited) {
+        visited[curr] = true;
+        System.out.print(curr + " ");
+        List<Integer> neighbours = list.get(curr);
+        for (int neigh : neighbours) {
+            if (!visited[neigh])
+                traversedfs(list, neigh, visited);
         }
     }
 

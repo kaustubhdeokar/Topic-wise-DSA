@@ -6,7 +6,10 @@ public class ShortestPathDag {
     public static void main(String[] args) {
         /*
 
-        6 7
+            nodes=6
+            pathsLen = 7
+
+            from, to, dist
             0 1 2
             0 4 1
             4 5 4
@@ -14,8 +17,7 @@ public class ShortestPathDag {
             1 2 3
             2 3 6
             5 3 1
-
-        * */
+        */
     }
 
     public int[] shortestPath(int V, int E, int[][] edges) {
@@ -23,8 +25,6 @@ public class ShortestPathDag {
         List<Integer> l = new ArrayList<>();
         l.add(1);
         l.add(2);
-
-
 
         List<List<List<Integer>>> graph = createGraph(V, edges);
         System.out.println(graph);

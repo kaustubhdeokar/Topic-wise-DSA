@@ -1,7 +1,8 @@
 package dp.problems;
 
 import java.util.Arrays;
-
+//todo: document.
+//todo: how to do it in nlogn ?
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
 
