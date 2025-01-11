@@ -22,6 +22,20 @@ public class SubsetSumEqualToTarget_3 {
         System.out.println("tabulation:" + res);
     }
 
+    private boolean recursion(int[] arr, int sum, int n) {
+        if (sum == 0) return true;
+
+        if (n <= 0) {
+            return false;
+        }
+
+        if (sum >= arr[n - 1]) {
+            return recursion(arr, sum - arr[n - 1], n - 1) || recursion(arr, sum, n - 1);
+        } else {
+            return recursion(arr, sum, n - 1);
+        }
+    }
+
     private boolean memoization(int[] arr, int sum) {
 
         int n = arr.length;
@@ -49,20 +63,6 @@ public class SubsetSumEqualToTarget_3 {
         }
 
         return memo[n][sum];
-    }
-
-    private boolean recursion(int[] arr, int sum, int n) {
-        if (sum == 0) return true;
-
-        if (n <= 0) {
-            return false;
-        }
-
-        if (sum >= arr[n - 1]) {
-            return recursion(arr, sum - arr[n - 1], n - 1) || recursion(arr, sum, n - 1);
-        } else {
-            return recursion(arr, sum, n - 1);
-        }
     }
 
     private boolean findDp(int[] arr, int sum) {

@@ -1,4 +1,4 @@
-package dp.problems;
+package dp.grid;
 
 public class UniquePaths {
 
