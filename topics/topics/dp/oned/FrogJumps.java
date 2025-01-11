@@ -13,7 +13,6 @@ public class FrogJumps {
         energySpent[0] = 0;
         energySpent[1] = Math.abs(arr[1] - arr[0]);
 
-
         for (int i = 2; i < N; i++) {
             energySpent[i] = Integer.min(
                     energySpent[i - 1] + Math.abs(arr[i] - arr[i - 1]),

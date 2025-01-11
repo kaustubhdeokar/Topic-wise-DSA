@@ -2,17 +2,17 @@ package graph.disjointset;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-//    https://leetcode.com/problems/min-cost-to-connect-all-points/
-
+//https://leetcode.com/problems/min-cost-to-connect-all-points/
 class Kruskal {
     public int minCostConnectPoints(int[][] points) {
         int n = points.length;
+
         //n = 3, i=0. i=1
-        /**  0 0   2 2   3 10
+        /*
+         0 0   2 2   3 10
          0 0         y     y
          2 2               y
          3 10
-
          */
         ArrayList<int[]> list = new ArrayList<>();
         Comparator<int[]> distanceComparator = (c1, c2) -> c1[0] - c2[0];
@@ -35,7 +35,6 @@ class Kruskal {
             parents[i] = i;
         }
         int[] rank = new int[n];
-
         return constructMST(list, parents, rank);
 
     }
@@ -69,13 +68,14 @@ class Kruskal {
     }
 
     public int findParent(int[] parent, int node) {
-        if (parent[node] == node) {
-            return node;
-        } else return parent[node] = findParent(parent, parent[node]);
+        if (parent[node] == node) return node;
+        int newParent = findParent(parent, parent[node]);
+        parent[node] = newParent;
+        return newParent;
     }
 
     public static void main(String[] args) {
-        int[][] points = new int[][]{{0,0},{2,2},{3,10},{5,2},{7,0}};
+        int[][] points = new int[][]{{0, 0}, {2, 2}, {3, 10}, {5, 2}, {7, 0}};
         Kruskal kruskal = new Kruskal();
         int result = kruskal.minCostConnectPoints(points);
         System.out.println(result);

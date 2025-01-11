@@ -4,8 +4,10 @@ import graph.Graph;
 
 import java.util.*;
 
-public class PrimsAlgoMST {
+// to find the minimum spanning tree - from current available edge which is not visited,
+// we take the lowest valued edge and mark the node as visited.
 
+public class PrimsAlgoMST {
     public static void main(String[] args) {
 
         int[][] edges = {{0, 1, 5},
