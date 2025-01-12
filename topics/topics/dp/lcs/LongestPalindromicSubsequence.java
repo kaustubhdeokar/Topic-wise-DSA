@@ -1,10 +1,10 @@
 package dp.lcs;
 
-public class LongestPallindromicSubsequence {
+public class LongestPalindromicSubsequence {
 
     public static void main(String[] args) {
         String s1 = "aebcbda";
-        LongestPallindromicSubsequence pallindromicSubsequence = new LongestPallindromicSubsequence();
+        LongestPalindromicSubsequence pallindromicSubsequence = new LongestPalindromicSubsequence();
         System.out.println(pallindromicSubsequence.calculate(s1));
     }
 

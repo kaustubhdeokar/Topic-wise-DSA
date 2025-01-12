@@ -1,9 +1,6 @@
 package dp.lcs;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class D_PrintAllLcs {
+public class D_PrintLCS {
 
     public void printLcs(String s1, String s2) {
 
@@ -55,7 +52,7 @@ public class D_PrintAllLcs {
 
 
     public static void main(String[] args) {
-        D_PrintAllLcs printAllLcs = new D_PrintAllLcs();
+        D_PrintLCS printAllLcs = new D_PrintLCS();
         printAllLcs.printLcs("hfofxe", "hfxeof");
     }
 }

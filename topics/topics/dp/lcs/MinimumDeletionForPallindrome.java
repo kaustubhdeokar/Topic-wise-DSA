@@ -33,8 +33,8 @@ public class MinimumDeletionForPallindrome {
     }
 
     private String calculatePallindrome(String s1) {
-        LongestPallindromicSubsequence longestPallindromicSubsequence = new LongestPallindromicSubsequence();
-        return longestPallindromicSubsequence.calculate(s1);
+        LongestPalindromicSubsequence longestPalindromicSubsequence = new LongestPalindromicSubsequence();
+        return longestPalindromicSubsequence.calculate(s1);
     }
 
 }

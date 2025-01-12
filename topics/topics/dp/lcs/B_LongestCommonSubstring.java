@@ -5,9 +5,26 @@ public class B_LongestCommonSubstring {
         String y = "hfofxe";
         String x = "hfxeof";
         B_LongestCommonSubstring lcs = new B_LongestCommonSubstring();
-        //lcs.recursive(x, y);
+        lcs.recursive(x, y);
         int[][] dp = new int[x.length() + 1][y.length() + 1];
         lcs.bottomUp(dp, x, y);
+        dp = new int[x.length() + 1][y.length() + 1];
+        lcs.spaceOptimized(dp, x, y);
+    }
+
+    private void spaceOptimized(int[][] dp, String x, String y) {
+        int m = x.length();
+        int n = y.length();
+        int[] prev = new int[n + 1];
+        int[] curr = new int[n + 1];
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if(x.charAt(i-1)==y.charAt(j-1)){
+                    curr[j] = 1 + prev[j-1];
+                }
+            }
+            prev = curr.clone();
+        }
     }
 
     private void bottomUp(int[][] dp, String x, String y) {
@@ -17,29 +34,32 @@ public class B_LongestCommonSubstring {
 
         for (int i = 1; i < x.length(); i++) {
             for (int j = 1; j < y.length(); j++) {
-                if (x.charAt(i-1) == y.charAt(j-1)) {
-                    dp[i][j] = 1 + dp[i-1][j-1];
-                    if(dp[i][j]>maxCount){
+                if (x.charAt(i - 1) == y.charAt(j - 1)) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                    if (dp[i][j] > maxCount) {
                         maxCount = dp[i][j];
                         maxI = i;
                         maxJ = j;
                     }
-                }
-                else{
+                } else {
                     dp[i][j] = 0;
                 }
             }
         }
 
-//        for(int i=0;i<=x.length();i++){
-//            for(int j=0;j<=y.length();j++){
-//                System.out.print(dp[i][j]+" ");
-//            }
-//            System.out.println();
-//        }
+        printLcs(dp, x, y);
 
-        System.out.println(maxCount+":"+maxI+":"+maxJ);
+        System.out.println(maxCount + ":" + maxI + ":" + maxJ);
 
+    }
+
+    private void printLcs(int[][] dp, String x, String y) {
+        for (int i = 0; i <= x.length(); i++) {
+            for (int j = 0; j <= y.length(); j++) {
+                System.out.print(dp[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
 
@@ -62,8 +82,5 @@ public class B_LongestCommonSubstring {
             recursive(x, xLen - 1, y, yLen, maxYet);
             return 0;
         }
-
     }
-
-
 }

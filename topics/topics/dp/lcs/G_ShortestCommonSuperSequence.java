@@ -1,19 +1,20 @@
 package dp.lcs;
 
-public class ShortestCommonSuperSequence {
+public class G_ShortestCommonSuperSequence {
 
     //shortest string encompassing both s1 and s2.
     //calculate scs.  scs = s1.length() + s2.length() - lcs
 
 
-
     public static void main(String[] args) {
 
-        String s1 = "bcacaaab";
-        String s2 = "bbabaccc";
-        ShortestCommonSuperSequence scss = new ShortestCommonSuperSequence();
+        String s1 = "brute";
+        String s2 = "groot";
+        G_ShortestCommonSuperSequence scss = new G_ShortestCommonSuperSequence();
         String subsequence = scss.longestCommonSubsequence(s1, s2);
-        System.out.println("subsequence:"+subsequence);
+        // lcsubsequence - rt
+        System.out.println("subsequence:" + subsequence);
+        // b g r u o o t e
         System.out.println(scss.createSuperSequence(s1, s2, subsequence));
     }
 
@@ -56,33 +57,29 @@ public class ShortestCommonSuperSequence {
 
         int m = s1.length();
         int n = s2.length();
-        int[][] dp = new int[m][n];
-        lcs(dp, s1, s2, m - 1, n - 1);
-        return constructLCS(dp, s1, s2, m - 1, n - 1);
+        A_LongestCommonSubsequence lcs = new A_LongestCommonSubsequence();
+        int[][] dp = lcs.topDownReturnsArr(s1, s2);
+        for (int[] d : dp) {
+            for (int d1 : d) {
+                System.out.print(d1 + " ");
+            }
+            System.out.println();
+        }
+        return constructLCS(dp, s1, s2, m, n);
     }
 
-    private String constructLCS(int[][] dp, String x, String y, int x1, int y1) {
+    private String constructLCS(int[][] dp, String x, String y, int i, int j) {
 
         StringBuilder res = new StringBuilder();
-        while (x1 >= 0 && y1 >= 0) {
-            if (x.charAt(x1) == y.charAt(y1)) {
-                res.append(x.charAt(x1));
-                x1 -= 1;
-                y1 -= 1;
-            } else if (x1 > 0 && y1 > 0) {
-                if (dp[x1 - 1][y1] > dp[x1][y1 - 1]) {
-                    x1 -= 1;
-                } else {
-                    y1 -= 1;
-                }
-            }
-            else{
-                if(x1>y1){
-                    x1-=1;
-                }
-                else{
-                    y1-=1;
-                }
+        while (i > 0 && j > 0) {
+            if (x.charAt(i - 1) == y.charAt(j - 1)) {
+                res.append(x.charAt(i-1));
+                i -= 1;
+                j -= 1;
+            } else if (dp[i - 1][j] > dp[i][j - 1]) {
+                i -= 1;
+            } else {
+                j -= 1;
             }
         }
         return res.reverse().toString();

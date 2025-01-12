@@ -2,7 +2,7 @@ package dp.lcs;
 
 import java.util.Arrays;
 
-public class EditDistance {
+public class I_EditDistance {
     public static void main(String[] args) {
 
         String s1 = "horse";
@@ -13,7 +13,7 @@ public class EditDistance {
             Arrays.fill(m, -1);
         }
 
-        EditDistance editDistance = new EditDistance();
+        I_EditDistance editDistance = new I_EditDistance();
         System.out.println(editDistance.edit(memo, s1, s1.length(), s2, s2.length()));
     }
 

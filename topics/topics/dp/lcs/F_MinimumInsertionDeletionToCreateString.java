@@ -2,13 +2,13 @@ package dp.lcs;
 
 import java.util.Arrays;
 
-public class MinimumInsertionDeletionToCreateString {
+public class F_MinimumInsertionDeletionToCreateString {
 
     public static void main(String[] args) {
 
         String from = "abcd";
         String to = "anc";
-        MinimumInsertionDeletionToCreateString min = new MinimumInsertionDeletionToCreateString();
+        F_MinimumInsertionDeletionToCreateString min = new F_MinimumInsertionDeletionToCreateString();
         String lcs = min.convertString(from, to);
 
         System.out.println(lcs);
