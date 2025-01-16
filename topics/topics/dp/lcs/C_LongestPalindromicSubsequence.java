@@ -3,7 +3,7 @@ package dp.lcs;
 public class C_LongestPalindromicSubsequence {
 
     public static void main(String[] args) {
-        String s1 = "agbcba";
+        String s1 = "abcba";
         String s2 = new StringBuilder(s1).reverse().toString();
         System.out.println("s1:" + s1);
         System.out.println("s2:" + s2);

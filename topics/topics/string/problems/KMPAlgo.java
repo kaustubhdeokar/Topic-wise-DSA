@@ -3,19 +3,22 @@ package string.problems;
 import java.util.ArrayList;
 import java.util.List;
 
-public class  KMPAlgo {
+public class KMPAlgo {
 
     public static void main(String[] args) {
 
         KMPAlgo algo = new KMPAlgo();
 
 //        String pattern = "ababaa";
-        String pattern = "aaba";
-         int[] lps = algo.prepareLps(pattern);
+        String pattern = "aacecadd";
+        StringBuilder strAndReverse = new StringBuilder(pattern);
+        StringBuilder rev = new StringBuilder(pattern).reverse();
+        strAndReverse.append("#").append(rev);
+        int[] lps = algo.prepareLps(strAndReverse.toString());
         for (int l : lps) {
             System.out.print(l + " ");
         }
-        String txt = "aabaacaadaabaaba";
+        String txt = "gffgfg";
         System.out.println(algo.findMatches(txt, pattern, lps));
     }
 
