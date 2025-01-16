@@ -3,7 +3,7 @@ package string.problems;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KMPAlgo {
+public class  KMPAlgo {
 
     public static void main(String[] args) {
 
