@@ -1,26 +1,13 @@
 package tries;
 
 public class MaxXor {
-    class TrieNode {
-        TrieNode[] child = new TrieNode[2];
-        boolean isEnd;
-    }
-
-    private int findMax(int[] nums) {
-        int max = Integer.MIN_VALUE;
-        for (int n : nums) {
-            if (n > max) max = n;
-        }
-        return max;
-    }
-
     public static void main(String[] args) {
         MaxXor maxXor = new MaxXor();
         maxXor.helper();
     }
 
     public void helper() {
-        int[] nums = {2147483647,2147483646,2147483645};
+        int[] nums = {5,2,4,6,6,3};
         solution(nums);
     }
 
@@ -40,14 +27,21 @@ public class MaxXor {
         System.out.println("max xor:" + max);
     }
 
-    public void insertNum(int n, TrieNode root, int power) {
-        //n 10 -> 001100
-        //x           100000
-        int x = 1 << power;
+    private int findMax(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        for (int n : nums) {
+            if (n > max) max = n;
+        }
+        return max;
+    }
+
+    public void insertNum(int number, TrieNode root, int power) {
+                                   //number 10 -> 001100
+        int x = 1 << power;        //x           100000
         TrieNode temp = root;
         while (x > 0) {
-            int set = (n & x) != 0 ? 1 : 0;
-            temp = insertIntoTrie(temp, set);
+            int ithDigit = (number & x) != 0 ? 1 : 0;
+            temp = insertIntoTrie(temp, ithDigit);
             x >>= 1;
         }
         temp.isEnd = true;
@@ -95,6 +89,11 @@ public class MaxXor {
                 current.deleteCharAt(current.length() - 1);
             }
         }
+    }
+
+    class TrieNode {
+        TrieNode[] child = new TrieNode[2];
+        boolean isEnd;
     }
 
 }
