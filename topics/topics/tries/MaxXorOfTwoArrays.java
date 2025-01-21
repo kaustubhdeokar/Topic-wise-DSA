@@ -7,13 +7,13 @@ public class MaxXorOfTwoArrays {
     }
 
     public void helper() {
-        int[] nums1 = {5, 7};
+        int[] nums1 = {0, 142254206, 330218644};
         TrieNode root = new TrieNode();
         int power = 31;
         for (int n : nums1) {
             insertNum(n, root, power);
         }
-        int[] num2 = {4};
+        int[] num2 = {214004};
         int result = -1;
         for (int n2 : num2) {
             result = Integer.max(result, calculateMax(n2, root, power));
@@ -35,7 +35,7 @@ public class MaxXorOfTwoArrays {
 
 
     public int calculateMax(int n, TrieNode root, int power) {
-        int x = 1 << power-1;
+        int x = 1 << power - 1;
         int result = 0;
         while (x > 0) {
             int setBit = (n & x) > 0 ? 1 : 0;
