@@ -28,24 +28,10 @@ public class EventualSafeStates {
     }
 
     List<Integer> eventualSafeNodes(ArrayList<ArrayList<Integer>> adj) {
-
-        List<Integer> answer = new ArrayList<>();
-        boolean[] result = calculate(adj, adj.size());
-        if (result.length > 0) {
-            for (int i = 0; i < result.length; i++) {
-                if (!result[i]) {
-                    answer.add(i);
-                }
-            }
-        } else {
-            for (int i = 0; i < adj.size(); i++) {
-                answer.add(i);
-            }
-        }
-        return answer;
+        return calculate(adj, adj.size());
     }
 
-    private boolean[] calculate(ArrayList<ArrayList<Integer>> graph, int nodes)
+    private List<Integer> calculate(ArrayList<ArrayList<Integer>> graph, int nodes)
     {
         boolean[] visited = new boolean[nodes];
         boolean[] recStack = new boolean[nodes];
@@ -54,7 +40,13 @@ public class EventualSafeStates {
                 traverse(graph, i, visited, recStack, nodes);
             }
         }
-        return recStack;
+
+        List<Integer> res = new ArrayList<>();
+        for(int i=0;i<recStack.length;i++){
+            if(!recStack[i]) res.add(i);
+        }
+        return res;
+
     }
 
     private boolean traverse(ArrayList<ArrayList<Integer>> graph, int curr, boolean[] visited, boolean[] recStack, int nodes) {
