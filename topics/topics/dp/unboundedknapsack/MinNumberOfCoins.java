@@ -6,10 +6,10 @@ public class MinNumberOfCoins {
 
     public static void main(String[] args) {
 
-        int[] coins = new int[]{1, 2, 3};
-        int sum = 5;
+        int[] coins = new int[]{638, 414, 105, 0, 325, 315, 209, 24, 68, 409, 611};
+        int sum = 845;
         MinNumberOfCoins minCoins = new MinNumberOfCoins();
-        System.out.println(minCoins.recursiveKnapsack(coins, coins.length, sum));
+//        System.out.println(minCoins.recursiveKnapsack(coins, coins.length, sum));
 
         long[][] dp = new long[coins.length + 1][sum + 1];
         for (long[] a : dp) {
@@ -17,7 +17,7 @@ public class MinNumberOfCoins {
         }
         System.out.println(minCoins.topDownDp(dp, coins, coins.length - 1, sum));
 
-        System.out.println(minCoins.bottomUp(coins, coins.length, sum));
+//        System.out.println(minCoins.bottomUp(coins, coins.length, sum));
     }
 
     public long recursiveKnapsack(int[] coins, int N, int sum) {
@@ -27,8 +27,8 @@ public class MinNumberOfCoins {
         if (N <= 0 || sum < 0) {
             return Integer.MAX_VALUE;
         }
-        if (sum >= coins[N-1]) {
-            return Long.min(1 + recursiveKnapsack(coins, N, sum - coins[N-1]), recursiveKnapsack(coins, N - 1, sum));
+        if (sum >= coins[N - 1]) {
+            return Long.min(1 + recursiveKnapsack(coins, N, sum - coins[N - 1]), recursiveKnapsack(coins, N - 1, sum));
         } else {
             return recursiveKnapsack(coins, N - 1, sum);
         }
@@ -36,7 +36,7 @@ public class MinNumberOfCoins {
 
     public long topDownDp(long[][] dp, int[] coins, int N, int sum) {
         if (sum == 0) {
-            return 1;
+            return 0;
         }
         if (N < 0 || sum < 0) {
             return Integer.MAX_VALUE;
@@ -46,7 +46,7 @@ public class MinNumberOfCoins {
         }
 
         if (sum >= coins[N]) {
-            dp[N][sum] = Long.min(topDownDp(dp, coins, N, sum - coins[N]), topDownDp(dp, coins, N - 1, sum));
+                dp[N][sum] = Long.min(1 + topDownDp(dp, coins, N, sum - coins[N]), topDownDp(dp, coins, N - 1, sum));
         } else {
             dp[N][sum] = topDownDp(dp, coins, N - 1, sum);
         }

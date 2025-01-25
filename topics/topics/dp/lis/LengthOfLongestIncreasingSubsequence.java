@@ -1,11 +1,10 @@
 package dp.lis;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 //todo: document.
 //todo: how to do it in nlogn ?
-public class LongestIncreasingSubsequence {
+public class LengthOfLongestIncreasingSubsequence {
     public static void main(String[] args) {
 
         //lis ending at each val = 1
@@ -37,7 +36,7 @@ public class LongestIncreasingSubsequence {
         int[] nums;
         nums = new int[]{10, 9, 2, 5, 3, 7, 101, 18};
         nums = new int[]{0, 1, 0, 3, 2, 3};
-        LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
+        LengthOfLongestIncreasingSubsequence lis = new LengthOfLongestIncreasingSubsequence();
         lis.binarySearch(nums);
     }
 
