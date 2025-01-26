@@ -1,7 +1,7 @@
 package dp.stocks;
 
 //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
-//buy once sell once, (must buy before selling)
+//buy once, sell once, (must buy before selling)
 public class BuyAndSell_I {
     public static void main(String[] args) {
 
