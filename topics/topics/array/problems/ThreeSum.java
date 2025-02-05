@@ -7,7 +7,7 @@ public class ThreeSum {
 
     public static void main(String[] args) {
         ThreeSum threeSum = new ThreeSum();
-        int[] arr = {-1,0,1,2,-1,-4};
+        int[] arr = {-1, 0, 1, 5, -1, -4};
         System.out.println(threeSum.threeSum(arr));
     }
 
@@ -17,6 +17,9 @@ public class ThreeSum {
         Set<List<Integer>> set = new HashSet<>();
         int l, r, sum;
         Set<List<Integer>> tempRes = new HashSet<>();
+        //-4 -1 -1 0 1 5
+        // i l         r
+        //
         for (int i = 0; i < nums.length - 2; ++i)
         {
             if(i>0 && nums[i]==nums[i-1]) continue;

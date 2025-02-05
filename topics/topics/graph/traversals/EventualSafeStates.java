@@ -46,7 +46,6 @@ public class EventualSafeStates {
             if(!recStack[i]) res.add(i);
         }
         return res;
-
     }
 
     private boolean traverse(ArrayList<ArrayList<Integer>> graph, int curr, boolean[] visited, boolean[] recStack, int nodes) {
