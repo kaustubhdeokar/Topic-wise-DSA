@@ -1,23 +1,38 @@
 package graph.matrix;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Queue;
+import java.util.HashSet;
+import java.util.Set;
 
 public class NumberOfDistinctIslands {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         NumberOfDistinctIslands num = new NumberOfDistinctIslands();
         int[][] graph = new int[][]{
-                {1,1,0,1,1},
-                {1,0,0,0,0},
-                {0,0,0,0,1},
-                {1,1,0,1,1}};
+                {1, 1, 0, 1, 1},
+                {1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1},
+                {1, 1, 0, 1, 1}};
         num.numberOfDistinctIslands(graph);
     }
 
-    public int numberOfDistinctIslands(int[][] graph)
-    {
+    private boolean validCell(int rows, int cols, int row, int col) {
+        return row >= 0 && row < rows && col >= 0 && col < cols;
+    }
+
+    public void calculateGroupDetails(int[][] graph, int currRow, int currCol, ArrayList<int[]> path) {
+
+        if (validCell(graph.length, graph[0].length, currRow, currCol)) {
+            if (graph[currRow][currCol] != 1) return;
+            graph[currRow][currCol] = 2;
+            path.add(new int[]{currRow, currCol});
+            calculateGroupDetails(graph, currRow + 1, currCol, path);
+            calculateGroupDetails(graph, currRow, currCol - 1, path);
+            calculateGroupDetails(graph, currRow, currCol + 1, path);
+        }
+    }
+
+    public int numberOfDistinctIslands(int[][] graph) {
 
         // bfs on r,c=1 (store the cells subtracted from the base row and base col)
         // store them in a set and return the count
@@ -25,81 +40,25 @@ public class NumberOfDistinctIslands {
         int rows = graph.length;
         int cols = graph[0].length;
 
-
-        for(int i=0; i<rows;i++){
-            for(int j=0;j<cols;j++){
-                if(graph[i][j] == 1){
-                    ArrayList<int[]> path = calculateGroupDetails(graph, i, j);
-                    for(int[] p: path){
-                        System.out.print(p[0]+":"+p[1]+" ");
+        Set<String> distinctGroups = new HashSet<>();
+        for (int baseRow = 0; baseRow < rows; baseRow++) {
+            for (int baseCol = 0; baseCol < cols; baseCol++) {
+                if (graph[baseRow][baseCol] == 1) {
+                    ArrayList<int[]> path = new ArrayList<>();
+                    calculateGroupDetails(graph, baseRow, baseCol, path);
+                    StringBuilder str = new StringBuilder();
+                    for (int[] p : path) {
+                        str.append(p[0] - baseRow).append(p[1] - baseCol);
                     }
-                    System.out.println();
+                    distinctGroups.add(str.toString());
                 }
             }
         }
 
-        return 0;
-
-    }
-
-    public ArrayList<int[]> calculateGroupDetails(int[][] graph, int baseRow, int baseCol){
-
-        Queue<int[]> q = new ArrayDeque<>();
-        q.add(new int[]{baseRow, baseCol});
-        graph[baseRow][baseCol] = 2;
-        int maxRow = baseRow;
-        int maxCol = baseCol;
-        int cellsCovered = 0;
-
-        ArrayList<int[]> path = new ArrayList<>();
-        path.add(new int[]{0, 0});
-        while(!q.isEmpty())
-        {
-            int[] curr = q.remove();
-            cellsCovered+=1;
-            int currI = curr[0];
-            int currJ = curr[1];
-
-            int nextI = currI+1;
-            int nextJ = currJ;
-
-
-
-            if(nextI < graph.length && nextJ < graph[0].length && graph[nextI][nextJ] == 1){
-                maxRow = Integer.max(nextI-baseRow+1, maxRow);
-                maxCol = Integer.max(maxCol-baseCol+1, nextJ);
-                q.add(new int[]{nextI, nextJ});
-                graph[nextI][nextJ] = 2;
-                path.add(new int[]{nextI-baseRow, nextJ-baseCol});
-            }
-
-
-
-            nextI = currI;
-            nextJ = currJ + 1;
-
-            if(nextI < graph.length && nextJ < graph[0].length && graph[nextI][nextJ] == 1){
-                maxRow = Integer.max(nextI-baseRow+1, maxRow);
-                maxCol = Integer.max(maxCol-baseCol+1, nextJ);
-                q.add(new int[]{nextI, nextJ});
-                graph[nextI][nextJ] = 2;
-                path.add(new int[]{nextI-baseRow, nextJ-baseCol});
-            }
-
-            nextI = currI;
-            nextJ = currJ - 1;
-
-            if(nextI > 0 && nextJ >0 && nextI < graph.length && nextJ < graph[0].length && graph[nextI][nextJ] == 1){
-                maxRow = Integer.max(nextI-baseRow+1, maxRow);
-                maxCol = Integer.max(maxCol-baseCol+1, nextJ);
-                q.add(new int[]{nextI, nextJ});
-                graph[nextI][nextJ] = 2;
-                path.add(new int[]{nextI-baseRow, nextJ-baseCol});
-            }
-
+        for (String s : distinctGroups) {
+            System.out.println(s);
         }
-
-        return path;
-
+        return 0;
     }
+
 }
