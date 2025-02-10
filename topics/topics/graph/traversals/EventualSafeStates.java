@@ -15,7 +15,6 @@ public class EventualSafeStates {
         ArrayList<ArrayList<Integer>> directedGraph;
         EventualSafeStates eventualSafeStates = new EventualSafeStates();
         List<Integer> result = new ArrayList<>();
-
 //        ArrayList<ArrayList<Integer>> directedGraph = g.eventualStatesGraph();
 //        EventualSafeStates eventualSafeStates = new EventualSafeStates();
 //        List<Integer> result = eventualSafeStates.eventualSafeNodes(directedGraph);
@@ -24,7 +23,6 @@ public class EventualSafeStates {
         directedGraph = g.eventualStatesGraph2();
         result = eventualSafeStates.eventualSafeNodes(directedGraph);
         System.out.println(result);
-
     }
 
     List<Integer> eventualSafeNodes(ArrayList<ArrayList<Integer>> adj) {

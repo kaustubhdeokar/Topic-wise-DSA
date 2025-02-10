@@ -1,14 +1,12 @@
 package array.problems;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.*;
 
-public class NumberContainer {
+public class ContainerSystem {
 
     public static void main(String[] args) {
-        NumberContainer numberContainer = new NumberContainer();
-        numberContainer.designSystem();
+        ContainerSystem containerSystem = new ContainerSystem();
+        containerSystem.designSystem();
     }
 
     private void designSystem() {

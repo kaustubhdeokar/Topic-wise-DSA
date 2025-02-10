@@ -26,7 +26,6 @@ public class WordLadder {
     }
 
     private List<List<String>> dfs(Set<String> wordSet, String startWord, String targetWord) {
-
         List<String> currPath = new ArrayList<>();
         List<List<String>> paths = new ArrayList<>();
         int[] shortestPath = new int[]{Integer.MAX_VALUE};
@@ -35,7 +34,6 @@ public class WordLadder {
     }
 
     private void dfs(Set<String> wordSet, String curr, String targetWord, List<String> currPath, List<List<String>> paths, int[] shortestPath) {
-
 
         wordSet.remove(curr);
         currPath.add(curr);
@@ -48,12 +46,12 @@ public class WordLadder {
             return;
         }
 
+        char[] currWord = curr.toCharArray();
         for (int i = 0; i < curr.length(); i++) {
-            StringBuilder currPrefix = new StringBuilder(curr.substring(0, i));
-            StringBuilder currSuffix = new StringBuilder(curr.substring(i + 1));
             for (int j = 0; j < 26; j++) {
                 char currChar = (char) ('a' + j);
-                String derivativeString = currPrefix.toString() + currChar + currSuffix.toString();
+                currWord[i] = currChar;
+                String derivativeString = Arrays.toString(currWord);
                 if (wordSet.contains(derivativeString)) {
                     dfs(wordSet, derivativeString, targetWord, currPath, paths, shortestPath);
                     currPath.remove(currPath.size() - 1);
