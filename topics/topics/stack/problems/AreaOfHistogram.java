@@ -4,12 +4,14 @@ import java.util.Stack;
 
 /*
 area of histogram.
-7, 1, 7, 2, 2, 4
-0                         6
-next smaller left    -> -1, -1, 1, 1, 1, 4
-next smaller right -> 1   6   3   6  6  6
+    7 1 7 2 2 4
+-1  0 1 2 3 4 5 6
+we have to find the limiting index in left and right.
+if exceeds for left use -1, if exceeds for right use arr.length
+next smaller left  -> -1 -1  1  1  1  4
+next smaller right ->  1  6  3  6  6  6
 
-(right-left-1) * nums[i]
+then answer for each index is (right_limiting_index-left_limiting_index -1) * nums[i]
 
 */
 
