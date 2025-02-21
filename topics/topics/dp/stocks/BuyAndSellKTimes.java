@@ -33,7 +33,8 @@ public class BuyAndSellKTimes {
             return Integer.max(
                     -arr[N] + calculate(arr, N + 1, 1, times, timesAllowed),
                     calculate(arr, N + 1, 0, times, timesAllowed));
-        } else {
+        }
+        else {
             //sell or don't sell
             return Integer.max(
                     arr[N] + calculate(arr, N + 1, 0, times + 1, timesAllowed), // times + 1 only when sold !
@@ -71,7 +72,8 @@ public class BuyAndSellKTimes {
             profit = Integer.max(b1, b2);
         }
         else {
-            int s1 = arr[index] + calculate(dp, arr, index + 1, 1-buyTicker, transactionsRem-1);
+            int s1 = arr[index] + calculate(dp, arr, index + 1, 1-buyTicker,
+                    transactionsRem-1);
             int s2 = calculate(dp, arr, index + 1, buyTicker, transactionsRem);
             profit = Integer.max(s1, s2);
         }

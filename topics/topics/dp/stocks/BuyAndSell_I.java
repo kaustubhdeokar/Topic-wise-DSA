@@ -6,7 +6,7 @@ public class BuyAndSell_I {
     public static void main(String[] args) {
 
         BuyAndSell_I bs = new BuyAndSell_I();
-        int res = bs.maxProfit(new int[]{7,1,5,3,6,4});
+        int res = bs.maxProfit(new int[]{7, 1, 5, 3, 6, 4});
         System.out.println("res:"+res); // expected 5.
 
     }
