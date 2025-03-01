@@ -2,7 +2,7 @@ package dp.lcs;
 
 public class D_PrintLCS {
 
-    public void printLcs(String s1, String s2) {
+    public StringBuilder printLcs(String s1, String s2) {
 
         int n = s1.length();
         int m = s2.length();
@@ -20,17 +20,11 @@ public class D_PrintLCS {
                 if (s1.charAt(ind1 - 1) == s2.charAt(ind2 - 1))
                     dp[ind1][ind2] = 1 + dp[ind1 - 1][ind2 - 1];
                 else
-                    dp[ind1][ind2] = 0 + Math.max(dp[ind1 - 1][ind2], dp[ind1][ind2 - 1]);
-            }
-        }
-
-        for (int[] d : dp) {
-            for (int d1 : d) {
-                System.out.print(d1 + " ");
+                    dp[ind1][ind2] = Integer.max(dp[ind1 - 1][ind2], dp[ind1][ind2 - 1]);
+                System.out.print(dp[ind1][ind2]+" ");
             }
             System.out.println();
         }
-        System.out.println();
 
         int i = n;
         int j = m;
@@ -39,15 +33,16 @@ public class D_PrintLCS {
         while (i > 0 && j > 0) {
             if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
                 lcs.append(s1.charAt(i - 1));
-                i--;
-                j--;
+                i-=1;
+                j-=1;
             } else if (dp[i - 1][j] > dp[i][j - 1]) {
-                i--;
+                i-=1;
             } else {
-                j--;
+                j-=1;
             }
         }
         System.out.println("s1:" + s1 + ", s2:" + s2 + ", lcs:" + lcs.reverse());
+        return lcs.reverse();
     }
 
 

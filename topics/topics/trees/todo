@@ -10,4 +10,4 @@ https://leetcode.com/problems/merge-bsts-to-create-single-bst/description/
 https://www.youtube.com/watch?v=S6OG5pGWxIw
 reverse-polish
 
-{0,1},{0,2},{0,3},{2,4},{2,5},{3,6},{2,7}}
+{{0,1},{1,2},{1,3},{3,4}}

@@ -13,8 +13,9 @@ public class LongestPalindromicSubsequence {
         System.out.println("s1:" + s1);
         System.out.println("s2:" + s2);
 
-        PrintLCS lcs = new PrintLCS();
-        return lcs.topDown(s1, s2);
+        D_PrintLCS lcs = new D_PrintLCS();
+        return lcs.printLcs(s1, s2).toString();
+
     }
 
 }
