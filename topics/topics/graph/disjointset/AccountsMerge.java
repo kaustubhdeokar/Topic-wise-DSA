@@ -7,10 +7,12 @@ public class AccountsMerge {
     public static void main(String[] args) {
 
         AccountsMerge accountsMerge = new AccountsMerge();
-        String[][] list = new String[][]{{"John","johnsmith@mail.com","john_newyork@mail.com"},
+        String[][] list = new String[][]{
+                {"John","johnsmith@mail.com","john_newyork@mail.com"},
                 {"John","johnsmith@mail.com","john00@mail.com"},
                 {"Mary","mary@mail.com"},
-                {"John","johnnybravo@mail.com"}};
+                {"John","johnnybravo@mail.com"}
+        };
 
         List<List<String>> collect = Arrays.stream(list).map(Arrays::asList).collect(Collectors.toList());
         accountsMerge.accountsMerge(collect);

@@ -29,7 +29,6 @@ public class PrimsAlgoMST {
 
         Comparator<int[]> distanceComp = (c1, c2) -> Integer.compare(c1[0], c2[0]);
         Queue<int[]> pq = new PriorityQueue<>(distanceComp);
-
         pq.add(new int[]{0, src});
 
         while (!pq.isEmpty()) {

@@ -32,7 +32,8 @@ public class BellmanFord {
 
         //relaxing for the nth time.
 
-        for(int[] edge: graph){
+        for(int[] edge: graph)
+        {
             int from = edge[0];
             int to = edge[1];
             int dist = edge[2];

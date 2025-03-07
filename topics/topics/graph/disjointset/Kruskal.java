@@ -19,7 +19,6 @@ class Kruskal {
 
         for (int i = 0; i < n - 1; i++) {
             for (int j = i + 1; j < n; j++) {
-
                 int p1x = points[i][0];
                 int p1y = points[i][1];
                 int p2x = points[j][0];

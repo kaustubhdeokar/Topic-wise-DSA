@@ -1,6 +1,6 @@
 package stack.problems;
 
-// blind 75:
+// blind 75: 2
 public class BestTimeToBuyAndSell {
 
     public static void main(String[] args) {

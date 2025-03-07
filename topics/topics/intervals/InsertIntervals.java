@@ -14,7 +14,8 @@ public class InsertIntervals {
             ans.add(intervals[i]);
             i++;
         }
-        while( i < n && intervals[i][0] <=newInterval[1]){
+        while( i < n && intervals[i][0] <=newInterval[1])
+        {
             newInterval[0] = Math.min(newInterval[0] , intervals[i][0]);
             newInterval[1] = Math.max(newInterval[1] , intervals[i][1]);
             i++;
@@ -25,9 +26,9 @@ public class InsertIntervals {
             i++;
         }
         int ret[][] = new int[ans.size()][2];
-        for( i = 0 ; i < ret.length ; i++){
+        for(i = 0; i < ret.length; i++){
             ret[i] = ans.get(i);
         }
-        return ret ;
+        return ret;
     }
 }

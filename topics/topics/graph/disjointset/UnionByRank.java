@@ -34,7 +34,6 @@ public class UnionByRank {
         if (parent[node] == node) return node;
 
         else {
-            //do not suggest.
             int newParent = findParent(parent[node]);
             parent[node] = newParent; //this is called as path compression.
             return newParent;
