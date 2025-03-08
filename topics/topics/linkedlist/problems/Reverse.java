@@ -16,4 +16,14 @@ public class Reverse {
         return ans;
     }
 
+    public static void main(String[] args) {
+
+        ListNode ll = new ListNode();
+        ListNode list = ll.createList(1, 2, 3, 4, 5);
+        list.print();
+        ListNode listNode = list.reverseInK(list, 5);
+        listNode.print();
+
+    }
+
 }
