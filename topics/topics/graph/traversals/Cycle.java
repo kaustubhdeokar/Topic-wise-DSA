@@ -19,7 +19,6 @@ public class Cycle {
     }
 
 
-
     private boolean directedGraphDfs(ArrayList<ArrayList<Integer>> list, int curr, boolean[] visited, boolean[] recstack) {
 
 
@@ -46,30 +45,30 @@ public class Cycle {
     }
 
     //kahns algo
-    public boolean directedBfs(ArrayList<ArrayList<Integer>> graph, int nodes){
+    public boolean directedBfs(ArrayList<ArrayList<Integer>> graph, int nodes) {
         int[] indegree = new int[nodes];
-        for(ArrayList<Integer> inner: graph){
-            for(Integer destination: inner){
-                indegree[destination]+=1;
+        for (ArrayList<Integer> inner : graph) {
+            for (Integer destination : inner) {
+                indegree[destination] += 1;
             }
         }
         ArrayDeque<Integer> q = new ArrayDeque<>();
-        for(int i=0;i<nodes;i++){
-            if(indegree[i]==0){
+        for (int i = 0; i < nodes; i++) {
+            if (indegree[i] == 0) {
                 q.add(i);
             }
         }
 
-        if(q.isEmpty()){
+        if (q.isEmpty()) {
             return true;
         }
 
-        while(!q.isEmpty()){
+        while (!q.isEmpty()) {
             Integer top = q.remove();
-            System.out.print(top+" ");
-            for(int neighbour: graph.get(top)){
-                indegree[neighbour]-=1;
-                if(indegree[neighbour]==0) q.add(neighbour);
+            System.out.print(top + " ");
+            for (int neighbour : graph.get(top)) {
+                indegree[neighbour] -= 1;
+                if (indegree[neighbour] == 0) q.add(neighbour);
             }
         }
 
@@ -83,7 +82,7 @@ public class Cycle {
         Cycle cycle = new Cycle();
         cycle.directedGraphDfs(directedGraph, 4);
         boolean res = cycle.directedBfs(directedGraph, 4);
-        System.out.println("res:"+res);
+        System.out.println("res:" + res);
     }
 
 }

@@ -7,7 +7,6 @@ import java.util.PriorityQueue;
 
 public class WaysToArriveAtDest {
 
-
     public int countPaths(int n, int[][] roads) {
 
         ArrayList<ArrayList<int[]>> graph = createGraph(roads, n);
