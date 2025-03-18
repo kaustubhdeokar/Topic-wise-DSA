@@ -13,7 +13,8 @@ public class SegmentTree {
         }
 
         for (int i = n - 1; i > 0; --i) {
-            tree[i] = tree[i << 1] + tree[i << 1 | 1];
+//            System.out.println(tree[i << 1] + " " + tree[i << 1 | 1]);
+            tree[i] = Integer.max(tree[i << 1], tree[i << 1 | 1]);
         }
 
         return tree;
@@ -21,13 +22,12 @@ public class SegmentTree {
 
     public void updateTreeNode(int[] tree, int p, int n, int value) {
 
-        // set value at position p
-        tree[p + n] = value;
+        if (tree[p + n] >= value) tree[p + n] -= value;
         p = p + n;
 
         // move upward and update parents
         for (int i = p; i > 1; i >>= 1)
-            tree[i >> 1] = tree[i] + tree[i ^ 1];
+            tree[i >> 1] = Integer.max(tree[i], tree[i ^ 1]);
     }
 
 
@@ -50,15 +50,28 @@ public class SegmentTree {
     public static void main(String[] args) {
         SegmentTree st = new SegmentTree();
 
-        int[] arr = {1, 2, 3, 4, 5, 6};
-        int n = arr.length;
-        int[] tree;
-        tree = st.build(arr);
-        int res = st.query(2, 6, arr.length, tree);
-        System.out.println(res);
-        //arr    1 2 3 4
-        //total  10
+        int[] nums = {1,2, 3, 2, 1};
+        int[] tree = st.build(nums);
+        for (int a : tree) {
+            System.out.print(a + " ");
+        }
+        System.out.println();
 
+        int[][] queries = {{0, 1, 1}, {1, 2, 1}, {2, 3, 2}, {3, 4, 1}, {4, 4, 1}};
+        for (int[] query : queries) {
+            int start = query[0];
+            int end = query[1];
+            int val = query[2];
+            for (int j = start; j <= end; j++) {
+                st.updateTreeNode(tree, j, nums.length, val);
+            }
+            //max of the whole array -> tree[1]
+            System.out.println("max:"+tree[1]);
+        }
+
+        for (int i = nums.length; i < tree.length; i++) {
+            System.out.print(tree[i] + " ");
+        }
 
     }
 }

@@ -7,7 +7,6 @@ public class LongestIncreasingSubsequence {
         int[] nums = new int[]{5, 4, 11, 1, 16, 8};
 
         //curr index = 0 prev taken -1
-
         //if nums[index]>=nums[prev+1]
         //take or not take
         //else
